@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Título</h1>
+    </header>
+    <main>
+        <div id="forrm">
+            <form action="dados.php" method="post" id="ff">
+                <input type="text" name="nome" id="nome" placeholder="Nome:" autocomplete="off">
+                <input type="email" name="email" id="email" placeholder="E-mail:" autocomplete="off">
+                <input type="password" name="senha" id="senha" placeholder="Senha:">
+                <input type="password" name="rsenha" id="rsenha" placeholder="Digite a senha novamente:">
+                <button type="submit" onclick="verificar()">Cadastrar</button>
+            </form>
+        </div>
+        <script src="validar.js"></script>
+    </main>
+    
+</body>
+</html>
