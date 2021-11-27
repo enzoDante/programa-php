@@ -1,0 +1,17 @@
+{
+    "name": "usuario/phpstore",
+    "description": "Loja Online em PHP",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Enzo Dante",
+            "email": "85023505+enzoDante@users.noreply.github.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "core\\" : "core/"
+        }
+    }
+}
