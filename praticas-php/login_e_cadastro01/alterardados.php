@@ -17,15 +17,19 @@
         $_SESSION['email'] = $nemail;
 
         $senhao = md5($_POST['senhao']);
+        
+        if($senhao != '4123d113b76978844361045548f5ac91'){
+            $resultados = $ligacao->query("SELECT * FROM usuarios WHERE senha = '$senhao'");
+            if($resultados->num_rows == 0){
+                echo "senha inválida!!!";
+            }else{
+                $senhan = md5($_POST['senhan']);
+                $sql = "update usuarios set senha='$senhan' where id_usuario=$id";
+                mysqli_query($ligacao,$sql);
+            }
 
-        $resultados = $ligacao->query("SELECT * FROM usuarios WHERE senha = '$senhao'");
-        if($resultados->num_rows == 0){
-            echo "senha inválida!!!";
-        }else{
-            $senhan = md5($_POST['senhan']);
-            $sql = "update usuarios set senha='$senhan' where id_usuario=$id";
-            mysqli_query($ligacao,$sql);
         }
+
 
 
     }
