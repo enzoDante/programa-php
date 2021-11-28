@@ -19,7 +19,9 @@
     <header>
         <h1>Sistema de cadastro e login</h1>
     </header>
-    <nav><a href="pagina1.php">pagina1</a></nav>
+    <nav><a href="pagina1.php">pagina1</a>
+        <a href="alterardados.php">Perfil</a>
+    </nav>
     <?php if(!isset($_SESSION['id_usuario'])) : ?>
 
         <main>

@@ -44,6 +44,7 @@
         <h1>Deu certo???</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa sequi soluta ad id doloremque amet voluptatem, aliquid reiciendis voluptates non tempore, libero vel aut enim, laudantium officiis tempora nobis ratione!</p>
         <a href="view_cadastro_login.php">Voltar</a><br>
+        <a href="alterardados.php">Perfil</a><br>
         <a href="pagina1.php?a=logout">Sair da conta</a>
     </main>
     

@@ -17,6 +17,8 @@
             $_SESSION['id_usuario'] = $dados_usuario['id_usuario'];
             $_SESSION['nome'] = $dados_usuario['nome'];
 
+            $_SESSION['email'] = $dados_usuario['email'];
+
             echo '<a href="pagina1.php">Entrar</a>';
             exit();
 
