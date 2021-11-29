@@ -1,0 +1,22 @@
+main form{
+    border: 1px solid black;
+    width: 400px;
+    margin: auto;
+    min-height: 200px;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: white;
+}
+form input, form button, form{
+    font-size: 1.2em;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 4px;
+}
+form a{
+    color: black;
+}
+form button{
+    display: block;
+    margin: auto;
+}

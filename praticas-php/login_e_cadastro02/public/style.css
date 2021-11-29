@@ -1,0 +1,36 @@
+@charset "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: rgb(104, 255, 205);
+    
+}
+header{
+    display: flex;
+    min-width: 200px;
+    height: 100px;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    background-color: #006eff;
+}
+nav{
+    min-width: 200px;
+    min-height: 30px;
+    padding: 10px;
+    background-color: #006eff;
+}
+nav a{
+    color: white;
+}
+main{
+    min-width: 200px;
+    max-width: 1200px;
+    min-height: 650px;
+    background-color: #cce2ff;
+    border-radius: 0 0 20px 20px;
+    margin: auto;
+    padding: 30px;
+}
