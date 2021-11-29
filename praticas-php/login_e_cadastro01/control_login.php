@@ -19,10 +19,11 @@
 
             $_SESSION['email'] = $dados_usuario['email'];
 
-            echo '<a href="pagina1.php">Entrar</a>';
+            echo '<a href="public/pagina1.php">Entrar</a>';
             exit();
 
         }
 
 
     }
+?>

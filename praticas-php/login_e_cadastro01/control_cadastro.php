@@ -38,11 +38,21 @@
         $email = $_POST['email'];
         $senha = md5($_POST['senha']);
 
-        $sql = "insert into usuarios (nome,email,senha) values('$usuario','$email','$senha')";
+        $resultados = $ligacao->query(" SELECT nome FROM usuarios WHERE nome='$usuario'");
+        $resultados2 = $ligacao->query("SELECT email FROM usuarios WHERE email = '$email'");
 
-        mysqli_query($ligacao, $sql);
-        echo "cadastrado com sucesso!!!";
-        echo "<a href='view_cadastro_login.php'>Fazer login</a>";
+        if(($resultados->num_rows != 0) || ($resultados2->num_rows != 0)){
+            echo "conta com esse nome ou email ja existe!!!";
+            echo "<br><a href='public/view_cadastro_login.php'>Voltar</a>";
+        }else{
+            $sql = "insert into usuarios (nome,email,senha) values('$usuario','$email','$senha')";
+    
+            mysqli_query($ligacao, $sql);
+            echo "cadastrado com sucesso!!!";
+            echo "<a href='public/view_cadastro_login.php'>Fazer login</a>";
+
+        }
+
         //exit();
 
     }

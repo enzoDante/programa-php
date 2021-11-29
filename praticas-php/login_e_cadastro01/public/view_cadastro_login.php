@@ -1,5 +1,5 @@
 <?php 
-    include "banco_de_dados.php";
+    include "../banco_de_dados.php";
     session_start();
 
 
@@ -20,12 +20,14 @@
         <h1>Sistema de cadastro e login</h1>
     </header>
     <nav><a href="pagina1.php">pagina1</a>
-        <a href="alterardados.php">Perfil</a>
+        <a href="../alterardados.php">Perfil</a>
     </nav>
+
+    <!--se não estiver logado:-->
     <?php if(!isset($_SESSION['id_usuario'])) : ?>
 
         <main>
-            <form action="control_cadastro.php" method="post">
+            <form action="../control_cadastro.php" method="post">
                 <input type="text" name="nome" id="nome" placeholder="Nome:" required autocomplete="off">
                 <input type="email" name="email" id="email" placeholder="E-mail:" required>
                 <input type="password" name="senha" id="senha" placeholder="Senha:" required>
@@ -33,15 +35,31 @@
                 <button type="submit" onclick="validarc()">Cadastrar</button>
             </form>
             
-            <form action="control_login.php" method="post">
+            <form action="../control_login.php" method="post">
                 <input type="text" name="nome" id="nome" autocomplete="off" placeholder="Nome:" required>
                 <input type="password" name="senha" id="senha" placeholder="Senha:" required>
                 <button type="submit" onclick="validarl()">Entrar</button>
             </form>
         </main>
-    <?php else: ?>
-        <p>logado!</p><br>
-        <a href="pagina1.php">Entrar</a>
+    <?php else: ?> <!--se estiver logado:-->
+        <style>
+            #d{
+                width: 400px;
+                margin: auto;
+                background-color: white;
+                font-size: 1.3em;
+                padding: 10px;
+                min-height: 100px;
+                border-radius: 20px;
+                text-align: center;
+            }
+        </style>
+        <main>
+            <div id="d">
+                <p>logado!</p><br>
+                <a href="pagina1.php">Entrar</a>
+            </div>
+        </main>
     <?php endif; ?>
 </body>
 </html>
