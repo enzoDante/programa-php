@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: antiquewhite;
+        }
+        header{
+            padding: 50px;
+            min-width: 300px;
+            height: 100px;
+            color: white;
+            text-align: center;
+            background-color: rgb(78, 78, 221);
+            box-shadow: 1px 1px 3px black;
+
+        }
+        main{
+            margin: auto;
+            margin-top: 100px;
+            min-width: 300px;
+            max-width: 1500px;
+            border-radius: 20px;
+            text-align: center;
+            background-color: aliceblue;
+            padding: 20px;
+            box-shadow: 1px 1px 3px black;
+        }
+        .bloco{
+            margin: 50px;
+            width: 300px;
+            height: 300px;
+            box-shadow: 1px 1px 3px black;
+            display: inline-block;
+            transition: 500ms;
+        }
+        .bloco:hover{
+            background-color: #e9e6e6;
+            cursor: pointer;
+        }
+        .bloco:active{
+            background-color: #acacac;
+            cursor: default;
+        }
+        h2{
+            background-color: blue;
+            color: yellow;
+        }
+        .vermelho{
+            color: red;
+            font-weight: bold;
+        }
+        .valor-antigo{
+            color: gray;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Blog html</h1>
+    </header>
+    <main>
+        <div class="bloco">
+            <div><img src="" alt=""></div>
+            <h2>FRETE GRATÍS BRASIL</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis animi ullam ex neque saepe quod magni expedita, maiores sequi eaque, dignissimos cumque labore quibusdam itaque accusamus, aut optio minus repellat!</p>
+            <p class="vermelho"><span class="valor-antigo">De: R$ 3.399,00</span> <br>Por: R$ 3.199,00 ou 12x de R$ 266,58<br>sem juros</p>
+
+        </div>
+
+        <div class="bloco">
+            <div><img src="" alt=""></div>
+            <h2>FRETE GRATÍS BRASIL</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos exercitationem doloremque laudantium facilis repellendus! Sit molestiae mollitia suscipit culpa natus et! Quis eveniet voluptatum odio, facilis distinctio suscipit voluptas minus!</p>
+            <p class="vermelho"><span class="valor-antigo">De: R$ 2.199,00</span><br>Por: R$ 1.999,00 ou 12x de R$ 166,58<br>sem juros</p>
+
+        </div>
+
+        <div class="bloco">
+            <div><img src="" alt=""></div>
+            <h2>FRETE GRATÍS BRASIL</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. At quo harum libero sapiente, omnis id ducimus enim molestias, iusto, nobis asperiores debitis beatae. Est consequuntur quia culpa aut ab illo.</p>
+            <p class="vermelho">Por: R$ 1.999,00 ou 12x de R$ 166,58<br>sem juros</p>
+
+        </div>
+        
+        
+    </main>
+    
+</body>
+</html>
