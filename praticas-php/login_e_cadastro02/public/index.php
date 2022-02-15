@@ -1,6 +1,6 @@
 <?php
-include "../banco.php";
-    session_start();
+include "../banco.php"; #página principal, não importa muito aqui
+    session_start(); #importante para caso o usuário esteja logado
 
 ?>
 
@@ -18,22 +18,23 @@ include "../banco.php";
         <h1>Título</h1>
     </header>
     <nav>
-        <?php 
+        <?php #verifica se o usuário apertou p sair da conta logada
             if(isset($_GET['a'])){
                 if($_GET['a'] == 'logout'){
-                    session_destroy();
-                    echo "Sessão finalizada!";
-                    header("Location: index.php");
+                    session_destroy(); #isso q faz o "logout" do usuário
+                    echo "Sessão finalizada!"; #nn é necessário
+                    header("Location: index.php"); #manda o usuário p esse arquivo
                     exit();
                 }
             }
         ?>
-        <?php if(!isset($_SESSION['id_usuario'])): ?>
-            <a href="login.php">Login</a>
+        <?php if(!isset($_SESSION['id_usuario'])): ?> <!--verifica se está logado-->
+            <a href="login.php">Login</a> <!--se n estiver logado, te esse link de login-->
         <?php else: ?>
             <p style="color: white;">voce esta logado!</p>
+            <!--com o echo abaixo é possível mostrar informações do usuário-->
             <p>Usuário | <a href="perfil.php"><?php echo $_SESSION['nome']; ?></a></p>
-            <a href="index.php?a=logout">Sair</a>
+            <a href="index.php?a=logout">Sair</a><!--variável "a" terá valor de "logout" uma função acima-->
         <?php endif; ?>
     </nav>
     <main>

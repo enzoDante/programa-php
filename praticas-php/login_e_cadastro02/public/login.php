@@ -39,10 +39,11 @@
     </nav>  
     <main>
         <?php 
-            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){ #post é mais seguro p informações de cadastro/login
                 $nome = $_POST['nome'];
-                $senha = md5($_POST['senha']);
+                $senha = md5($_POST['senha']); #md5 é um tipo de criptografia
 
+                
                 $resultados = $ligacao->query("SELECT * FROM usuarios WHERE nome='$nome' AND senha = '$senha'");
 
                 if($resultados->num_rows == 0){
