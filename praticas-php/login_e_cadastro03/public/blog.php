@@ -44,6 +44,26 @@
             <?php endif; ?>
         </div><hr>
         <article>
+            <?php 
+                #analisar erros!!!!
+                /*
+                if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                    $resultado = $ligacao->query("SELECT id_post FROM postes");
+                    $deletar = $_POST['del'];
+                    $sql = "delete QUICK from postes where postes.id_post=$deletar";
+                    mysqli_query($ligacao,$sql);
+
+                    for($i = $deletar; $i <= $resultado->num_rows; $i++){
+                        echo $i;
+                        $x = $i + 1;
+                        $sql = "update postes set id_post=$i where id_post=$x";
+                        mysqli_query($ligacao,$sql);
+                        
+                    }
+                    exit();
+                }
+                */
+            ?>
             <?php
                 $resultado = $ligacao->query("SELECT id_post FROM postes");
                 $dados_post = $resultado->fetch_assoc();
@@ -58,11 +78,16 @@
                     $comentt = $p['comentarios'];
 
                     if($p['video'] == 0){
-                        
-                        echo "<article class='posta'><h2>$criador</h2><h3>$titulo1</h3><textarea id='coment' cols='70' rows='10' disabled>$comentt</textarea></article>";
+                        /*<form action='blog.php' method='post'><select name='del'><option value='$i'></option></select><button type='submit'>Deletar</button></form> */
+                        echo "<article class='posta'><h2>$criador</h2>
+                        <form action='blog.php' method='post'><select name='del'><option value='$i'></option></select><button type='submit'>Deletar</button></form> 
+                        <h3>$titulo1</h3><textarea id='coment' cols='70' rows='10' disabled>$comentt</textarea></article>";
                     }else{
+                        /*<form action='blog.php' method='post'><select name='del'><option value='$i'></option></select><button type='submit'>Deletar</button></form> */
                         $video1 = $p['video'];
-                        echo "<article class='posta'><h2>$criador</h2><h3>$titulo1</h3>$video1<textarea id='coment' cols='70' rows='10' disabled>$comentt</textarea></article>";
+                        echo "<article class='posta'><h2>$criador</h2>
+                        <form action='blog.php' method='post'><select name='del'><option value='$i'></option></select><button type='submit'>Deletar</button></form> 
+                        <h3>$titulo1</h3>$video1<textarea id='coment' cols='70' rows='10' disabled>$comentt</textarea></article>";
                     }
                     
 
