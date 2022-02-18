@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+a#pub{
+    text-decoration: none;
+    color: black;
+    font-size: 1.3em;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: 500ms;
+}
+a#pub:hover{
+    text-shadow: 1px 1px 2px black;
+}
+#titu, #ifra{
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+#coment{
+    resize: none;
+    margin-top: 50px;
+    font-size: 1.3em;
+}
+.posta{
+    background-color: white;
+    width: 810px;
+    min-height: 300px;
+    margin: auto;
+    margin-bottom: 100px;
+    padding: 50px;
+    
+}
+.posta > h2{
+    background-image: linear-gradient(to right, #477930, transparent);
+    font-weight: bold;
+    color: white;
+}
