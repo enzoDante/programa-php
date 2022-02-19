@@ -49,19 +49,46 @@
                 $titulo = $_POST['titulo'];
                 $video = $_POST['video'];
                 $coment = $_POST['comentarios'];
+                $verificar = $ligacao->query("SELECT titulo FROM postes WHERE titulo='$titulo'");
+                if($verificar->num_rows != 0){
+                    echo "<script>alert('Esse título já existe!!!')</script>";
+                }else{                
 
-                if($video == null){
-                    $sql = "insert into postes (criador, titulo, comentarios) values('$nome','$titulo','$coment')";
-                    mysqli_query($ligacao, $sql);
-                    echo "<script>alert('Publicado!')</script>";
-                    exit();
+                    if($video == null){
+                        $sql = "insert into postes (criador, titulo, comentarios) values('$nome','$titulo','$coment')";
+                        mysqli_query($ligacao, $sql);
 
-                }else{
-                    $sql = "insert into postes (criador, titulo, video, comentarios) values('$nome','$titulo','$video','$coment')";
-                    mysqli_query($ligacao, $sql);
-                    echo "<script>alert('Publicado!')</script>";
-                    exit();
-                }
+                        $id_do_post = $ligacao->query("SELECT id_post FROM postes WHERE titulo='$titulo'");
+                        $idpostes = $id_do_post->fetch_assoc();
+                        $dele = $ligacao->query("SELECT cont FROM contadordel");
+                        $mostrarcont = $dele->fetch_assoc();
+
+                        $val = $idpostes['id_post'] - $mostrarcont['cont'];
+
+                        $sql = "update postes set id_post=$val where titulo='$titulo'";
+                        mysqli_query($ligacao, $sql);
+                        echo "<script>alert('Publicado!')</script>";
+                        header("Location: criar.php");
+                        exit();
+
+                    }else{
+                        $sql = "insert into postes (criador, titulo, video, comentarios) values('$nome','$titulo','$video','$coment')";
+                        mysqli_query($ligacao, $sql);
+
+                        $id_do_post = $ligacao->query("SELECT id_post FROM postes WHERE titulo='$titulo'");
+                        $idpostes = $id_do_post->fetch_assoc();
+                        $dele = $ligacao->query("SELECT cont FROM contadordel");
+                        $mostrarcont = $dele->fetch_assoc();
+
+                        $val = $idpostes['id_post'] - $mostrarcont['cont'];
+
+                        $sql = "update postes set id_post=$val where titulo='$titulo'";
+                        mysqli_query($ligacao, $sql);
+                        echo "<script>alert('Publicado!')</script>";
+                        header("Location: criar.php");
+                        exit();
+                    }
+            }
             }
         ?>
 
