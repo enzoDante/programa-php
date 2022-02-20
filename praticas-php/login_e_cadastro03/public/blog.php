@@ -109,14 +109,18 @@
     
                         if($p['video'] == 0){ #se nn tiver vídeo
                             #abaixo é os post q cada usuário poderá ver
-                            echo "<article class='posta'><h2>$criador</h2>
-                            <form action='blog.php' method='post'><select name='del'><option value='$i'></option></select><button type='submit'>Deletar</button></form> 
-                            <h3>$titulo1</h3><textarea id='coment' cols='70' rows='10' disabled>$comentt</textarea></article>";
+                            echo "<article class='posta'><h2>$criador</h2>";
+                            if(isset($_SESSION['id_usuario'])){
+                                echo "<form action='blog.php' method='post'><select name='del'><option value='$i'></option></select><button type='submit'>Deletar</button></form>";
+                            }
+                            echo "<h3>$titulo1</h3><textarea id='coment' cols='70' rows='10' disabled>$comentt</textarea></article>";
                         }else{
                             $video1 = $p['video'];
-                            echo "<article class='posta'><h2>$criador</h2>
-                            <form action='blog.php' method='post'><select name='del'><option value='$i'></option></select><button type='submit'>Deletar</button></form> 
-                            <h3>$titulo1</h3>$video1<textarea id='coment' cols='70' rows='10' disabled>$comentt</textarea></article>";
+                            echo "<article class='posta'><h2>$criador</h2>";
+                            if(isset($_SESSION['id_usuario'])){
+                                echo "<form action='blog.php' method='post'><select name='del'><option value='$i'></option></select><button type='submit'>Deletar</button></form> ";
+                            }
+                            echo"<h3>$titulo1</h3>$video1<textarea id='coment' cols='70' rows='10' disabled>$comentt</textarea></article>";
                         }
                         
     
