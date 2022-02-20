@@ -1,28 +1,31 @@
 <?php 
     include "../banco.php";
-    session_start();
+    session_start(); #caso saia da aba, ao voltar estará logado!
 
-
-    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    #verifica se ao enviar o form, verifica se é post ou get
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){ 
         $nome = $_POST['nome'];
         $email = $_POST['email'];
 
-        $id = $_SESSION['id_usuario'];
+        $id = $_SESSION['id_usuario']; #sempre irá fazer uma atualização na linha do id ao prescionar o botão 'salvar'
         $sql = "update usuarios set nome='$nome', email='$email' where id_usuario='$id'";
         mysqli_query($ligacao, $sql);
 
         $_SESSION['nome'] = $nome;
         $_SESSION['email'] = $email;
         #---------------------------------método da senha abaixo---------
+        #com a senha é um pouco diferente para ter uma segurança
         $senha = $_POST['senha'];
         $senhaoriginal = md5($_POST['senhaoriginal']);
 
-        if($senha != null){
+        if($senha != null){ #se o usuário preencheu o campo da nova senha:
             $senha = md5($_POST['senha']);
+            #irá procurar na tabela se existe essa senha original
             $resultado = $ligacao->query("SELECT * FROM usuarios WHERE senha='$senhaoriginal'");
             if($resultado->num_rows == 0){
                 echo "<script>alert('Senha inválida')</script>";
             }else{
+                #se tudo estiver certo, irá atualizar na tabela a nova senha
                 $sql = "update usuarios set senha='$senha' where id_usuario='$id'";
                 mysqli_query($ligacao, $sql);
             }
@@ -49,11 +52,11 @@
     </header>
     <nav>
         <?php
-            if(isset($_GET['a'])){
-                if($_GET['a'] == 'logout'){
-                    session_destroy();
-                    header("Location: confinome.php");
-                    exit();
+            if(isset($_GET['a'])){ #verifica se existe essa variável, se foi prescionada no caso é o 'a'
+                if($_GET['a'] == 'logout'){ #ent ele verifica se o valor é 'logout'
+                    session_destroy(); #finaliza sessão, agr o usuario n esta logado
+                    header("Location: confinome.php"); #envia o usuário p página 'cadastro.php' eu uso como se fosse o f5
+                    exit(); #finaliza o programa, ent nn vai ficar repetindo toda hora e travando o pc
                 }
             }
         ?>
@@ -62,10 +65,12 @@
         <a href="index.php">Home</a>
         <a href="blog.php">Blog</a>
 
-        <?php if(!isset($_SESSION['id_usuario'])): ?>
+        <!--verifica se o usuário nn esta logado, se ele nn estiver isso aparece abaixo-->
+        <?php if(!isset($_SESSION['id_usuario'])): #se nn existe a sessão com id ent isso aparece ?>
             <a href="login.php">Login</a>
             <a href="cadastro.php">Cadastro</a>
         <?php else: ?>
+            <!--se existe ent aparece isso abaixo, e com o comando abaixo posso pegar o valor de uma coluna de acordo com o id do usuário-->
             <a href="confinome.php"><?php echo $_SESSION['nome']; ?></a>
             <a href="confinome.php?a=logout">Sair</a>
         <?php endif; ?>
