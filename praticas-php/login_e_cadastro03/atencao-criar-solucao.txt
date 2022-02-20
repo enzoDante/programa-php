@@ -1,8 +1,0 @@
-criar um arquivo separado p ter uma variavel q a cada vez q um post é deletado na página blog.php, essa variável receberá +1
-$x++;
-
-no arquivo criar.php, essa variável irá subtrair ao id de uma nova publicação q ai o id irá valer outro valor
-
-$sql = "update from postes set id_post=$id where id_post=nseioq"
-
-testarrrrr
