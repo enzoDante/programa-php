@@ -1,0 +1,3 @@
+na página de novidades pode ter links p outras páginas detalhando tal assunto
+
+matérias pode ser uma página com blocos q representaria cada matéria(mat, bio, fis...)
