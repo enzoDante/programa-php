@@ -80,9 +80,22 @@ footer{
     background-color: #f7d343c5;
     margin-top: 10vh; /*distância em "view height" do elemento acima*/
     padding: 2px;
+    color: black;
+}
+footer a{
+    color: black;
+    text-decoration: underline;
 }
 footer > p{
     margin: 10px;
     text-align: center;
     font-weight: bold;
+}
+@media screen and (max-width: 500px) {
+    footer{
+        text-align: center;
+    }
+    footer a{
+        display: inline-block;
+    }
 }
