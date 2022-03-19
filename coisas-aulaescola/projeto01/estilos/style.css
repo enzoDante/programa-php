@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 /*font-family: 'Roboto', sans-serif;*/
 *{
+    /*estilo geral*/
     margin: 0;
     padding: 0;
 }
@@ -12,8 +13,9 @@ body{
 
 header{
     min-width: 200px;
-    min-height: 50px;
+    min-height: 50px; /*se tiver mais conteúdo, o cabeçalho aumenta sua altura*/
     padding: 20px;
+    /*fazer gradiente de cima p baixo*/
     background-image: linear-gradient(to bottom, #eddc40d8, #f7d343c5);
     font-weight: bold;
     text-align: center;
@@ -27,16 +29,21 @@ nav{
 select{
     background-color: white;
 }
+@media screen and (max-width: 500px) {
+    nav{
+        min-height: 50px;
+    }
+}
 main{
     min-width: 200px;
     max-width: 1000px;
     min-height: 500px;
-    margin: auto;
+    margin: auto; /*alinha o main no centro, funciona apenas caso a tag seja display: block;*/
     background-color: white;
-    border-bottom-left-radius: 20px;
+    border-bottom-left-radius: 20px; /*deixa as pontas arredondadas*/
     border-bottom-right-radius: 20px;
     padding: 50px;
-    box-shadow: 1px 1px 3px black;
+    box-shadow: 1px 1px 3px black; /*sombra do bloco main*/
 }
 article{
     min-width: 200px;
@@ -46,7 +53,7 @@ article{
 h2#principal{
     background-color: #F7AF43;
     display: block;
-    margin: -50px -50px 0px -50px;
+    margin: -50px -50px 0px -50px; /*"anula" padding do main, para ficar colado com a lateral do main*/
     padding: 7px;
 }
 h2.conte{
@@ -56,14 +63,14 @@ h2.conte{
     padding: 7px;
 }
 p{
-    text-indent: 20px;
+    text-indent: 20px; /*iníco de parágrafo, deixa aquele espaço inicial*/
     text-align: justify;
 }
 
 footer{
     min-width: 200px;
     background-color: #f7d343c5;
-    margin-top: 10vh;
+    margin-top: 10vh; /*distância em "view height" do elemento acima*/
     padding: 2px;
 }
 footer > p{

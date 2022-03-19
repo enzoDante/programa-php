@@ -1,19 +1,19 @@
 @charset "UTF-8";
 a.estilo_link{
-    text-decoration: none;
+    text-decoration: none; /*remove decorações tipo underline*/
     color: black;
     font-weight: bold;
-    font-size: 1.1em;
+    font-size: 1.1em; 
     margin: 10px;
     padding: 7px;
-    border-radius: 5px;
-    transition: linear 200ms;
+    border-radius: 5px; /*deixa as pontas arredondadas*/
+    transition: linear 200ms; /*transição p ser usada com :hover, :focus, :active etc*/
     box-shadow: 1px 1px 2px black;
-    border-style: solid;
-    border-color: transparent;
+    border-style: solid; /*estilo da borda, existe, sem borda, pontilhada, etc*/
+    border-color: transparent; 
     background-color: #ff8f5c;
 }
-a.estilo_link:hover{
+a.estilo_link:hover{ /*hover, ao passar o cursor acima do link isso acontece*/
     text-decoration: none;
     border-style: solid;
     border-color: white;
