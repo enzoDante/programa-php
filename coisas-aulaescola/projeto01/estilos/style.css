@@ -26,6 +26,7 @@ nav{
     padding: 10px;
     background-color: #f7d343c5;
 }
+/*uma das utilidades do $media é usar p responsividade de um site*/
 @media screen and (max-width: 500px) {
     nav{
         min-height: 50px;
@@ -36,7 +37,7 @@ nav{
         margin: auto;
     }
     a{
-        display: block;
+        display: block; /*link vira um bloco, agr os links ficarão um abaixo do outro*/
         max-width: 150px;
         text-align: center;
         color: white;
