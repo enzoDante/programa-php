@@ -19,6 +19,9 @@ a.estilo_link:hover{ /*hover, ao passar o cursor acima do link isso acontece*/
     border-color: white;
     color: white;
 }
+li > a:hover{
+    color: black;
+}
 /*
 select{
     font-size: 1.1em;
