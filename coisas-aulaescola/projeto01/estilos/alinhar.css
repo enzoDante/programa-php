@@ -52,6 +52,10 @@ article > ul{
     text-align: center;
     
 }
+div > ul{
+    list-style-position: inside;
+    text-align: center;
+}
 li > a{
     font-size: 2em;
     font-weight: bold;
@@ -61,4 +65,18 @@ li > a{
 #coluna{
     text-align: left;
     columns: 2;
+}
+@media screen and (max-width: 500px) {
+    div#alinhar{
+        display: block;
+    }
+    div#alinharV{
+        display: block;
+    }
+    #coluna{
+        columns: 1;
+    }
+    div > ul{
+        list-style-type: none;
+    }
 }
