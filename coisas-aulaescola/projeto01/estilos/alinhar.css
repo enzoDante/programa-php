@@ -56,7 +56,7 @@ div > ul{
     list-style-position: inside;
     text-align: center;
 }
-li > a{
+li > a.cot{
     font-size: 2em;
     font-weight: bold;
     color: black;
