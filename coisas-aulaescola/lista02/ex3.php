@@ -68,8 +68,8 @@
     </header>
     <main>
         <form action="ex3.php" method="get">
-            <input type="number" name="km-r" id="" placeholder="Digite KM rodados..."><br>
-            <input type="number" name="combustivel" id="" placeholder="Digite a quantidade de combustível"><br>
+            <input type="number" name="km-r" step="any" placeholder="Digite KM rodados..."><br>
+            <input type="number" name="combustivel" step="any" placeholder="Digite a quantidade de combustível"><br>
             <button type="submit">Calcular combustível gasto</button>
         </form>
         <?php 
@@ -78,9 +78,14 @@
                 if(isset($_GET['km-r'])){
                     $km = $_GET["km-r"];
                     $comb = $_GET['combustivel'];
-                    $gasto = $km/$comb;
-                    echo "<br>";
-                    echo "<p>Consumo médio de $gasto Km/L</p>";
+                    if($km < 0 || $comb < 0){
+                        echo "<p>Digite um valor válido!!!</p>";
+                    }else{
+                        $gasto = $km/$comb;
+                        echo "<br>";
+                        echo "<p>Consumo médio de $gasto Km/L</p>";
+
+                    }
                 }
 
             }

@@ -65,13 +65,12 @@
 <body>
     <header>
         <h1>lista 02</h1>
-        <p>exercício 07</p>
+        <p>exercício 09</p>
     </header>
     <main>
-        <form action="ex7.php" method="get"><br>
-            <input type="number" name="nota1" step="any" placeholder="Digite a 1º nota"> <br>
-            <input type="number" name="nota2" step="any" placeholder="Digite a 2º nota"> <br>
-            <input type="number" name="nota3" step="any" placeholder="Digite a 3º nota"><br>
+        <form action="ex9.php" method="get"><br>
+            <input type="number" name="peso" step="any" placeholder="Digite seu peso:"><br>
+            <input type="number" name="altura" step="any" placeholder="Digite a sua altura:"> <br>
 
             <button type="submit" name="teste" value="ee">Calcular</button>
         </form>
@@ -81,23 +80,31 @@
                     $x = $_GET['teste'];
                     
                     if($x == "ee"){
-                        $n1 = $_GET["nota1"];
-                        $n2 = $_GET["nota2"];
-                        $n3 = $_GET["nota3"];
-                        if($n1 < 0 || $n2 < 0 || $n3 < 0){
-                            echo "<p>Digite um valor válido!!!</p>";
+                        $massa = $_GET["peso"];
+                        $altura = $_GET['altura'];
+                        if($massa <= 0 || $altura <= 0){
+                            echo "<p>Digite uma massa ou altura válida!!!</p>";
                         }else{
-                            $media = number_format(($n1 + $n2 + $n3)/3, 1, ',');
-    
-                            echo "<p>Média = $media </p>";
-                            if($media >= 7){
-                                echo "<p>Aprovado!!!!!!!!!</p>";
-                            }else{
-                                echo "<p>Infelizmente reprovado</p>";
+                            $imc = number_format($massa / ($altura * $altura),2,',');
+                            echo "<p>IMC = $imc</p>";
+
+                            if($imc < 20){
+                                echo "<p>IMC abaixo de 20 --- abaixo do peso</p>";
+                            }
+                            else if($imc >= 20 && $imc < 25){
+                                echo "<p>IMC de 20 até 25 --- peso normal</p>";
+                            }
+                            else if($imc >= 25 && $imc < 30){
+                                echo "<p>IMC de 25 até 30 --- sobre peso</p>";
+                            }
+                            else if($imc >= 30 && $imc < 40){
+                                echo "<p>IMC de 30 até 40 --- obeso</p>";
+                            }
+                            else if($imc >= 40){
+                                echo "<p>IMC de 40 e acima --- obeso mórbido</p>";
                             }
 
-                        }
-                        
+                        }     
 
                     }
 

@@ -68,9 +68,9 @@
     </header>
     <main>
         <form action="ex1.php" method="get">
-            <input type="number" name="salario-bruto" id="" placeholder="Digite seu salário bruto..."><br>
+            <input type="number" name="salario-bruto" step="any" placeholder="Digite seu salário bruto..."><br>
             <input type="number" name="horas" id="" placeholder="Digite as horas de trabalho"><br>
-            <input type="number" name="valorHoras" id="" placeholder="Digite o valor recebido por hora"><br>
+            <input type="number" name="valorHoras" step="any" placeholder="Digite o valor recebido por hora"><br>
             <button type="submit">Calcular salário líquido</button>
         </form>
         <?php 
@@ -80,10 +80,15 @@
                     $salario_bruto = $_GET["salario-bruto"];
                     $horas = $_GET['horas'];
                     $valorHoras = $_GET['valorHoras'];
-                    $valortotal = $horas * $valorHoras;
-                    $salario_liquido = ($salario_bruto + $valortotal) - 0.08;
-                    echo "<br>";
-                    echo "<p>Salário líquido calculado: R$ $salario_liquido</p>";
+                    if($horas < 1 || $valorHoras < 1 || $salario_bruto < 1){
+                        echo "<p>Digite valores válidos!!!!</p>";
+                    }else{
+                        $valortotal = $horas * $valorHoras;
+                        $salario_liquido = ($salario_bruto + $valortotal) - 0.08;
+                        echo "<br>";
+                        echo "<p>Salário líquido calculado: R$ $salario_liquido</p>";
+
+                    }
                 }
 
             }

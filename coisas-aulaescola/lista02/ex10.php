@@ -65,13 +65,13 @@
 <body>
     <header>
         <h1>lista 02</h1>
-        <p>exercício 07</p>
+        <p>exercício 10</p>
     </header>
     <main>
-        <form action="ex7.php" method="get"><br>
-            <input type="number" name="nota1" step="any" placeholder="Digite a 1º nota"> <br>
-            <input type="number" name="nota2" step="any" placeholder="Digite a 2º nota"> <br>
-            <input type="number" name="nota3" step="any" placeholder="Digite a 3º nota"><br>
+        <form action="ex10.php" method="get"><br>
+            <input type="number" name="l1" step="any" placeholder="Digite o lado 1:"><br>
+            <input type="number" name="l2" step="any" placeholder="Digite o lado 2:"> <br>
+            <input type="number" name="l3" step="any" placeholder="Digite o lado 3:"> <br>
 
             <button type="submit" name="teste" value="ee">Calcular</button>
         </form>
@@ -81,23 +81,23 @@
                     $x = $_GET['teste'];
                     
                     if($x == "ee"){
-                        $n1 = $_GET["nota1"];
-                        $n2 = $_GET["nota2"];
-                        $n3 = $_GET["nota3"];
-                        if($n1 < 0 || $n2 < 0 || $n3 < 0){
-                            echo "<p>Digite um valor válido!!!</p>";
+                        $l1 = $_GET["l1"];
+                        $l2 = $_GET["l2"];
+                        $l3 = $_GET["l3"];
+                        if($l1 <= 0 || $l2 <= 0 || $l3 <= 0){
+                            echo "<p>Digite medidas válidas!!!</p>";
                         }else{
-                            $media = number_format(($n1 + $n2 + $n3)/3, 1, ',');
-    
-                            echo "<p>Média = $media </p>";
-                            if($media >= 7){
-                                echo "<p>Aprovado!!!!!!!!!</p>";
-                            }else{
-                                echo "<p>Infelizmente reprovado</p>";
+                            if($l1 == $l2 && $l2 == $l3){
+                                echo "<p>Triângulo equilátero</p>";
+                            }
+                            else if($l1 == $l2 || $l2 == $l3 || $l1 == $l3){
+                                echo "<p>Triângulo isóceles</p>";
+                            }
+                            else{
+                                echo "<p>Triângulo escaleno</p>";
                             }
 
-                        }
-                        
+                        }     
 
                     }
 

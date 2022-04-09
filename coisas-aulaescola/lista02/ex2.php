@@ -68,7 +68,7 @@
     </header>
     <main>
         <form action="ex2.php" method="get">
-            <input type="number" name="kw" id="" placeholder="Digite Quilowatts consumidos..."><br>
+            <input type="number" name="kw" step="any" placeholder="Digite Quilowatts consumidos..."><br>
             <button type="submit">Calcular valor de kw</button>
         </form>
         <?php 
@@ -76,10 +76,15 @@
                
                 if(isset($_GET['kw'])){
                     $kw = $_GET["kw"];
-                    $valorkw = $kw * 0.12;
-                    $valorkw = $valorkw + 0.18;
-                    echo "<br>";
-                    echo "<p>Valor a pagar pelo Kw consumido: R$ $valorkw</p>";
+                    if($kw < 1){
+                        echo "<p>Digite um valor válido!!!</p>";
+                    }else{
+                        $valorkw = $kw * 0.12;
+                        $valorkw = $valorkw + 0.18;
+                        echo "<br>";
+                        echo "<p>Valor a pagar pelo Kw consumido: R$ $valorkw</p>";
+
+                    }
                 }
 
             }
