@@ -64,28 +64,28 @@
 <body>
     <header>
         <h1>lista 02</h1>
-        <p>exercício 04</p>
+        <p>exercício 01</p>
     </header>
     <main>
-        <form action="ex4.php" method="get">
-            <input type="number" name="idade" id="" placeholder="Digite sua idade..."><br>
-            <button type="submit">Calcular seu tempo de vida</button>
+        <form action="ex1.php" method="get">
+            <input type="number" name="salario-bruto" id="" placeholder="Digite seu salário bruto..."><br>
+            <input type="number" name="horas" id="" placeholder="Digite as horas de trabalho"><br>
+            <input type="number" name="valorHoras" id="" placeholder="Digite o valor recebido por hora"><br>
+            <button type="submit">Calcular salário líquido</button>
         </form>
         <?php 
             if($_SERVER['REQUEST_METHOD'] == 'GET'){
-                @$idade = $_GET['idade'];
-                if($idade <= 2 || $idade >= 250){
-                    echo "<p><span>Digite uma idade válida!!!</span></p>";
+               
+                if(isset($_GET['horas'])){
+                    $salario_bruto = $_GET["salario-bruto"];
+                    $horas = $_GET['horas'];
+                    $valorHoras = $_GET['valorHoras'];
+                    $valortotal = $horas * $valorHoras;
+                    $salario_liquido = ($salario_bruto + $valortotal) - 0.08;
+                    echo "<br>";
+                    echo "<p>Salário líquido calculado: R$ $salario_liquido</p>";
                 }
-                else{                
-                    $dias = $idade * 365;
-                    $horas = $dias * 24;
-                    $minutos = $horas * 60;
-                    $segundos = $minutos * 60;
-                    echo "<p>Você está vivo a mais de: <br>
-                    $dias dias<br>$horas horas<br>$minutos minutos<br>$segundos segundos
-                    </p>";
-                }
+
             }
         ?>
     </main>
@@ -95,3 +95,4 @@
     
 </body>
 </html>
+

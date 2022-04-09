@@ -64,28 +64,26 @@
 <body>
     <header>
         <h1>lista 02</h1>
-        <p>exercício 04</p>
+        <p>exercício 05</p>
     </header>
     <main>
-        <form action="ex4.php" method="get">
-            <input type="number" name="idade" id="" placeholder="Digite sua idade..."><br>
-            <button type="submit">Calcular seu tempo de vida</button>
+        <form action="ex5.php" method="get"><br>
+            <button type="submit" name="teste" value="ee">Mostrar gruas celsius e Fahrenheit</button>
         </form>
         <?php 
             if($_SERVER['REQUEST_METHOD'] == 'GET'){
-                @$idade = $_GET['idade'];
-                if($idade <= 2 || $idade >= 250){
-                    echo "<p><span>Digite uma idade válida!!!</span></p>";
+                $x = $_GET["teste"];
+                if($x == "ee"){
+                    for($i = 40; $i <= 70; $i++){
+                        $c = 5/9 * ($i - 32);
+                        $c = number_format($c, 2, ',');
+    
+                        echo "<p>$i °F === $c °C</p><br>";
+                    }
+
                 }
-                else{                
-                    $dias = $idade * 365;
-                    $horas = $dias * 24;
-                    $minutos = $horas * 60;
-                    $segundos = $minutos * 60;
-                    echo "<p>Você está vivo a mais de: <br>
-                    $dias dias<br>$horas horas<br>$minutos minutos<br>$segundos segundos
-                    </p>";
-                }
+                
+
             }
         ?>
     </main>
@@ -95,3 +93,4 @@
     
 </body>
 </html>
+

@@ -64,28 +64,25 @@
 <body>
     <header>
         <h1>lista 02</h1>
-        <p>exercício 04</p>
+        <p>exercício 03</p>
     </header>
     <main>
-        <form action="ex4.php" method="get">
-            <input type="number" name="idade" id="" placeholder="Digite sua idade..."><br>
-            <button type="submit">Calcular seu tempo de vida</button>
+        <form action="ex3.php" method="get">
+            <input type="number" name="km-r" id="" placeholder="Digite KM rodados..."><br>
+            <input type="number" name="combustivel" id="" placeholder="Digite a quantidade de combustível"><br>
+            <button type="submit">Calcular combustível gasto</button>
         </form>
         <?php 
             if($_SERVER['REQUEST_METHOD'] == 'GET'){
-                @$idade = $_GET['idade'];
-                if($idade <= 2 || $idade >= 250){
-                    echo "<p><span>Digite uma idade válida!!!</span></p>";
+               
+                if(isset($_GET['km-r'])){
+                    $km = $_GET["km-r"];
+                    $comb = $_GET['combustivel'];
+                    $gasto = $km/$comb;
+                    echo "<br>";
+                    echo "<p>Consumo médio de $gasto Km/L</p>";
                 }
-                else{                
-                    $dias = $idade * 365;
-                    $horas = $dias * 24;
-                    $minutos = $horas * 60;
-                    $segundos = $minutos * 60;
-                    echo "<p>Você está vivo a mais de: <br>
-                    $dias dias<br>$horas horas<br>$minutos minutos<br>$segundos segundos
-                    </p>";
-                }
+
             }
         ?>
     </main>
@@ -95,3 +92,4 @@
     
 </body>
 </html>
+

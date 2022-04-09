@@ -32,16 +32,23 @@
             box-shadow: 1px 1px 2px black;
         }
         form{
-            max-width: 500px;
+            max-width: 1000px;
             min-height: 100px;
             margin: auto;
             border-style: solid;
             border-radius: 20px;
             padding: 50px;
         }
-        form > input, form > button{
+        form > button{
+            text-align: center;
             display: block;
             margin: auto;
+            font-size: 1.5em;
+        }
+        input{
+            width: 100px;
+            margin: 30px;
+            display: inline-block;
             font-size: 1.5em;
         }
         p{
@@ -64,28 +71,44 @@
 <body>
     <header>
         <h1>lista 02</h1>
-        <p>exercício 04</p>
+        <p>exercício 06</p>
     </header>
     <main>
-        <form action="ex4.php" method="get">
-            <input type="number" name="idade" id="" placeholder="Digite sua idade..."><br>
-            <button type="submit">Calcular seu tempo de vida</button>
+        <form action="ex6.php" method="get"><br>
+            <input type="number" name="l350ml" id=""> <label for="l350ml">Lata de 350 ml</label>
+            <input type="number" name="g600ml" id=""> <label for="g600ml">Garrafa de 600 ml</label>
+            <input type="number" name="g2l" id=""> <label for="g2l">Garrafa de 2 litros</label><br>
+
+            <button type="submit" name="teste" value="ee">Calcular</button>
         </form>
         <?php 
             if($_SERVER['REQUEST_METHOD'] == 'GET'){
-                @$idade = $_GET['idade'];
-                if($idade <= 2 || $idade >= 250){
-                    echo "<p><span>Digite uma idade válida!!!</span></p>";
+                if(isset($_GET['teste'])){
+                    $x = $_GET['teste'];
+                    
+                    if($x == "ee"){
+                        $l350ml = $_GET["l350ml"];
+                        $g600ml = $_GET["g600ml"];
+                        $g2l = $_GET["g2l"];
+                        $total_litros = 0;
+
+                        if($l350ml > 0){
+                            $total_litros += $l350ml * 350;
+                        }
+                        if($g600ml > 0){
+                            $total_litros += $g600ml * 600;
+                        }
+                        $total_litros = $total_litros / 1000;
+                        if($g2l > 0){
+                            $total_litros += $g2l * 2;
+                        }
+                        echo "<p>Total de litros = $total_litros L</p>";
+
+                    }
+
                 }
-                else{                
-                    $dias = $idade * 365;
-                    $horas = $dias * 24;
-                    $minutos = $horas * 60;
-                    $segundos = $minutos * 60;
-                    echo "<p>Você está vivo a mais de: <br>
-                    $dias dias<br>$horas horas<br>$minutos minutos<br>$segundos segundos
-                    </p>";
-                }
+                
+
             }
         ?>
     </main>
@@ -95,3 +118,4 @@
     
 </body>
 </html>
+

@@ -32,7 +32,7 @@
             box-shadow: 1px 1px 2px black;
         }
         form{
-            max-width: 500px;
+            max-width: 700px;
             min-height: 100px;
             margin: auto;
             border-style: solid;
@@ -40,6 +40,7 @@
             padding: 50px;
         }
         form > input, form > button{
+            text-align: center;
             display: block;
             margin: auto;
             font-size: 1.5em;
@@ -64,28 +65,40 @@
 <body>
     <header>
         <h1>lista 02</h1>
-        <p>exercício 04</p>
+        <p>exercício 07</p>
     </header>
     <main>
-        <form action="ex4.php" method="get">
-            <input type="number" name="idade" id="" placeholder="Digite sua idade..."><br>
-            <button type="submit">Calcular seu tempo de vida</button>
+        <form action="ex7.php" method="get"><br>
+            <input type="number" name="nota1" id="" placeholder="Digite a 1º nota"> <br>
+            <input type="number" name="nota2" id="" placeholder="Digite a 2º nota"> <br>
+            <input type="number" name="nota3" id="" placeholder="Digite a 3º nota"><br>
+
+            <button type="submit" name="teste" value="ee">Calcular</button>
         </form>
         <?php 
             if($_SERVER['REQUEST_METHOD'] == 'GET'){
-                @$idade = $_GET['idade'];
-                if($idade <= 2 || $idade >= 250){
-                    echo "<p><span>Digite uma idade válida!!!</span></p>";
+                if(isset($_GET['teste'])){
+                    $x = $_GET['teste'];
+                    
+                    if($x == "ee"){
+                        $n1 = $_GET["nota1"];
+                        $n2 = $_GET["nota2"];
+                        $n3 = $_GET["nota3"];
+                        
+                        $media = number_format(($n1 + $n2 + $n3)/3, 1, ',');
+
+                        echo "<p>Média = $media </p>";
+                        if($media >= 7){
+                            echo "<p>Aprovado!!!!!!!!!</p>";
+                        }else{
+                            echo "<p>Infelizmente reprovado</p>";
+                        }
+
+                    }
+
                 }
-                else{                
-                    $dias = $idade * 365;
-                    $horas = $dias * 24;
-                    $minutos = $horas * 60;
-                    $segundos = $minutos * 60;
-                    echo "<p>Você está vivo a mais de: <br>
-                    $dias dias<br>$horas horas<br>$minutos minutos<br>$segundos segundos
-                    </p>";
-                }
+                
+
             }
         ?>
     </main>
@@ -95,3 +108,4 @@
     
 </body>
 </html>
+

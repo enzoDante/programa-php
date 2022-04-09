@@ -32,7 +32,7 @@
             box-shadow: 1px 1px 2px black;
         }
         form{
-            max-width: 500px;
+            max-width: 700px;
             min-height: 100px;
             margin: auto;
             border-style: solid;
@@ -40,6 +40,7 @@
             padding: 50px;
         }
         form > input, form > button{
+            text-align: center;
             display: block;
             margin: auto;
             font-size: 1.5em;
@@ -64,28 +65,45 @@
 <body>
     <header>
         <h1>lista 02</h1>
-        <p>exercício 04</p>
+        <p>exercício 08</p>
     </header>
     <main>
-        <form action="ex4.php" method="get">
-            <input type="number" name="idade" id="" placeholder="Digite sua idade..."><br>
-            <button type="submit">Calcular seu tempo de vida</button>
+        <form action="ex8.php" method="get"><br>
+            <input type="number" name="idade" id="" placeholder="Digite a idade do nadador"> <br>
+
+            <button type="submit" name="teste" value="ee">Calcular</button>
         </form>
         <?php 
             if($_SERVER['REQUEST_METHOD'] == 'GET'){
-                @$idade = $_GET['idade'];
-                if($idade <= 2 || $idade >= 250){
-                    echo "<p><span>Digite uma idade válida!!!</span></p>";
+                if(isset($_GET['teste'])){
+                    $x = $_GET['teste'];
+                    
+                    if($x == "ee"){
+                        $idade = $_GET["idade"];
+                        if($idade >= 5 && $idade <= 7){
+                            echo "<p>Infantil A = 5 a 7 anos</p>";
+                        }
+                        else if($idade >= 8 && $idade <= 11){
+                            echo "<p>Infantil B = 8 a 11 anos</p>";
+                        }                        
+                        else if($idade >= 12 && $idade <= 13){
+                            echo "<p>Juvenil A = 12 a 13 anos</p>";
+
+                        } else if($idade >= 14 && $idade <= 17){
+                            echo "<p>Juvenil B = 14 a 17 anos</p>";
+
+                        } else if($idade >= 18){
+                            echo "<p>Adultos = Maiores de 18 anos</p>";
+                            
+                        }else{
+                            echo "<p>Idade menor que permitidos!!</p>";
+                        }
+
+                    }
+
                 }
-                else{                
-                    $dias = $idade * 365;
-                    $horas = $dias * 24;
-                    $minutos = $horas * 60;
-                    $segundos = $minutos * 60;
-                    echo "<p>Você está vivo a mais de: <br>
-                    $dias dias<br>$horas horas<br>$minutos minutos<br>$segundos segundos
-                    </p>";
-                }
+                
+
             }
         ?>
     </main>
@@ -95,3 +113,4 @@
     
 </body>
 </html>
+

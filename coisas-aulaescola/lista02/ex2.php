@@ -64,28 +64,24 @@
 <body>
     <header>
         <h1>lista 02</h1>
-        <p>exercício 04</p>
+        <p>exercício 02</p>
     </header>
     <main>
-        <form action="ex4.php" method="get">
-            <input type="number" name="idade" id="" placeholder="Digite sua idade..."><br>
-            <button type="submit">Calcular seu tempo de vida</button>
+        <form action="ex2.php" method="get">
+            <input type="number" name="kw" id="" placeholder="Digite Quilowatts consumidos..."><br>
+            <button type="submit">Calcular valor de kw</button>
         </form>
         <?php 
             if($_SERVER['REQUEST_METHOD'] == 'GET'){
-                @$idade = $_GET['idade'];
-                if($idade <= 2 || $idade >= 250){
-                    echo "<p><span>Digite uma idade válida!!!</span></p>";
+               
+                if(isset($_GET['kw'])){
+                    $kw = $_GET["kw"];
+                    $valorkw = $kw * 0.12;
+                    $valorkw = $valorkw + 0.18;
+                    echo "<br>";
+                    echo "<p>Valor a pagar pelo Kw consumido: R$ $valorkw</p>";
                 }
-                else{                
-                    $dias = $idade * 365;
-                    $horas = $dias * 24;
-                    $minutos = $horas * 60;
-                    $segundos = $minutos * 60;
-                    echo "<p>Você está vivo a mais de: <br>
-                    $dias dias<br>$horas horas<br>$minutos minutos<br>$segundos segundos
-                    </p>";
-                }
+
             }
         ?>
     </main>
@@ -95,3 +91,4 @@
     
 </body>
 </html>
+
