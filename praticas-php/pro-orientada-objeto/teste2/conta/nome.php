@@ -9,9 +9,9 @@
 
         $id = $_SESSION['id_usuario'];
 
-        $usu = new usuario();
-        $usu->atribuirnome($nome);
-        $msg = $usu->atualizarnome($id);
+        $usu = new usuario(); //cria um novo objeto 
+        $usu->atribuirnome($nome); //dentro do objeto irá receber o valor nome
+        $msg = $usu->atualizarnome($id); //vai atualizar esse nome no banco de dados
         echo $msg;
     }
 

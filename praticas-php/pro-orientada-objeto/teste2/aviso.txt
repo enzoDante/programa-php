@@ -1,0 +1,32 @@
+testando uma forma de criar sites com programação orientada a objetos
+mas utilizando banco de dados
+
+arquivos com classes: (banco.php e usuario.php)
+
+cadastro.php - cria uma nova conta e imediatamente loga o usuário na mesma
+
+login.php - faz o login do usuario
+
+conta.php - um arquivo onde aparece as informações do usuario e arquivos p alterar esses dados
+
+nome.php - arquivo para alterar o nome do usuario no banco de dados
+email.php - arquivo p alterar o email do usuario no banco de dados
+senha.php - a mesma coisa acima
+
+index.php - página inicial
+
+---todas as páginas mostram informações diferentes (se usuario estiver logado é diferente caso não esteja logado)
+como é um teste, não tem como objetivo o css
+
+/*
+    próximos teste q quero fazer:
+    -chat (entre duas pessoas e salas tipo discord etc)
+    -jogo entre usuarios logados em computadores diferentes
+    -cadastro e login somente para adminstradores
+    -blog (usuarios publicam ou somente adm pode publicar)
+
+    =============bem avançado (eu acho...)======================
+    -blog completo (usuarios podem comentar e curtir posts etc)
+
+
+*/

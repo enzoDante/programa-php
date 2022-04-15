@@ -38,6 +38,7 @@
     
     ?>
     <main>
+        <!--poderia fazer também o sistema de digitar a senha original e depois a nova senha-->
         <?php if(isset($_SESSION['id_usuario'])): ?>
             <form action="senha.php" method="post" id="formu">
                 <input type="password" name="senha" id="senha" placeholder="senha"><br>
