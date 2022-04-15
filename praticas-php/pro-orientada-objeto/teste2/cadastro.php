@@ -1,6 +1,7 @@
 <?php 
+    //inclui usuario.php, não é necessário incluir o banco.php, pois dentro de usuário.php esse arquivo já está incluido
     include "usuario.php";
-    session_start();
+    session_start(); //começa a sessão para logar e etc
 
 ?>
 
@@ -15,27 +16,36 @@
 <body>
     <main>
         <?php 
+            //verifica se o botão submit foi apertado
             if($_SERVER['REQUEST_METHOD'] == "POST"){
                 $nome = $_POST['nome'];
                 $email = $_POST['email'];
                 $senha = $_POST['senha'];
-                $usu = new usuario();
+                $usu = new usuario(); //cria um novo objeto usuario, q irá criar objeto do banco.php etc
 
+                //atribui o nome e etc para as variáveis do objeto
                 $usu->atribuirnome($nome);
                 $usu->atribuiremail($email);
                 $usu->atribuirsenha($senha);
                 echo $usu->atribuirnome($nome);
 
-                $x = $usu->cadastrar();
+                $x = $usu->cadastrar(); //irá cadastrar o usuário e loga-lo
+                //x irá receber o valor que está no return
                 echo $x;
             }
         
         ?>
         <?php 
+            //sistema de logout usando um link <a href="cadastro.php?a=logout">sair</a>
+            //verifica se existe a variável
             if(isset($_GET['a'])){
+                //verifica se o valor da variável é "logout"
                 if($_GET['a'] == 'logout'){
+                    //destroi a sessão = sair da conta
                     session_destroy();
+                    //leva o usuário para a página cadastro.php
                     header("Location: cadastro.php");
+                    //finaliza para não repetir e travar o pc
                     exit();
                 }
             }
@@ -43,13 +53,14 @@
 
 
 
-
+        <!--verifica se não existe a variável session['id_usuario']-->
         <?php if(!isset($_SESSION['id_usuario'])): ?>
             <form action="cadastro.php" id="formu" method="post">
                 <input type="text" name="nome" placeholder="nome" id="nome"><br>
                 <input type="text" name="email" placeholder="email" id="email"><br>
                 <input type="password" name="senha" placeholder="senha" id="senha"><br>
                 <input type="password" name="" placeholder="confirmar senha" id="confsenha"><br>
+                <!--impede() é para verificar o formulário com javascript-->
                 <button type="submit" onclick="impede()">cadastrar</button>
             </form><br><br><br>
 
