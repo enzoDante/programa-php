@@ -1,9 +1,8 @@
-<?php 
+<?php
     include "usuario.php";
     session_start();
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,8 +12,7 @@
     <title>Document</title>
 </head>
 <body>
-
-    <?php 
+    <?php
         if(isset($_GET['a'])){
             if($_GET['a'] == 'logout'){
                 session_destroy();
@@ -22,16 +20,23 @@
                 exit();
             }
         }
-    
     ?>
+
+
+
     <main>
-        <?php if(!isset($_SESSION['id_usuario'])): ?>
-            <a href="login.php">Logar</a><br>
-            <a href="cadastro.php">cadastrar</a>
+        <?php if(isset($_SESSION['id_usuario'])): ?>
+            <p>configuração de conta</p>
+            <a href="conta/nome.php">Nome--- <?php echo $_SESSION['nome']; ?></a><br>
+            <a href="conta/email.php">Email--- <?php echo $_SESSION['email']; ?></a><br>
+            <a href="conta/senha.php">Senha--- *********</a>
+            <br><br>
+            <a href="index.php">index</a><br>
+            <br>
+            <a href="conta.php?a=logout">sair da conta</a>
         <?php else: ?>
-            <p>logado = <a href="conta.php"><?php echo $_SESSION['nome']; ?></a></p><br>
-            <a href="conta.php">Configurações de conta</a><br>
-            <a href="index.php?a=logout">logout sair</a>
+            <p>Você precisa estar logado para acessar esta página!!!</p>
+
         <?php endif; ?>
 
     </main>

@@ -23,7 +23,7 @@
             $senha = $this->returnsenha();
             
             //sql recebe tudo da tabela usuario em q procura nome e email igual ao q pessoa digitou
-            $sql = $this->bd->comandosql("SELECT * FROM usuario WHERE nome='$nome' AND email='$email'");
+            $sql = $this->bd->comandosql("SELECT * FROM usuario WHERE nome='$nome' OR email='$email'");
 
             //verifica se existe alguma linha com esses valores
             if($sql->num_rows != 0){
@@ -72,6 +72,63 @@
                 $_SESSION['email'] = $dados['email'];
                 return "<p>logado</p>";
             }
+        }
+
+        //==================atualizar perfil===================
+        public function atualizarnome($id){
+            //precisa do id para fazer select do update
+            $nome = $this->returnnome(); //atribui o nome inserido pelo usuario
+
+            //verifica se o nome digitado existe na tabela
+            $sql = "SELECT * FROM usuario WHERE nome='$nome'";
+            $sql = $this->bd->comandosql($sql);
+
+            if($sql->num_rows == 0){
+                //caso não exista, fará o update abaixo usando o id
+                $sql = "UPDATE usuario set nome='$nome' where id_usuario=$id";
+                $this->bd->comandosql($sql);
+
+                //seleciona tudo novamente para atribuir o novo valor para a session
+                $sql = "SELECT * FROM usuario WHERE id_usuario=$id";
+                $sql = $this->bd->comandosql($sql);
+                $dados = $sql->fetch_assoc();
+                $_SESSION['nome'] = $dados['nome'];
+                return "nome atualizado com sucesso ".$_SESSION['nome'];
+            }else{
+                return "nome existente!!! digite outro nome";
+            }
+
+        }
+
+        public function atualizaremail($id){
+            $email = $this->returnemail();
+            $sql = "SELECT * FROM usuario WHERE email='$email'";
+            $sql = $this->bd->comandosql($sql);
+            if($sql->num_rows == 0){
+                $sql = "UPDATE usuario set email='$email' where id_usuario=$id";
+                $this->bd->comandosql($sql);
+
+                $sql = "SELECT * FROM usuario WHERE id_usuario=$id";
+                $sql = $this->bd->comandosql($sql);
+                $dados = $sql->fetch_assoc();
+
+                $_SESSION['email'] = $dados['email'];
+                return "email atualizado com sucesso ".$_SESSION['email'];
+            }else{
+                return "Email existente!!! digite outro";
+            }
+        }
+        //===============atualizar senha========================
+        public function atualizarsenha($id){
+            $senha = $this->returnsenha();
+            //hora de zuar um pouco xD, posso fazer com q mostre de quem é a conta caso o usuario digite ela!
+            //ficará p próxima kkkkkk
+
+            //no caso da senha é mais simples, usuarios podem ter a mesma senha :)
+            $sql = "UPDATE usuario set senha='$senha' where id_usuario=$id";
+            $sql = $this->bd->comandosql($sql);
+            return "senha atualizada!!!";
+
         }
 
 

@@ -69,6 +69,7 @@
         <?php else: ?>
             <p>logado = <?php echo $_SESSION['nome']; ?></p>
             <a href="index.php">index</a><br>
+            <a href="conta.php">Configurações de conta</a><br>
             <a href="cadastro.php?a=logout">Deslogar sair da conta</a>
 
         <?php endif; ?>
