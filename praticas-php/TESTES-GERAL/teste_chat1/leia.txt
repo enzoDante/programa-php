@@ -1,0 +1,1 @@
+esse teste1 não funciona, mas o código javascript atualiza a página, nn entendi direito o javascript
