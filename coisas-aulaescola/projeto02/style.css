@@ -24,6 +24,9 @@ main{
     border-radius: 20px;
     box-shadow: 1px 1px 2px black;
 }
+#tamanho{
+    max-width: 1000px;
+}
 form{
     max-width: 500px;
     min-height: 100px;
@@ -36,6 +39,23 @@ form > input, form > button{
     display: block;
     margin: auto;
     font-size: 1.5em;
+}
+table{
+    margin: auto;
+    width: 600px;
+    border-radius: 10px;
+    border-color: black;
+    border-style: solid;
+}
+table, td{
+    font-size: 1.2em;    
+    padding: 5px;    
+    text-align: center;
+}
+td input{
+    font-size: 1.1em;
+    width: 100%;
+    border-radius: 10px;
 }
 p{
     text-align: center;
