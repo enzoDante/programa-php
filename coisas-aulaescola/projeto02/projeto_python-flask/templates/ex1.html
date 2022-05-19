@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1></h1>
+    </header>
+    <main>
+        <form action="/lugarPython" method="get">
+            <p>Salário Bruto</p>
+            <input type="number" name="salario-bruto" step="any" placeholder="Digite seu salário bruto..."><br>
+            <p>Horas de trabalho</p>
+            <input type="number" name="horas" id="" placeholder="Digite as horas de trabalho"><br>
+            <p>Valor recebido por hora</p>
+            <input type="number" name="valorHoras" step="any" placeholder="Digite o valor recebido por hora"><br>
+            <button type="submit">Calcular salário líquido</button>
+        </form>
+
+        <p>{{aq}}</p>
+    </main>
+    
+</body>
+</html>

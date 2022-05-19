@@ -9,7 +9,7 @@
             $pideal_homens = number_format((72.7 * $a) - 58, 2, ',');
             $pideal_mulheres = number_format((62.1 * $a) - 44.7, 2, ',');
             echo "<p>peso ideal para homens: $pideal_homens</p>";
-            echo "<p>peso ideal para homens: $pideal_mulheres</p>";
+            echo "<p>peso ideal para mulheres: $pideal_mulheres</p>";
             return;
 
         }

@@ -1,0 +1,21 @@
+@charset "UTF-8";
+#tamanho{
+    max-width: 1500px;
+}
+table{
+    margin: auto;
+    min-width: 600px;
+    border-radius: 10px;
+    border-color: black;
+    border-style: solid;
+}
+table, td{
+    font-size: 1.2em;    
+    padding: 5px;    
+    text-align: center;
+}
+td input{
+    font-size: 1.1em;
+    width: 100%;
+    border-radius: 10px;
+}
