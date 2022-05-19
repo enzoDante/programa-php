@@ -1,6 +1,9 @@
 from flask import Flask
 from flask import request
 from flask import render_template
+'''
+NÃO FOI POSSÍVEL CRIAR TAGS HTML COM O PYTHON FLASK
+'''
 
 app = Flask(__name__)
 @app.route('/ex8.html')
@@ -14,24 +17,26 @@ def maior(n):
         if n[i][1] > maiorn:
             maiorn = n[i][1]
             alunomelhor = n[i][0]
-    msg = f'Melhor aluno: {alunomelhor} Nota: {maiorn} '
+    msg = f'Melhor aluno: {alunomelhor} Nota: {maiorn}\n||||'
     return msg
 
 def ordem(n):
     for i in range(0, 9):
         for x in range(0, 9):
-            if n[x][1] > n[x+1][1]:
+            if n[x][1] < n[x+1][1]:
                 aux = n[x][1]
                 aux2 = n[x][0]
                 n[x][1] = n[x+1][1]
                 n[x][0] = n[x+1][0]
                 n[x+1][1] = aux
                 n[x+1][0] = aux2
-    tabela = '<table id="tabela">'
-    tabela += '<tr><td><p>Maior nota para menor nota</p></td></tr>'
+    tabela = ''
+    #tabela = '''<table id="tabela">
+    #<tr><td><p>Maior nota para menor nota</p></td></tr>
+    #'''
     for i in range(0, 10):
-        tabela += f'<tr><td><p>{n[i][0]}</p></td><td><p>{n[i][1]}</p></td></tr>'
-    tabela += '</table>'
+        tabela += f' Aluno: {n[i][0]} nota: {n[i][1]} || \n '
+    #tabela += '</table>'
     return tabela
 
 @app.route('/calcular', methods=['GET'])
@@ -52,7 +57,7 @@ def calcular():
     
     v = maior(nomesn)
     v2 = ordem(nomesn)
-    tudo = f"{v} <br> {v2}"
+    tudo = f"{v} \n\n\n<br> {v2}"
     return render_template('ex8.html', valor=tudo)
 
 app.run()
