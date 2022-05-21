@@ -12,14 +12,13 @@ app = Flask(__name__)
 def inicio():
     return render_template("ex10.html")
 
-@app.route('/arquivos')
-def criar(x, b):
+
+def criar(x, b, msg):
     if b == True:
-        arquivo = open(x, 'w')
-        arquivo.write('teste')
-        return 'deu?'
-    else:
-        return 'hm'
+        arquivo = open(x, 'a') #a irá escrever no arquivo mas n apagará oq ja estava no arquivo!
+        arquivo.writelines(msg)
+        arquivo.close()
+        return 'Arquivo criado com sucesso!'
 
 @app.route('/calcular', methods=['GET'])
 def calcular():
@@ -31,12 +30,14 @@ def calcular():
     ms = str(request.args.get('msg'))
     
     data = date.today()
-    nome_arquivo = f'arquivos/{data.day}-{data.month}-{data.year}_{email}.txt'
+    nome_arquivo = 'D:\\codigo-vsCode\\programa-php\\coisas-aulaescola\\projeto02\\projeto_python-flask\\templates\\'
+    
+    msg = f'Nome: {nome}\nEmail: {email}\nTel: {tel}\nEmpresa: {emp}\n\nAssunto: {titulo}\nMensagem:\n{ms}\n\n'
+    nome_arquivo += f'arquivos\\{data.day}-{data.month}-{data.year}_{email}.txt'
     b = True
-    v = criar(nome_arquivo, b)
+    v = criar(nome_arquivo, b, msg)
 
-    return render_template('ex10.html', valor=f'Criou? nn sei... {v} ')
-    #return render_template('ex10.html', valor=nome_arquivo)
+    return render_template('ex10.html', valor=f' {v} ')
 
 
 app.run()
