@@ -11,7 +11,10 @@ def inicio():
 
 @app.route('/calcular', methods=['GET'])
 def calcular():
-    n = int(request.args.get('num'))
+    n = request.args.get('num')
+    if n == '':
+        return render_template('ex5.html', valor='Digite um número no campo acima!!!')
+    n = int(n)
     if n <= 0:
         return render_template('ex5.html', valor='Digite um valor positivo!!')
     else:

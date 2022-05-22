@@ -29,8 +29,13 @@ def ideal(a):
 
 @app.route('/calcular', methods=['GET'])
 def calcular():
-    peso = float(request.args.get('peso'))
-    altura = float(request.args.get('altura'))
+    peso = request.args.get('peso')
+    altura = request.args.get('altura')
+    if peso == '' or altura == '':
+        return render_template('ex7.html', valor='Digite nos campos acima!!!')
+    
+    peso = float(peso)
+    altura = float(altura)
     if peso <= 0 or altura <= 0:
         return render_template('ex7.html', valor='Digite valores acima de 0')
     else:

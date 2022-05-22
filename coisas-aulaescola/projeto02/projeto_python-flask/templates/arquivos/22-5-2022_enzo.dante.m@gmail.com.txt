@@ -1,0 +1,13 @@
+Nome: enzo
+Email: enzo.dante.m@gmail.com
+Tel: 3232323
+Empresa: empresa aq
+
+Assunto: assunto digitado
+Mensagem:
+uma mensagem para ser armazenada em um arquivo, simplesmente isso
+
+somente isso mesmo.
+algo a mais para preencher este campo de mensagem e simplesmente só isso, não irei completar esse campo todo, no caso este
+erro de gramática será corrigido ou não, mas foi finalizado, cabo.
+

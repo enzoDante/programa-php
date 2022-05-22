@@ -23,12 +23,16 @@ def x2(a, b, d):
 
 @app.route('/calcular', methods=['GET'])
 def calcular():
-    a=  int(request.args.get('a'))
-    b = int(request.args.get('b'))
-    c = int(request.args.get('c'))
-    if a == 0 or b == 0 or c == 0:
+    a=  request.args.get('a')
+    b = request.args.get('b')
+    c = request.args.get('c')
+    if a == '' or b == '' or c == '':
         return render_template('ex6.html', valor='Digite valores nos campos acima!!!')
     else:
+        a = int(a)
+        b = int(b)
+        c = int(c)
+
         d = delta(a, b, c)
         v1 = x1(a, b, d)
         v2 = x2(a, b, d)

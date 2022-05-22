@@ -10,7 +10,10 @@ def inicio():
 
 @app.route('/calcular', methods=['GET'])
 def calcular():
-    num = float(request.args.get('num'))
+    num = request.args.get('num')
+    if num == '':
+        return render_template('ex2.html', valor='Digite um valor no campo acima!!!')
+    num = float(num)
     if num <= 0:
         return render_template('ex2.html', valor='Digite os valores corretamente!')
     else:

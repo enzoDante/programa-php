@@ -3,10 +3,6 @@ from flask import request
 from flask import render_template
 from datetime import date
 
-'''
-NÃO FOI ENSINADO A COMO CRIAR ARQUIVO!!! ESTUDANDO PARA O PROGRAMA FUNCIONAR!!!
-'''
-
 app = Flask(__name__)
 @app.route('/ex10.html')
 def inicio():
@@ -28,6 +24,8 @@ def calcular():
     emp = str(request.args.get('empresa'))
     titulo = str(request.args.get('assunto'))
     ms = str(request.args.get('msg'))
+    if nome == '' or email == '' or tel == '' or emp == '' or titulo == '' or ms == '':
+        return render_template('ex10.html', valor='Preencha os campos acima!!!')
     
     data = date.today()
     nome_arquivo = 'D:\\codigo-vsCode\\programa-php\\coisas-aulaescola\\projeto02\\projeto_python-flask\\templates\\'

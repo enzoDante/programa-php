@@ -46,9 +46,12 @@ def calcular():
     valor = list()
     for i in range(0, 10):
         nome = str(request.args.get(f'nome{i}'))
-        nota = float(request.args.get(f'nota{i}'))
+        nota = request.args.get(f'nota{i}')
+        if nome == '' or nota == '':
+            return render_template('ex8.html', melhora='Preenche todos os campos!!!')
+        nota = float(nota)
         if nota < 0 or nota > 10:
-            return render_template('ex8.html', valor='Digite uma nota válida!!!')
+            return render_template('ex8.html', melhora='Digite uma nota válida!!!')
         else:
             valor.append(nome)
             valor.append(nota)

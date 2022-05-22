@@ -11,9 +11,15 @@ def inicial():
 
 @app.route('/lugarPython', methods=['GET'])
 def lugarPython():
-    salario_bruto = float(request.args.get("salario-bruto"))
-    horas = float(request.args.get('horas'))
-    v_horas = float(request.args.get('valorHoras'))
+    salario_bruto = request.args.get("salario-bruto")
+    horas = request.args.get('horas')
+    v_horas = request.args.get('valorHoras')
+    if salario_bruto == '' or horas == '' or v_horas == '':
+        return render_template('ex1.html', aq='Digite valores nos campos acima!!!')
+    salario_bruto = float(salario_bruto)
+    horas = float(horas)
+    v_horas = float(v_horas)
+    
     if salario_bruto <= 0 or horas <=0 or v_horas <=0:
         return render_template('ex1.html', aq='Digite valores corretamente!')
     else:
