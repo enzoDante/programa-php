@@ -51,7 +51,7 @@
 
         public function setvalores($n1, $n2){
             array_push($this->nome, $n1);
-            array_push($this->nota, $n2);        
+            array_push($this->nota, $n2);
         }
         public function getn(){
             return $this->nome;
