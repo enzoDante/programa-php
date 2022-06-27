@@ -9,3 +9,5 @@ senha VARCHAR(45),
 nascimento DATE,
 salario FLOAT
 );
+
+select * from aulaPHPmysql.Cliente;
