@@ -3,4 +3,14 @@ link p cada arquivo principais
 ../tipos_animais.html
 ../tabela_tipos.php
 ../racas_animais.php
+../tabela_tipos_racas.php
 ../
+
+link internos(após algum formulário)
+TIPO:
+tipos_animais --> tipos_animaisC.php
+tabela_tipos --> excluirTipo.php
+tabela_tipos --> formAlterarTipo.php
+formAlterarTipo --> alterarTipo.php
+RACA:
+racas_animais --> racas_animaisC.php

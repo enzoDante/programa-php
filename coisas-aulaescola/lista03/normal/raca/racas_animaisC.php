@@ -47,7 +47,7 @@
                     $stmt->bind_param('ss', $raca, $tipo);
                     $stmt->execute();
                     echo "<p class='msg'>Cadastro concluído</p><br>";
-                    echo '<a class="linkmsg" href="tabela_tipos.php">Tipos de animais</a>';
+                    echo '<a class="linkmsg" href="tabela_tipos_racas.php">Tipos e raças de animais</a>';
 
                 }
 
