@@ -1,0 +1,6 @@
+link p cada arquivo principais
+
+../tipos_animais.html
+../tabela_tipos.php
+../racas_animais.php
+../
