@@ -17,6 +17,7 @@
     <nav>
         <a href="tipos_animais.html">Cadastrar tipos</a>
         <a href="../raca/racas_animais.php">Cadastrar raças</a>
+        <a href="../dono/donos_animais.php">Cadastrar dono</a>
         
     </nav>
     <main>

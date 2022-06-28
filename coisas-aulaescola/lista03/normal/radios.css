@@ -1,0 +1,9 @@
+@charset "UTF-8";
+#radio1, #radio2{
+    display: inline-block;
+    min-width: 40px;
+}
+#radios{
+    margin: auto;
+    max-width: 300px;
+}

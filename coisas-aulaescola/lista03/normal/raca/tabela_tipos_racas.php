@@ -16,6 +16,7 @@
     </header>
     <nav>
         <a href="racas_animais.php">Cadastrar raças</a>
+        <a href="../dono/donos_animais.php">Cadastrar dono</a>
     </nav>
     <main>
         <?php

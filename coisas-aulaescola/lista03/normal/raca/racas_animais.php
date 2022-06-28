@@ -19,6 +19,7 @@
         <a href="../tipos/tipos_animais.html">Cadastrar tipos</a>
         <a href="../tipos/tabela_tipos.php">Tabela de tipos</a>
         <a href="tabela_tipos_racas.php">Tabela de raças</a>
+        <a href="../dono/donos_animais.php">Cadastrar dono</a>
     </nav>
     <main>
         <form action="racas_animaisC.php" method="post">

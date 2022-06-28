@@ -4,7 +4,8 @@ link p cada arquivo principais
 ../tabela_tipos.php
 ../racas_animais.php
 ../tabela_tipos_racas.php
-../
+../donos_animais.php
+../animais.php
 
 link internos(após algum formulário)
 TIPO:
@@ -14,3 +15,7 @@ tabela_tipos --> formAlterarTipo.php
 formAlterarTipo --> alterarTipo.php
 RACA:
 racas_animais --> racas_animaisC.php
+DONO ANIMAL:
+donos_animais --> donos_animaisC.php
+ANIMAL:
+animais --> animaisC.php
