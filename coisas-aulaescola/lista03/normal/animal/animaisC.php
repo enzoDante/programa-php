@@ -15,13 +15,19 @@
         <h1></h1>
     </header>
     <nav>
-
+        <a href="animais.php">Voltar</a>
+        <a href="../tipos/tipos_animais.html">Cadastrar tipos</a>
+        <a href="../tipos/tabela_tipos.php">Tipos de animais</a>
+        <a href="../raca/racas_animais.php">Cadastrar raças</a>
+        <a href="../raca/tabela_tipos_racas.php">Tipos e Raças</a>
+        <a href="../dono/donos_animais.php">Cadastrar donos</a>
     </nav>
     <main>
         <?php
             $nome = strip_tags(strtolower(str_replace(",","-", $_POST['nome'])));
             $chip = strip_tags(strtolower(str_replace(",","-", $_POST['chip'])));
             $data = $_POST['data'];
+            #$data = date("Y-d-m",strtotime($data));
             $sexo = $_POST['mf'];
             $raca = $_POST['idraca'];
             $dono = $_POST['cpf'];
@@ -36,9 +42,11 @@
                 $stmt->execute();
 
                 $verificar = "";
+                $id = "";
                 $resultado = $stmt->get_result();
                 while($linha = $resultado->fetch_object()){
-                    $verificar = $linha->cpf;                    
+                    $verificar = $linha->cpf;
+                    $id = $linha->idDonoAnimal;                  
                 }
 
                 if($verificar == ""){
@@ -46,10 +54,9 @@
                     echo "<a class='linkmsg' href='animais.php'>Voltar</a>";
                 }else{
                     $stmt = $conn->prepare("INSERT INTO Animal (nome,chipID,nascimento,sexo,RacaAnimal_idRacaAnimal,DonoAnimal_idDonoAnimal) VALUES(?,?,?,?,?,?)");
-                    $stmt->bind_param("ssssss",$nome,$chip,$data,$sexo,$raca,$dono);
+                    $stmt->bind_param("ssssss",$nome,$chip,$data,$sexo,$raca,$id);
                     $stmt->execute();
                     echo "<p class='msg'>Cadastro concluído!</p>";
-                    echo "<a class='linkmsg' href=''>Procurar animal</a>";
                 }
             }
         
