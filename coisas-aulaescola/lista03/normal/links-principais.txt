@@ -6,6 +6,9 @@ link p cada arquivo principais
 ../tabela_tipos_racas.php
 ../donos_animais.php
 ../animais.php
+../veterinario.html
+../tabelaveterinario.php
+../
 
 link internos(após algum formulário)
 TIPO:
@@ -19,3 +22,5 @@ DONO ANIMAL:
 donos_animais --> donos_animaisC.php
 ANIMAL:
 animais --> animaisC.php
+VETERINARIO:
+veterinario --> veterinarioC.php

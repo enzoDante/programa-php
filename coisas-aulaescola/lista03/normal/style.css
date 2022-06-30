@@ -90,11 +90,11 @@ form select{
     padding: 8px;
 }
   
-  #tabela tr:nth-child(even){background-color: #f2f2f2;}
+#tabela tr:nth-child(even){background-color: #f2f2f2;}
   
-  #tabela tr:hover {background-color: #ddd;}
+#tabela tr:hover {background-color: #ddd;}
   
-  #tabela th {
+#tabela th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
