@@ -32,8 +32,8 @@
         <a href="veterinario.html">Cadastrar veterinário</a>
     </nav>
     <nav class="sidenav">
-        <a href="../tipo/tipos_animais.php">Cadastrar tipos</a>
-        <a href="../tipo/tabela_tipos.php">Lista de tipos</a>
+        <a href="../tipos/tipos_animais.php">Cadastrar tipos</a>
+        <a href="../tipos/tabela_tipos.php">Lista de tipos</a>
         <a href="../raca/racas_animais.php">Cadastrar raças</a>
         <a href="../raca/tabela_tipos_racas.php">Lista de raças</a>
         <a href="../dono/donos_animais.php">Cadastrar dono</a>
