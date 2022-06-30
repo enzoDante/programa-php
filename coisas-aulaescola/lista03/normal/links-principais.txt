@@ -28,3 +28,18 @@ tabelaveterinario --> formAlterarVet.php
 tabelaveterinario --> verificarExcluir.php
 formAlterarVet --> alterarVet.php
 verificarExcluir --> excluirVet.php
+
+=======================================================
+estilos ids e classes:
+style.css id:
+#tabela
+#t ---> alinha no centro
+style.css class:
+.msg ---> alinha no centro, bold, 1.3em...
+.linkmsg ---> praticamente mesma coisa acima
+.inlineblock ---> para elementos com display block para ficar lado a lado
+
+radios.css id:
+#radio1, #radio2
+#radios ---> div onde tem os radios
+
