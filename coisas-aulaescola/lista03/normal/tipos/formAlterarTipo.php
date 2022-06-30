@@ -25,11 +25,19 @@
     <header>
         <h1>Alterar o tipo de animal</h1>
     </header>
-    <nav>
+    <nav class="main">
         <a href="tabela_tipos.php">Voltar</a>
         <a href="tipos_animais.html">Cadastrar tipos</a>
     </nav>
-    <main>
+    <nav class="sidenav">
+        <a href="../raca/racas_animais.php">Cadastrar raças</a>
+        <a href="../raca/tabela_tipos_racas.php">Lista de raças</a>
+        <a href="../dono/donos_animais.php">Cadastrar dono</a>
+        <a href="../animal/animais.php">Cadastrar animais</a>
+        <a href="../veterinario/veterinario.html">Cadastrar veterinário</a>
+        <a href="../veterinario/tabelaveterinario.php">Lista de veterinários</a>
+    </nav>
+    <main class="main">
         <form action="alterarTipo.php" method="post">
             <input type="hidden" name="id" value="<?php echo $id;?>"><br>
             <input type="text" name ="tipo" value="<?php echo $tipo;?>"><br>

@@ -14,11 +14,19 @@
     <header>
         <h1></h1>
     </header>
-    <nav>
+    <nav class="main">
         <a href="racas_animais.php">Voltar</a>
 
     </nav>
-    <main>
+    <nav class="sidenav">
+        <a href="../tipo/tipos_animais.php">Cadastrar tipos</a>
+        <a href="../tipo/tabela_tipos.php">Lista de tipos</a>
+        <a href="../dono/donos_animais.php">Cadastrar dono</a>
+        <a href="../animal/animais.php">Cadastrar animais</a>
+        <a href="../veterinario/veterinario.html">Cadastrar veterinário</a>
+        <a href="../veterinario/tabelaveterinario.php">Lista de veterinários</a>
+    </nav>
+    <main class="main">
         <?php
             $raca = strip_tags($_POST['raca']);
             $raca = strtolower($raca);

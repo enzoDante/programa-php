@@ -14,10 +14,20 @@
     <header>
         <h1></h1>
     </header>
-    <nav>
-
+    <nav class="main">
+        <a href="formAlterarVet.php">Voltar</a>
+        <a href="tabelaveterinario.php">Lista de veterinários</a>
+        <a href="veterinario.html">Cadastrar veterinário</a>
     </nav>
-    <main>
+    <nav class="sidenav">
+        <a href="../tipo/tipos_animais.php">Cadastrar tipos</a>
+        <a href="../tipo/tabela_tipos.php">Lista de tipos</a>
+        <a href="../raca/racas_animais.php">Cadastrar raças</a>
+        <a href="../raca/tabela_tipos_racas.php">Lista de raças</a>
+        <a href="../dono/donos_animais.php">Cadastrar dono</a>
+        <a href="../animal/animais.php">Cadastrar animais</a>
+    </nav>
+    <main class="main">
         <?php
             $id = $_POST['id'];
             $nome = strip_tags(strtolower(str_replace(",", "-", $_POST['nome'])));

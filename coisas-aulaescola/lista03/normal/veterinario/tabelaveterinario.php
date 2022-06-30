@@ -14,10 +14,18 @@
     <header>
         <h1></h1>
     </header>
-    <nav>
-
+    <nav class="main">
+        <a href="veterinario.html">Cadastrar veterinário</a>
     </nav>
-    <main>
+    <nav class="sidenav">
+        <a href="../tipo/tipos_animais.php">Cadastrar tipos</a>
+        <a href="../tipo/tabela_tipos.php">Lista de tipos</a>
+        <a href="../raca/racas_animais.php">Cadastrar raças</a>
+        <a href="../raca/tabela_tipos_racas.php">Lista de raças</a>
+        <a href="../dono/donos_animais.php">Cadastrar dono</a>
+        <a href="../animal/animais.php">Cadastrar animais</a>
+    </nav>
+    <main class="main">
         <?php
             $sql = "SELECT * FROM Veterinario";
             $tabela = "<table id='tabela'>";

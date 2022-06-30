@@ -15,13 +15,19 @@
     <header>
         <h1>Cadastro de animais</h1>
     </header>
-    <nav>
+    <nav class="main">
         <a href="tipos_animais.html">Voltar</a>
         <a href="tabela_tipos.php">Tipos de animais</a>
-        <a href="../raca/racas_animais.php">Cadastrar raças</a>
-        <a href="../dono/donos_animais.php">Cadastrar dono</a>
     </nav>
-    <main>
+    <nav class="sidenav">
+        <a href="../raca/racas_animais.php">Cadastrar raças</a>
+        <a href="../raca/tabela_tipos_racas.php">Lista de raças</a>
+        <a href="../dono/donos_animais.php">Cadastrar dono</a>
+        <a href="../animal/animais.php">Cadastrar animais</a>
+        <a href="../veterinario/veterinario.html">Cadastrar veterinário</a>
+        <a href="../veterinario/tabelaveterinario.php">Lista de veterinários</a>
+    </nav>
+    <main class="main">
         <?php
             if($_SERVER['REQUEST_METHOD'] == "POST"){
                 $tipo = strip_tags($_POST['tipo']);

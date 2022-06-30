@@ -27,10 +27,19 @@
     <header>
         <h1></h1>
     </header>
-    <nav>
-
+    <nav class="main">
+        <a href="tabelaveterinario.php">Voltar</a>
+        <a href="veterinario.html">Cadastrar veterinário</a>
     </nav>
-    <main>
+    <nav class="sidenav">
+        <a href="../tipo/tipos_animais.php">Cadastrar tipos</a>
+        <a href="../tipo/tabela_tipos.php">Lista de tipos</a>
+        <a href="../raca/racas_animais.php">Cadastrar raças</a>
+        <a href="../raca/tabela_tipos_racas.php">Lista de raças</a>
+        <a href="../dono/donos_animais.php">Cadastrar dono</a>
+        <a href="../animal/animais.php">Cadastrar animais</a>
+    </nav>
+    <main class="main">
         <form action="alterarVet.php" method="post">
         <input type="hidden" name="id" value="<?php echo $id;?>"><br>
             <h3>Nome:</h3>

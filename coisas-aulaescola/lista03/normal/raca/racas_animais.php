@@ -15,13 +15,18 @@
     <header>
         <h1>Cadastrar raças de animais</h1>
     </header>
-    <nav>
-        <a href="../tipos/tipos_animais.html">Cadastrar tipos</a>
-        <a href="../tipos/tabela_tipos.php">Tabela de tipos</a>
+    <nav class="main">
         <a href="tabela_tipos_racas.php">Tabela de raças</a>
-        <a href="../dono/donos_animais.php">Cadastrar dono</a>
     </nav>
-    <main>
+    <nav class="sidenav">
+        <a href="../tipo/tipos_animais.php">Cadastrar tipos</a>
+        <a href="../tipo/tabela_tipos.php">Lista de tipos</a>
+        <a href="../dono/donos_animais.php">Cadastrar dono</a>
+        <a href="../animal/animais.php">Cadastrar animais</a>
+        <a href="../veterinario/veterinario.html">Cadastrar veterinário</a>
+        <a href="../veterinario/tabelaveterinario.php">Lista de veterinários</a>
+    </nav>
+    <main class="main">
         <form action="racas_animaisC.php" method="post">
             <h3 id="t">Digite uma raça:</h3><br>
             <input type="text" name="raca" id="" placeholder="Canis lupus arctos"><br>
