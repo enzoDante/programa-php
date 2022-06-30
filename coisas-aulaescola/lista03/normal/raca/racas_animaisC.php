@@ -19,7 +19,7 @@
 
     </nav>
     <nav class="sidenav">
-        <a href="../tipos/tipos_animais.php">Cadastrar tipos</a>
+        <a href="../tipos/tipos_animais.html">Cadastrar tipos</a>
         <a href="../tipos/tabela_tipos.php">Lista de tipos</a>
         <a href="../dono/donos_animais.php">Cadastrar dono</a>
         <a href="../animal/animais.php">Cadastrar animais</a>
