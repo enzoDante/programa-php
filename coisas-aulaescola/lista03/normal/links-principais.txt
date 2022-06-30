@@ -24,3 +24,7 @@ ANIMAL:
 animais --> animaisC.php
 VETERINARIO:
 veterinario --> veterinarioC.php
+tabelaveterinario --> formAlterarVet.php
+tabelaveterinario --> verificarExcluir.php
+formAlterarVet --> alterarVet.php
+verificarExcluir --> excluirVet.php

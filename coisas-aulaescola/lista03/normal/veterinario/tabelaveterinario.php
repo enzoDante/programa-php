@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../estilos/style.css">
 </head>
 <body>
     <header>
@@ -30,7 +30,7 @@
                     $tabela .= "<td>".$linha->email."</td>";
                     $tabela .= "<td>".$linha->CRMV."</td>";
                     $tabela .= "<td>".$linha->cpf."</td>";
-                    $tabela .= "<td> <a href='excluirVet.php?id=$id'>Excluir registro</a> </td>";
+                    $tabela .= "<td> <a href='verificarExcluir.php?id=$id'>Excluir registro</a> </td>";
                     $tabela .= "<td> <a href='formAlterarVet.php?id=$id'>alterar</a> </td>";
                     $tabela .= "</tr>";
                 }

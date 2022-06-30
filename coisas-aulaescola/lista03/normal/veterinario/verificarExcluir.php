@@ -15,21 +15,22 @@
         <h1></h1>
     </header>
     <nav>
-        <a href="tabela_tipos.php">Voltar</a>
-        <a href="tipos_animais.html">Cadastrar tipo</a>
+
     </nav>
     <main>
         <?php
             if(isset($_GET['id'])){
                 $id = $_GET['id'];
-                $stm = $conn->prepare("DELETE FROM TipoAnimal WHERE idTipoAnimal = ?");
-                $stm->bind_param('i', $id);
-                $stm->execute();
-                echo "<p class='msg'>Excluído com sucesso!</p>";
-                echo "<a class='linkmsg' href='tabela_tipos.php'>Voltar</a>";
+                $msg = "<div id='t'><h3 id='t'>Deseja Remover cadastro?</h3>";
+                $msg .= "<a class='linkmsg inlineblock' href='tabelaveterinario.php'>Voltar</a>";
+                $msg .= "<a class='linkmsg inlineblock' href='excluirVet.php?id=$id'>Excluir</a></div>";
+                echo $msg;
             }
         ?>
     </main>
     
 </body>
 </html>
+<!--
+    
+-->

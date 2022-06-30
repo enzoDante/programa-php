@@ -6,11 +6,9 @@
     $stmt->execute();
 
     $resultado = $stmt->get_result();
-    $resultado = $preparar->get_result();
     while($linha = $resultado->fetch_object()){
         $nome = $linha->nome;
         $email = $linha->email;
-        $senha = $linha->senha;
         $crmv = $linha->CRMV;
         $cpf = $linha->cpf;
     }
@@ -23,7 +21,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../estilos/style.css">
 </head>
 <body>
     <header>
@@ -40,7 +38,7 @@
             <h3>Email:</h3>
             <input type="email" name="email" id="" value="<?php echo $email; ?>"><br>
             <h3>Senha:</h3>
-            <input type="password" name="senha" id="" value="<?php echo $senha; ?>"><br>
+            <input type="password" name="senha" id=""><br>
             <h3>Confirmar senha:</h3>
             <input type="password" name="csenha" id=""><br>
             <h3>CRMV:</h3>
