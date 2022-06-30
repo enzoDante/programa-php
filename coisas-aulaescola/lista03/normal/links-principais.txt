@@ -1,13 +1,13 @@
 link p cada arquivo principais
 
-../tipos_animais.html
-../tabela_tipos.php
-../racas_animais.php
-../tabela_tipos_racas.php
-../donos_animais.php
-../animais.php
-../veterinario.html
-../tabelaveterinario.php
+../tipo/tipos_animais.html
+../tipo/tabela_tipos.php
+../raca/racas_animais.php
+../raca/tabela_tipos_racas.php
+../dono/donos_animais.php
+../animal/animais.php
+../veterinario/veterinario.html
+../veterinario/tabelaveterinario.php
 ../
 
 link internos(após algum formulário)
@@ -38,6 +38,8 @@ style.css class:
 .msg ---> alinha no centro, bold, 1.3em...
 .linkmsg ---> praticamente mesma coisa acima
 .inlineblock ---> para elementos com display block para ficar lado a lado
+.sidenav ---> menu lateral vertical
+.main ---> distância da esquerda, p n ficar em baixo do .sidenav
 
 radios.css id:
 #radio1, #radio2
