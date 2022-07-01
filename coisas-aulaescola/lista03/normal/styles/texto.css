@@ -1,0 +1,12 @@
+@charset "UTF-8";
+textarea{
+    font-size: 1.2em;
+    padding: 5px;
+    resize: none;
+}
+div{
+    margin-top: 3vh;
+}
+form{
+    margin-top: 2vh;
+}
