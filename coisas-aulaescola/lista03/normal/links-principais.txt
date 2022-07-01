@@ -8,6 +8,7 @@ link p cada arquivo principais
 ../animal/animais.php
 ../veterinario/veterinario.html
 ../veterinario/tabelaveterinario.php
+../consulta/consultas.php
 ../
 
 link internos(após algum formulário)
@@ -28,6 +29,8 @@ tabelaveterinario --> formAlterarVet.php
 tabelaveterinario --> verificarExcluir.php
 formAlterarVet --> alterarVet.php
 verificarExcluir --> excluirVet.php
+CONSULTA:
+consultas --> consultasC.php
 
 =======================================================
 estilos ids e classes:
