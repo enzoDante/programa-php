@@ -9,6 +9,7 @@ link p cada arquivo principais
 ../veterinario/veterinario.html
 ../veterinario/tabelaveterinario.php
 ../consulta/consultas.php
+../consulta/tabelaconsultas.php
 ../
 
 link internos(após algum formulário)
@@ -31,6 +32,7 @@ formAlterarVet --> alterarVet.php
 verificarExcluir --> excluirVet.php
 CONSULTA:
 consultas --> consultasC.php
+tabelaconsultas --> anamnese.php
 
 =======================================================
 estilos ids e classes:

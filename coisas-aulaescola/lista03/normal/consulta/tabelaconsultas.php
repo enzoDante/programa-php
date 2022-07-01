@@ -15,7 +15,7 @@
         <h1></h1>
     </header>
     <nav class="main">
-
+        <a href="consultas.php">Marcar consulta</a>
     </nav>
     <nav class="sidenav">
         <a href="../tipos/tipos_animais.html">Cadastrar tipos</a>
@@ -25,7 +25,9 @@
         <a href="../raca/tabela_tipos_racas.php">Lista de raças</a>
         <hr>
         <a href="../dono/donos_animais.php">Cadastrar dono</a>
+        <hr>
         <a href="../animal/animais.php">Cadastrar animais</a>
+        <hr>
         <a href="../veterinario/veterinario.html">Cadastrar veterinário</a>
         <a href="../veterinario/tabelaveterinario.php">Lista de veterinários</a>
     </nav>
@@ -46,10 +48,27 @@
             <button type="submit">Procurar consulta</button>
         </form>
         <?php
-            $teste1 = $_GET['dia'];
-            $teste2 = $_GET['idveterinario'];
-
+            if(!isset($_GET['dia']) || !isset($_GET['idveterinario'])){
+                $dia = "";
+                $vet = 0;
+            }else{
+                $dia = $_GET['dia'];
+                $vet = $_GET['idveterinario'];
+            }
+            
             $sql = "SELECT * FROM Consulta ORDER BY idConsulta DESC";
+            if($dia != "" && $vet != 0){
+                $sql = "SELECT * FROM Consulta WHERE data='$dia' AND Veterinario_idVeterinario=$vet ORDER BY idConsulta DESC";
+            }else{
+                if($dia != "")
+                    $sql = "SELECT * FROM Consulta WHERE data='$dia' ORDER BY idConsulta DESC";                    
+                else{
+                    if($vet != 0)
+                    $sql = "SELECT * FROM Consulta WHERE Veterinario_idVeterinario=$vet ORDER BY idConsulta DESC";
+                }
+            }
+
+            #$sql = "SELECT * FROM Consulta ORDER BY idConsulta DESC";
             $tabela = "<table id='tabela'>";
             $tabela .= "<tr><th>Data</th> <th>Hora</th> <th>Nome</th> <th>Veterinário</th><th></th></tr>";
             if($resultado = $conn->query($sql)){

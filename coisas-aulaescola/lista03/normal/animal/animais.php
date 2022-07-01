@@ -8,8 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../estilos/style.css">
-    <link rel="stylesheet" href="../estilos/radios.css">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/radios.css">
 </head>
 <body>
     <header>
@@ -21,11 +21,17 @@
     <nav class="sidenav">
         <a href="../tipos/tipos_animais.html">Cadastrar tipos</a>
         <a href="../tipos/tabela_tipos.php">Lista de tipos</a>
+        <hr>
         <a href="../raca/racas_animais.php">Cadastrar raças</a>
         <a href="../raca/tabela_tipos_racas.php">Lista de raças</a>
+        <hr>
         <a href="../dono/donos_animais.php">Cadastrar dono</a>
+        <hr>
         <a href="../veterinario/veterinario.html">Cadastrar veterinário</a>
         <a href="../veterinario/tabelaveterinario.php">Lista de veterinários</a>
+        <hr>
+        <a href="../consulta/consultas.php">Marcar consulta</a>
+        <a href="../consulta/tabelaconsultas.php">Lista de consultas</a>
     </nav>
     <main class="main">
         <form action="animaisC.php" method="post">

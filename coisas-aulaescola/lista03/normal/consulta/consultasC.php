@@ -8,14 +8,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../estilo/style.css">
+    <link rel="stylesheet" href="../styles/style.css">
 </head>
 <body>
     <header>
         <h1></h1>
     </header>
     <nav class="main">
-
+        <a href="consultas.php">Voltar</a>
+        <a href="tabelaconsultas.php">Lista de consultas</a>
     </nav>
     <nav class="sidenav">
         <a href="../tipos/tipos_animais.html">Cadastrar tipos</a>
@@ -25,7 +26,9 @@
         <a href="../raca/tabela_tipos_racas.php">Lista de raças</a>
         <hr>
         <a href="../dono/donos_animais.php">Cadastrar dono</a>
+        <hr>
         <a href="../animal/animais.php">Cadastrar animais</a>
+        <hr>
         <a href="../veterinario/veterinario.html">Cadastrar veterinário</a>
         <a href="../veterinario/tabelaveterinario.php">Lista de veterinários</a>
     </nav>
