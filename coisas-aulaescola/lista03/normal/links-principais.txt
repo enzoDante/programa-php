@@ -33,6 +33,7 @@ verificarExcluir --> excluirVet.php
 CONSULTA:
 consultas --> consultasC.php
 tabelaconsultas --> anamnese.php
+anamnese --> anamneseC.php
 
 =======================================================
 estilos ids e classes:
