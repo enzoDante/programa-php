@@ -28,4 +28,15 @@
 
     echo "mais informações nn sei tbm<br><br>";
     print_r($_FILES);
+
+    /**
+     * deletar arquivos:
+     * if(file_exists($imagem)){
+     *      unlink($nomearquivo);
+     * }
+     *  
+     * 
+     */
+
+
 ?>
