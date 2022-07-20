@@ -1,0 +1,48 @@
+@charset "UTF-8";
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: lightblue;
+    font-size: 1.1em;
+}
+main{
+    min-width: 200px;
+    max-width: 1000px;
+    min-height: 500px;
+    margin: auto;
+    margin-top: 20vh;
+    border-radius: 20px;
+    background-color: white;
+    padding: 30px;
+    text-align: center;
+}
+form{
+    min-width: 200px;
+    max-width: 1000px;
+    min-height: 500px;
+    margin: auto;
+    margin-top: 20vh;
+    border-radius: 20px;
+    background-color: white;
+    padding: 30px;
+    text-align: center;
+}
+div{
+    min-height: 400px;
+    padding: 40px;
+}
+img{
+    max-width: 400px;    
+    transition: linear 200ms;
+}
+img:hover{
+    cursor: pointer;
+    box-shadow: 3px 2px 11px 0px black;
+    transform: translate(-5px, -5px);
+}
+input{
+    font-size: 1em;
+    display: inline-block;
+}
+button{
+    font-size: 1.2em;
+}

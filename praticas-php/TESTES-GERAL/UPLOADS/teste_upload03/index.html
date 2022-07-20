@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form enctype="multipart/form-data" action="upload.php" method="post">        
+        <input type="file" onchange="carregar1(event)" accept="image/*" name="arquivo1" id="inputImagem1">
+        <input type="file" onchange="carregar2(event)" accept="image/*" name="arquivo2" id="inputImagem2"><br>
+        
+        <div>
+            <img src="" alt="" id="img1">
+            <img src="" alt="" id="img2">
+        </div>
+        <button type="submit">Enviar</button>
+    </form>
+    <script src="script.js"></script>
+</body>
+</html>
