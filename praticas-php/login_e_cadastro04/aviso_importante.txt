@@ -1,0 +1,7 @@
+Ainda faltou o imgfundo
+seria um imagem de fundo q apareceria somente na página perfil.php
+
+criar: alterarimgf.php
+criar: public function alterarimgf(){...}
+
+Ainda falta deixar mais estilizado e com uma boa navegação entre as páginas!
