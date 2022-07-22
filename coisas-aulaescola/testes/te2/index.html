@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="cadastrar.php" method="post">
+        <fieldset>
+            <legend>Dados pessoais</legend>
+            <p>
+                <label for="inome">Nome:</label>
+                <input type="text" name="nome" id="inome">
+            </p>
+            <p>
+                <label for="iemail">E-mail:</label>
+                <input type="email" name="email" id="iemail">
+            </p>
+            <p>
+                <label for="isenha">Senha:</label>
+                <input type="password" name="senha" id="isenha">
+            </p>
+            <p>
+                <label for="idata">Nascimento:</label>
+                <input type="date" name="data" id="idata">
+            </p>
+            <p>
+                <label for="isalario">Salario:</label>
+                <input type="number" name="salario" id="isalario" step="0.1">
+            </p>
+        </fieldset>
+        <p><button type="submit">Cadastrar</button></p>
+    </form>
+    <a href="olha_um.html">Olha uma pessoa ae</a><br>
+    <a href="olha_todos.php">Olhar tudo</a><br>
+</body>
+</html>
