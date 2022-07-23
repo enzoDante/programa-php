@@ -41,7 +41,7 @@
                 </fieldset>
                 <fieldset>
                     <legend><label for="idesc">Descrição:</label></legend>
-                    <textarea name="desc" id="idesc" cols="30" rows="10"><?php echo $_SESSION['descricao']; ?></textarea>
+                    <textarea name="desc" id="idesc" cols="30" rows="10"><?php echo str_replace("_",",",$_SESSION['descricao']); ?></textarea>
                 </fieldset>
                 <button type="submit">Salvar</button>
             </form><br><br><br><br>
@@ -59,8 +59,12 @@
             </form><br><br><br><br>
             <!--==========================imagem de perfil==============================-->
             <form action="alterarimgp.php" enctype="multipart/form-data" method="post">
-                <label for="iimgp"><img id="perfil" src="<?php echo $_SESSION['imgperfil']; ?>" alt=""></label>
-                <input type="file" onchange="carregar(event)" accept="image/*" name="imgp" id="iimgp" value="<?php echo $_SESSION['imgperfil']; ?>">
+                
+                <div id="dperfil">
+                    <label for="iimgp"><img id="perfil" src="<?php echo $_SESSION['imgperfil']; ?>" alt=""></label>
+                    <input type="file" onchange="carregar(event)" accept="image/*" name="imgp" id="iimgp" value="<?php echo $_SESSION['imgperfil']; ?>">
+                </div>
+                
                 <p>OBS: a imagem fica salva em seu tamanho original!</p>
                 <p>Caso selecionou uma imagem e você não deseja trocar, basta apertar f5!</p>
                 <button type="submit">Salvar</button>

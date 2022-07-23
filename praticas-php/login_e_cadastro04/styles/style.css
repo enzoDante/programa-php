@@ -55,7 +55,7 @@ form input, form button{
 input[type="file"]{
     display: none;
 }
-#perfil{
+#dperfil{
     width: 200px;
     height: 200px;
     display: block;
@@ -64,9 +64,29 @@ input[type="file"]{
     border-radius: 50%;
     box-shadow: 2px 2px 5px black;
     transition: linear 200ms;
+    overflow: hidden;
+    position: relative;
+}
+#perfil{
+    /*max-width: 100%; - aparece a img inteira, mas se x > y, irá cortar no top e bottom!*/
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    /*abaixo serve p centralizar qualquer img, sexa xxXxx ou xxXyy (resoluções diferentes!)*/
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    /*pelo menos deu certo!!!*/
+    /*margin-bottom: 5vh;*/
+    /*border-radius: 50%;*/
+    /*box-shadow: 2px 2px 5px black;*/
+    transition: linear 200ms;
 }
 #perfil:hover{
-    cursor: pointer;
+    cursor:  pointer;
+}
+#dperfil:hover{
     transform: translate(-5px, -5px);
     box-shadow: 5px 5px 10px black;
 }
