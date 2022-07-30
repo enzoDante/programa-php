@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="estilos/style.css">
+    <link rel="stylesheet" href="estilos/modal.css">
+    <link rel="stylesheet" href="estilos/criar_logar.css">
+</head>
+<body>
+    <header>
+        <h1>Cadastrar</h1>
+    </header>
+    <nav>
+        <div id="navegador">
+            <div id="nav">
+                <div id="left">
+                    <h3>Nome Site</h3>
+                </div>
+                <div>
+                    <a href="#">Home</a>
+                    <a href="#">Navegar</a>
+                    <a href="#">n sei oq</a>
+                    <a href="#">perfil</a>
+                    <a href="#">outros</a>
+                </div>
+            </div>
+            <div id="divimg">
+                <a href="#" id="perfila"><img src="../imagens/6223_wolf-image_2500x1697_h.jpg" alt=""></a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div><br>
+            <form action="criar.php" method="post" enctype="multipart/form-data" autocomplete="on">
+                <div>
+                    <label for="inome">Nome</label>
+                    <input type="text" name="nome" id="inome" autocomplete="name">
+                </div>
+                <div>
+                    <label for="iemail">E-mail:</label>
+                    <input type="text" name="email" id="iemail" autocomplete="email">
+                </div>
+                <div>
+                    <label for="isenha">Senha:</label>
+                    <input type="password" name="senha" id="isenha">
+                </div>
+                <div>
+                    <label for="img" id="foto"><img src="../imagens/blank-profile-picture.png" alt="" id="perfil1"></label>
+                    <input type="file" name="foto" id="img" onchange="carregar1(event)">
+                </div>
+                <div>
+                    <input type="checkbox" name="contrato" id="icontrato">
+                    <label for="icontrato">Concordo com os <a href="#">termos</a> de contrato</label>
+                </div>
+                <button id="btncriar" type="submit">Criar conta</button>
+                <a href="login.html" id="contaexistente">Entrar</a>
+            </form><br>
+
+        </div>
+    </main>
+    
+    <script src="scripts/modal.js"></script>
+    <script src="scripts/carregarimg.js"></script>
+</body>
+</html>
