@@ -1,0 +1,56 @@
+@charset "UTF-8";
+#postagem{
+    min-width: 200px;
+    max-width: 1100px;
+    min-height: 400px;
+    margin: auto;
+    margin-bottom: 30px;
+    padding: 20px;
+}
+#imagempublicada{
+    min-width: 150px;
+    height: 500px;
+    display: block;
+    position: relative;
+    margin: 20px;
+    overflow: hidden;
+    position: relative;
+    transition: linear 200ms;
+    box-sizing: border-box;
+    background-color: rgb(158, 158, 158);
+    border: 3px solid white;
+}
+#imagempublicada img{
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);   
+}
+/*==============================*/
+hr{
+    height: 5px;
+    border: none;
+    background-color: rgb(170, 170, 170);
+}
+#comentarios{
+    padding: 20px;
+    margin: auto;
+    margin-bottom: 20px;
+}
+#comentarios .borda{
+    margin-left: 30px;
+    padding: 20px;
+    max-width: 700px;
+    border: 1px solid black;
+}
+/*===============================*/
+#icomento{
+    height: 100px;
+}
+#perfila{
+    margin: 0;
+}

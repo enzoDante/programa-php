@@ -1,3 +1,4 @@
+
 <?php
     include "banco.php";
     session_start();
@@ -37,10 +38,48 @@
             </div>
         </div>
     </nav>
-
+    
     <main>
         <div><br>
-            <div>
+        <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>
+            /*
+            
+            function ajax(){
+                let req = new XMLHttpRequest()
+                req.onreadystatechange = function(){
+                    if(req.readyState == 4 && req.status == 200){
+                        document.getElementById('chat').innerHTML = req.responseText
+                    }
+                }
+                req.open('GET', 'chat.php', true)
+                req.send()
+            }
+            setInterval(function(){ajax()}, 100) //1000
+            =================================================================================
+            *//*
+            var auto_refresh = setInterval(
+                function ()
+                {
+                $('#adiv').load('chat.php').fadeIn("slow");
+                }, 10000
+            ); // refresh every 10000 milliseconds
+            =============================================================================== */            
+            //setTimeout(function() {window.location.reload(1);}, 3000); // 3 segundos
+            /*===============================================================================
+            $(function() {
+            setTime();
+            function setTime() {
+                //var date = new Date().getTime();
+                //var string = "Timestamp: "+date;
+                setTimeout(setTime, 3000);
+                $('#adiv').html(string);
+            }
+            });
+            ==============================================================================*/
+        </script>
+            <div id="adiv">
                 <?php                    
                     $stmt = $conn->prepare("SELECT * FROM chat WHERE (enviar=? AND recebido=?) OR (enviar=? AND recebido=?)");
                     $stmt->bind_param('ssss', $_SESSION['id_unico'], $_GET['id'], $_GET['id'], $_SESSION['id_unico']);

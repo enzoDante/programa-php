@@ -9,7 +9,7 @@
     #$stmt->bind_param('sss', $_SESSION['id_unico'], $_GET['id'], $_POST['msg']);
     $stmt->bind_param('sss', $eu, $amigo, $msg);
     $stmt->execute();
-    header("Location: chat.php?id=$amigo");;
+    header("Location: chat.php?id=$amigo");
 
 
 ?>

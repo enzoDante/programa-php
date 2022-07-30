@@ -31,11 +31,17 @@
     </form>
     <?php
         include "banco.php";
-        $nome = $_POST['nome'];
-        $msg = $_POST['msg'];
-        $stmt = $conn->prepare("INSERT INTO testechat (nome, msg) VALUES(?,?)");
-        $stmt->bind_param("ss", $nome, $msg);
-        $stmt->execute();
+        $msg = '';
+        if(isset($_POST['msg'])){
+            $msg = $_POST['msg'];
+        }
+        if($msg != ''){
+            $nome = $_POST['nome'];            
+            $stmt = $conn->prepare("INSERT INTO testechat (nome, msg) VALUES(?,?)");
+            $stmt->bind_param("ss", $nome, $msg);
+            $stmt->execute();
+
+        }
 
 
     ?>
