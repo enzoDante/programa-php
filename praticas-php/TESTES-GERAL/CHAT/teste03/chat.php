@@ -1,7 +1,21 @@
 <?php
     include "banco.php";
     session_start();
+    $_SESSION['id_amigo'] = $_GET['id'];
 ?>
+<script>
+    function ajax(){
+        let req = new XMLHttpRequest()
+        req.onreadystatechange = function(){
+            if(req.readyState == 4 && req.status == 200){
+                document.getElementById('adiv').innerHTML = req.responseText
+            }
+        }
+        req.open('GET', 'enviar.php', true)
+        req.send()
+    }
+    setInterval(function(){ajax()}, 1000) //1000
+</script>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -40,27 +54,16 @@
     
     <main>
         <div><br>
-        <script>
-            function ajax(){
-                let req = new XMLHttpRequest()
-                req.onreadystatechange = function(){
-                    if(req.readyState == 4 && req.status == 200){
-                        document.getElementById('adiv').innerHTML = req.responseText
-                    }
-                }
-                req.open('GET', 'chat.php', true)
-                req.send()
-            }
-            setInterval(function(){ajax()}, 1000) //1000
-        </script>
+        
             <div id="adiv">
-                                
+                
             </div>
 
 
 
             <div>
                 <?php
+                
                     $msg = '';
                     if(isset($_POST['msg'])){
                         $msg = $_POST['msg'];
@@ -73,7 +76,7 @@
                         #$stmt->bind_param('sss', $_SESSION['id_unico'], $_GET['id'], $_POST['msg']);
                         $stmt->bind_param('sss', $eu, $amigo, $msg);
                         $stmt->execute();
-                        #header("Location: chat.php?id=$amigo");            
+                        header("Location: chat.php?id=$amigo");            
                     }
                 
                 ?>
