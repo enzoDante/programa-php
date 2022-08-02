@@ -1,0 +1,45 @@
+@charset "UTF-8";
+#comentarios{
+    max-width: 700px;
+    margin: auto;
+    border: 1px solid black;
+    padding: 0;
+}
+#comentarios .borda{
+    border: none;
+    margin-left: 0px;
+}
+#publicar{
+    margin-bottom: 0px;
+}
+.borda{
+    border: none;
+    transition: linear 100ms;
+    max-width: 700px;
+    
+}
+.borda:hover{
+    background-color: lightgray;
+}
+
+/*=================================================*/
+#seguires{
+    padding: 10px;
+}
+.seguiros{
+    text-decoration: none;
+    padding: 10px;
+}
+button{
+    margin-left: 350px;
+}
+@media screen and (max-width: 800px){
+    button{
+        margin-left: 200px;
+    }
+}
+@media screen and (max-width: 600px){
+    button{
+        margin-left: 20px;
+    }
+}

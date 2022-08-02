@@ -9,3 +9,4 @@ descricao varchar(300),
 imgfundo varchar(200),
 imgperfil varchar(200)
 );*/
+select * from usuario;

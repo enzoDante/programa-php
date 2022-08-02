@@ -1,0 +1,61 @@
+@charset "UTF-8";
+form{
+    max-width: 500px;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 2px 2px 5px black;
+}
+#foto{
+    margin: auto;
+    margin-top: 30px;
+    width: 200px;
+    height: 200px;
+    display: block;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: linear 100ms;
+}
+#foto img{
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);  
+}
+#foto:hover{
+    border-bottom: none;
+    cursor: pointer;
+    filter: brightness(80%)    
+}
+#btncriar{
+    display: block;
+    margin: auto;
+    padding: 10px;
+    margin-top: 20px;
+    font-size: 1.1em;
+    font-weight: bold;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    transition: linear 200ms;
+}
+#icontrato{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#btncriar:hover{
+    cursor: pointer;
+    filter: brightness(50%)
+}
+#contaexistente{
+    float: right;
+    font-weight: bold;
+    
+}

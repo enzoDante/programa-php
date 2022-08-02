@@ -1,0 +1,173 @@
+@charset "UTF-8";
+#grid{
+    display: grid;
+    grid-template-columns: 400px 600px;
+    min-width: 200px;
+    max-width: 1000px;
+    min-height: 500px;
+    margin: auto;
+
+}
+#barra{
+    border: 1px solid lightgray;
+    min-width: 200px;
+}
+#nome{
+    display: inline-block;
+    width: 50%;
+    margin-top: -22px;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+
+}
+#destinatario{
+    display: inline-block;
+    width: 40%;
+    
+}
+#destinatario .alinhar{
+    float: none;
+    justify-content: center;
+}
+/*==================div amigos==============================*/
+#amigos{
+    border: 1px solid lightgray;
+    overflow: auto;
+    max-height: 700px;
+}
+.alinhar{
+    display: flex;
+    align-items: center;
+    transition: linear 200ms;
+}
+.alinhar:hover{
+    background-color: lightgray;
+}
+.alinhar a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    margin: 10px;
+}
+.usuimg{
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: linear 100ms;
+}
+.usuimg img{
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); 
+}
+
+.alinhar a:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+/* "+ a" irá afetar o link a q esta dentro da mesma div */
+.usuimg:hover + a{
+    cursor: pointer;
+    text-decoration: underline;
+}
+/*=============div chat===========================*/
+#chat{
+    border: 1px solid lightgray;
+    max-height: 700px;
+    overflow: auto;
+}
+
+#msgs{
+    min-width: 200px;
+    height: 530px;
+    overflow: auto;
+}
+.amsg{
+    padding: 10px;
+    display: block;
+    min-height: 50px;
+}
+.emsg{
+    padding: 10px;
+    display: block;
+    min-height: 50px;
+}
+.msga{
+    padding: 15px;
+    width: 200px;
+    background-color: rgb(56, 56, 56);
+    color: white;
+    border-radius: 20px;
+}
+.msge{
+    margin-left: 60%;
+    padding: 15px;
+    width: 200px;
+    background-color: rgb(24, 117, 192);
+    color: white;
+    border-radius: 20px;
+}
+.msge a, .msga a{
+    color: white;
+    font-weight: bold;
+}
+/*======================*/
+#btn{
+    margin: 10px;
+    float: right;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1em;
+    transition: linear 200ms;
+}
+#btn:hover{
+    cursor: pointer;
+    background-color: lightgray;
+}
+#enviar textarea{
+    display: block;
+    margin: auto;
+    width: 90%;
+    max-height: 100px;
+}
+/*=============responsividade=================*/
+@media screen and (max-width: 1050px){
+    #grid{
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+    #amigos{
+        width: 600px;
+    }
+    #chat{
+        width: 600px;
+    }
+
+}
+@media screen and (max-width: 600px){
+    #grid{
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+    #amigos{
+        width: 100%;
+    }
+    #chat{
+        width: 100%;
+    }
+    .msge{
+        margin-left: 44%;
+    }
+
+}

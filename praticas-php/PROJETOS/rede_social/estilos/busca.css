@@ -1,0 +1,63 @@
+@charset "UTF-8";
+input[type=text], input[type=password], input[type=email], textarea {
+    width: 100%;
+    font-size: 1.1em;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 2px solid transparent;
+    outline: 1px solid gray;
+    box-sizing: border-box;
+    border-radius: 10px;
+    transition: linear 100ms;
+}
+#buscarall{
+    border: 1px solid lightgray;
+    width: 1000px;
+    margin: auto;
+}
+#divbusca{
+    width: 650px;
+    margin: auto;
+}
+#ibusca{
+    min-width: 200px;
+    max-width: 500px;
+    display: inline-block;
+    margin: auto;
+}
+#btn{
+    padding: 10px;
+    margin: 10px;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-weight: bold;
+    font-size: 1em;
+    transition: linear 200ms;
+}
+#btn:hover{
+    cursor: pointer;
+    background-color: lightgray;
+}
+#comentarios{
+    border: none;
+    display: none;
+}
+.borda{
+    max-width: 1200px;
+    margin: auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+a.nomelink{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    padding-left: 10px;
+    font-size: 1.1em;
+}
+.nomelink:hover, #perfila:hover+a{
+    text-decoration: underline;
+}
