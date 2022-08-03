@@ -1,6 +1,8 @@
 feito mysql:
 tabela usuario
 tabela seguidores
+tabela post
+tabela curtidas
 
 feito php:
 criar/logar conta
@@ -8,3 +10,10 @@ perfil (alterar, seguir, bloquear)
 seguidores - pessoas q seguem tal usuario
 seguindo - pessoas q tal usuario segue
 Busca - pesquisar usuários
+pag_principal - post de pessoas q eu sigo (e q n estejam bloqueados por mim)
+postver - ao clicar em comentários irá p está pagina!
+
+
+falta mysql:
+tabela comentários
+tabela chat

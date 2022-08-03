@@ -183,12 +183,14 @@
         </div>
         <!--======================fim do modal===========================-->
         <div>
-            <div id="publicar">
-                <button onclick="document.getElementById('publicacon').style.display='block'">Publicar</button>
-            </div>
+            <?php if(isset($_SESSION['id_unico'])): ?>
+                <div id="publicar">
+                    <button onclick="document.getElementById('publicacon').style.display='block'">Publicar</button>
+                </div>
+            <?php endif; ?>
             <!--==================================modal publicar===================================-->
             <div id="publicacon" class="modal" onclick="telamodal(event)">
-                <form class="modal-content animate" enctype="multipart/form-data" action="" method="post" autocomplete="off">
+                <form class="modal-content animate" enctype="multipart/form-data" action="postar.php" method="post" autocomplete="off">
                     <div class="imgcontainer">
                         <span onclick="document.getElementById('publicacon').style.display='none'" class="close" title="Close Modal">&times;</span>
                         <h3 id="textoeditar">Postagem</h3>
@@ -199,7 +201,7 @@
                         <div id="campos">
                             <div class="fieldset">
                                 <label for="ibio"><strong>Comentário</strong></label>
-                                <textarea name="bio" id="ibio" cols="30" rows="10"></textarea>
+                                <textarea name="msg" id="ibio" cols="30" rows="10"></textarea>
                             </div>
                         </div>
                         <div>
@@ -211,56 +213,26 @@
             </div>
             <!--=================================fim do modal publicar=============================-->
             <div id="conteudo">
-                <div class="item">
-                    <div class="contpubli">
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ex nihil repellat exercitationem praesentium quae. Possimus laudantium voluptas harum mollitia esse, nobis dolorum obcaecati ducimus reiciendis voluptates aliquid? Nemo, quod impedit. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima accusantium officia porro est rerum similique? Molestias, aliquam. At, itaque expedita nihil facere iste voluptatum voluptates, deserunt vero, repellat odit nostrum!</p>
-                    </div>
-                    <div class="imgpubli">
-                        <img src="imagens/2048x1152_fantasy-giant-wolf-monster-artwork.jpg" alt="">
-                    </div>
-                    <a href="postver.html?id=teste" class="comment">Comentários</a>
-                </div>
-                <!--==============================================================================================-->
-                <div class="item">
-                    <div class="contpubli">
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus voluptatibus sunt ex, delectus facere praesentium? Sit consequatur tempore ipsum consequuntur optio id, qui a natus maiores repellat ipsa esse sunt.</p>
-                    </div>
-                    <div class="imgpubli">
-                        <img src="imagens/fantasia-bruxo_planoFundo-1920x1080.jpg" alt="">
-                    </div>
-                    <a href="postver.html?id=teste" class="comment">Comentários</a>
-                </div>
-                <!--==============================================================================================-->
-                <div class="item">
-                    <div class="contpubli">
-                        <p>frase pequena curta para observar</p>
-                    </div>
-                    <div class="imgpubli">
-                        <img src="imagens/galaxy_wolf-t2.jpg" alt="">
-                    </div>
-                    <a href="postver.html?id=teste" class="comment">Comentários</a>
-                </div>
-                <!--==============================================================================================-->
-                <div class="item">
-                    <div class="contpubli">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea tempora quasi ratione enim sequi beatae earum dolo</p>
-                    </div>
-                    <div class="imgpubli">                    
-                        <img src="imagens/IMG_20190120_210500_409.jpg" alt="">
-                    </div>
-                    <a href="postver.html?id=teste" class="comment">Comentários</a>
-                </div>
-                <!--==============================================================================================-->
-                <div class="item">
-                    <div class="contpubli">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto dicta reprehenderit beatae itaque necessitatibus ultate ratione tempore labore?</p>
-                    </div>
-                    <div class="imgpubli">                        
-                        <img src="imagens/the real rainbow wolf.png" alt="">
-                    </div>
-                    <a href="postver.html?id=teste" class="comment">Comentários</a>
-                </div>
-                <!--==============================================================================================-->
+                <?php
+                    $stmt = $conn->prepare("SELECT * FROM post WHERE id_criador=? ORDER BY id DESC");
+                    $stmt->bind_param("s", $id);
+                    $stmt->execute();
+
+                    $resultado = $stmt->get_result();
+                    while($linha = $resultado->fetch_object()){
+                        $div = "
+                            <div class='item'>
+                                <div class='contpubli'><p>$linha->msg_post</p>
+                                </div>
+                                <div class='imgpubli'>
+                                    <img src='$linha->img_post'>
+                                </div>
+                                <a href='postver.php?id=$linha->id_post' class='comment'>Comentários</a>
+                            </div>
+                        ";
+                        echo $div;
+                    }
+                ?>                
             </div>
         </div><br>
 
