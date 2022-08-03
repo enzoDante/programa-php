@@ -73,6 +73,25 @@ input[type="file"]{
 #seguires{
     padding: 10px;
 }
+#seguires textarea{
+    padding: 10px;
+    max-width: 600px;
+    overflow: auto;
+    border: none;
+    outline: none;
+    max-height: 100px;
+    color: black;
+    display: block;
+}
+#seguires textarea::-webkit-scrollbar{
+    width: 4px;
+    background-color: rgb(180, 180, 180);
+    border-radius: 20px;
+}
+#seguires textarea::-webkit-scrollbar-thumb{
+    background-color: rgb(121, 121, 121);
+    border-radius: 20px;
+}
 .seguiros{
     color: black;
     text-decoration: none;

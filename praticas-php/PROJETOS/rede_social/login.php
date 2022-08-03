@@ -42,7 +42,7 @@
             <?php if(isset($_SESSION['id_unico'])): ?>
                 <a href="perfil.php?a=logout">Sair</a>
                 <div id="divimg">
-                    <a href="perfil.php?id=<?php echo $_SESSION['id_unico']; ?>" id="perfila"><img src="../imagens/6223_wolf-image_2500x1697_h.jpg" alt=""></a>
+                    <a href="perfil.php?id=<?php echo $_SESSION['id_unico']; ?>" id="perfila"><img src="<?php echo $_SESSION['imgperfil']; ?>" alt=""></a>
                 </div>
             <?php endif; ?>
         </div>

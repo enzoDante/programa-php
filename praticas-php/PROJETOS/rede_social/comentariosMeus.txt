@@ -1,0 +1,10 @@
+feito mysql:
+tabela usuario
+tabela seguidores
+
+feito php:
+criar/logar conta
+perfil (alterar, seguir, bloquear)
+seguidores - pessoas q seguem tal usuario
+seguindo - pessoas q tal usuario segue
+Busca - pesquisar usuários

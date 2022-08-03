@@ -83,18 +83,69 @@
             </div>
             <h2 id="nome"><?php echo $nome; ?></h2>
             <div id="seguires">
-                <a href="seguindo.html" class="seguiros"><strong>12</strong> Seguindo</a>
-                <a href="seguidores.html" class="seguiros"><strong>0</strong> Seguidores</a>
+                <textarea disabled id="" cols="30" rows="10"><?php echo $bio; ?></textarea>
+                <?php
+                    $seguindo = 0;
+                    $seguidores = 0;
+                    #=================seguindo==================
+                    $b = 'n';
+                    $stmt = $conn->prepare("SELECT * FROM seguidores WHERE id_seguir=? AND bloquear=?");
+                    $stmt->bind_param("ss", $id, $b);
+                    $stmt->execute();
+                    $resultado = $stmt->get_result();
+                    while($linha = $resultado->fetch_object()){
+                        $seguindo++;
+                    }
+                    #===========seguidores===========
+                    $b = 'n';
+                    $stmt = $conn->prepare("SELECT * FROM seguidores WHERE id_seguindo=? AND bloquear=?");
+                    $stmt->bind_param("ss", $id, $b);
+                    $stmt->execute();
+                    $resultado = $stmt->get_result();
+                    while($linha = $resultado->fetch_object()){
+                        $seguidores++;
+                    }
+                ?>
+                <a href="seguindo.php?id=<?php echo $id; ?>" class="seguiros"><strong><?php echo $seguindo; ?></strong> Seguindo</a>
+                <a href="seguidores.php?id=<?php echo $id; ?>" class="seguiros"><strong><?php echo $seguidores; ?></strong> Seguidores</a>
             </div>
             <?php if((isset($_SESSION['id_unico'])) && ($_SESSION['id_unico'] == $id)): ?>
                 <button id="imgformbutton" onclick="document.getElementById('alterar').style.display='block'">Editar perfil</button>
             <?php endif; if((isset($_SESSION['id_unico'])) && ($_SESSION['id_unico'] != $id)): ?>
-            <!--ficaria no lugar do botão acima! "Editar perfil"-->
-                <form method='post' action=''>
-                    <button id="imgformbutton" >Seguir</button>
+            <!--=================seguir/parar de seguir/bloquear======================================"-->
+                <?php
+                    $bol = 0;
+                    $stmt = $conn->prepare("SELECT * FROM seguidores WHERE id_seguir=? AND id_seguindo=?");
+                    $stmt->bind_param("ss", $_SESSION['id_unico'], $id);
+                    $stmt->execute();
+                    $seg = 'Seguir';
+                    #===================bloquear======================
+                    $resultado = $stmt->get_result();
+                    $verificar = "";
+                    $bloq = "bloquear";
+                    while($linha = $resultado->fetch_object()){
+                        $verificar = $linha->bloquear;
+                        if(($verificar == 'n') || ($verificar == '')){
+                            $bloq = "Bloquear";
+                        }else{
+                            $bloq = "Desbloquear";
+                        }
+                        if($linha->id_seguindo == $id){
+                            $seg = "Unfollow";
+                        }else{
+                            $seg = "Seguir";
+                        }
+                    }                    
+                ?>
+                <?php if($bloq != 'Desbloquear'): ?>
+                <form method='post' action='seguir.php'>
+                    <input type="hidden" name="id" value="<?php echo $id; ?>">
+                    <button id="imgformbutton" ><?php echo $seg; ?></button>
                 </form>
-                <form action="">
-                    <button type="submit" id="imgformbutton2">Bloquear</button>
+                <?php endif; ?>
+                <form action="bloquear.php" method="post">
+                    <input type="hidden" name="id" value="<?php echo $id; ?>">
+                    <button type="submit" id="imgformbutton2"><?php echo $bloq; ?></button>
                 </form>
             
             <?php endif; ?>
