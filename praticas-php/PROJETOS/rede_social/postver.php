@@ -37,7 +37,7 @@
                 <div>
                     <a href="pag_principal.php">Home</a>
                     <a href="pag_busca.php">Buscar</a>
-                    <a href="chat.php">Chat</a>
+                    <a href="chat.php?id=">Chat</a>
                     <a href="#">Chat em Grupo</a>
                 </div>
             </div>
@@ -145,6 +145,7 @@
         </div><br>
         <hr>
         <div id="comentarios">
+        <?php if(isset($_SESSION['id_unico'])): ?>
             <div id="publicar" class="borda">
                 <div id="navegador">
                     <span id="perfila">
@@ -152,46 +153,58 @@
                     </span>
                     <a href="perfil.php?id=<?php echo $_SESSION['id_unico']; ?>"><?php echo $_SESSION['nome']; ?></a>
                 </div>
-                <form action="" method="post">
-                    <textarea name="coment" id="icomento" cols="30" rows="10" placeholder="Comentário"></textarea>
-                    <button type="submit">Comentar</button>
-                </form>
+                    <form action="comentar.php" method="post">
+                        <input type="hidden" name="valorid" value="<?php echo $id; ?>">
+                        <textarea name="coment" id="icomento" cols="30" rows="10" placeholder="Comentário"></textarea>
+                        <button type="submit">Comentar</button>
+                    </form>
             </div>
-            <div class="borda">
-                <div id="navegador">
-                    <span id="perfila">
-                        <a href="#"><img src="../imagens/blank-profile-picture.png" alt=""></a>
-                    </span>
-                    <a href="#">Nome usuário</a>
-                </div>
-                <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam totam repellat sunt quisquam tempora veniam architecto velit consequatur fugiat rerum, tempore nam iste sequi perferendis nesciunt magnam molestiae vel sit.
-                </p>
-            </div>
-            <div class="borda">
-                <div id="navegador">
-                    <span id="perfila">
-                        <a href="#"><img src="../imagens/blank-profile-picture.png" alt=""></a>
-                    </span>
-                    <a href="#">Nome usuário</a>
-                </div>
-                <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam totam repellat sunt quisquam tempora veniam architecto velit consequatur fugiat rerum, tempore nam iste sequi perferendis nesciunt magnam molestiae vel sit. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur quas natus consequatur, numquam soluta possimus. Eum, perferendis. Animi veniam iure quasi? Asperiores dignissimos est id nostrum fugit neque ex animi?
-                </p>
-            </div>
-            <div class="borda">
-                <div id="navegador">
-                    <span id="perfila">
-                        <a href="#"><img src="../imagens/blank-profile-picture.png" alt=""></a>
-                    </span>
-                    <a href="#">Nome usuário</a>
-                </div>
-                <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam totam repellat sunt quisquam tempora veniam architecto v
-                </p>
-            </div>
+        <?php endif; ?>
+            <!--===============================================-->
+            <?php
+                $stmt = $conn->prepare("SELECT * FROM comentarios WHERE post_id=? ORDER BY id DESC");
+                $stmt->bind_param("s", $id);
+                $stmt->execute();
+                $resultado = $stmt->get_result();
+                while($linha = $resultado->fetch_object()){
+
+                    $div = "";
+                    $stmt2 = $conn->prepare("SELECT * FROM usuario WHERE id_unico=?");
+                    $stmt2->bind_param("s", $linha->id_usu);
+                    $stmt2->execute();
+                    $resultado2 = $stmt2->get_result();
+                    while($linha2 = $resultado2->fetch_object()){
+                        $div = "
+                            <div class='borda'>
+                                <div id='navegador'>
+                                    <span id='perfila'>
+                                        <a href='perfil.php?$linha2->id_unico'><img src='$linha2->imgperfil'></a>
+                                    </span>
+                                    <a href=''>$linha2->nome</a>
+                                </div>
+                                <p>$linha->msg</p>
+                                
+                        
+                        ";
+                        echo $div;
+                        if($linha2->id_unico == $_SESSION['id_unico']){
+                            $div = "
+                                <form method='post' action='deletarcomentario.php?id=$id'>
+                                    <input type='hidden' name='idmsg' value='$linha->id'>
+                                    <button type='submit' style='background-color: white; border: none; cursor: pointer;'><img src='imagens/lixo.png'></button>
+                                </form>
+                                                            
+                                </div>
+                            ";
+                        }else
+                            $div = "</div>";
+
+                        echo $div;
+                    }
+                }            
+            ?>            
         </div><br>
-    </main>
+    </main>    
     <script src="scripts/modal.js"></script>
     <script src="scripts/carregarimg.js"></script>
 </body>

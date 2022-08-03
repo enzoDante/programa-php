@@ -3,6 +3,8 @@ tabela usuario
 tabela seguidores
 tabela post
 tabela curtidas
+tabela comentários
+tabela chat
 
 feito php:
 criar/logar conta
@@ -12,8 +14,8 @@ seguindo - pessoas q tal usuario segue
 Busca - pesquisar usuários
 pag_principal - post de pessoas q eu sigo (e q n estejam bloqueados por mim)
 postver - ao clicar em comentários irá p está pagina!
+chat - chat entre pessoas q se seguem
 
 
 falta mysql:
-tabela comentários
-tabela chat
+

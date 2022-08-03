@@ -1,13 +1,11 @@
 <?php 
     include "banco.php";
     session_start();
-    $id = $_GET['id'];
 
     if(isset($_GET['a'])){
         if($_GET['a'] == 'logout'){
-            $id = $_GET['id'];
             session_destroy();
-            header("Location: postver.php?id=$id");
+            header("Location: pag_principal.php");
             exit();
         }
     }    
@@ -42,7 +40,7 @@
                 </div>
             </div>
             <?php if(isset($_SESSION['id_unico'])): ?>
-                <a href="curtir.php?a=logout&id=<?php echo $id; ?>">Sair</a>
+                <a href="postver.php?a=logout&id=<?php echo $id; ?>">Sair</a>
             <div id="divimg">
                 <a href="perfil.php?id=<?php echo $_SESSION['id_unico']; ?>" id="perfila"><img src="<?php echo $_SESSION['imgperfil']; ?>" alt=""></a>
             </div>
@@ -56,28 +54,17 @@
     <main>
         <div>
             <?php
-                $stmt = $conn->prepare("SELECT * FROM curtidas WHERE id_curtiu=? AND id_post_curtido=?");
-                $stmt->bind_param("ss", $_SESSION['id_unico'], $id);
-                $stmt->execute();
+                if((isset($_SESSION['id_unico'])) && (isset($_POST['coment']))){
+                    $id = $_POST['valorid'];
+                    #echo $id;
+                    $msg = strip_tags(str_replace(";", " ", $_POST['coment']));
 
-                $verificar = '';
-                $resultado = $stmt->get_result();
-                while($linha = $resultado->fetch_object()){
-                    $verificar = $linha->id_post_curtido;
-                }
-                if($verificar == ''){
-                    $stmt = $conn->prepare("INSERT INTO curtidas (id_curtiu,id_post_curtido) VALUES(?,?)");
-                    $stmt->bind_param("ss", $_SESSION['id_unico'], $id);
-                    $stmt->execute();
-                    #-=-=-=-=--=--=--=-=-=-=-=-=-=-=-=-=-=                    
-                    header("Location: postver.php?id=$id");
-                }else{
-                    #==========remover curtida=============
-                    $stmt = $conn->prepare("DELETE FROM curtidas WHERE id_curtiu=? AND id_post_curtido=?");
-                    $stmt->bind_param("ss", $_SESSION['id_unico'], $id);
+                    $stmt = $conn->prepare("INSERT INTO comentarios (post_id,id_usu,msg) VALUES(?,?,?)");
+                    $stmt->bind_param("sss", $id, $_SESSION['id_unico'], $msg);
                     $stmt->execute();
                     header("Location: postver.php?id=$id");
                 }
+            
             ?>
         </div><br>
     </main>

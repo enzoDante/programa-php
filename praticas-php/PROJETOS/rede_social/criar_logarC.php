@@ -38,7 +38,7 @@
                 <div>
                     <a href="pag_principal.php">Home</a>
                     <a href="pag_busca.php">Buscar</a>
-                    <a href="chat.php">Chat</a>
+                    <a href="chat.php?id=">Chat</a>
                     <a href="#">Chat em Grupo</a>
                 </div>
             </div>
