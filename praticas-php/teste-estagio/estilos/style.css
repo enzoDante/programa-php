@@ -1,0 +1,110 @@
+@charset "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+header{
+    background-color: #4791f1;
+    min-height: 50px;
+    padding: 20px;
+    min-width: 200px;
+    text-align: center;
+    color: white;
+}
+nav{
+    background-color: #4791f1;
+    padding: 20px;
+    box-shadow: 3px 2px 2px #00000081;
+}
+nav a{
+    color: white;
+    font-size: 1.1em;
+    text-decoration: none;
+    margin: 20px;
+}
+nav a:hover{
+    text-decoration: underline;
+}
+main{
+    min-width: 200px;
+    max-width: 1000px;
+    min-height: 500px;
+    margin: auto;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    padding: 20px;
+    background-color: #e0d8ce;
+    border-radius: 20px;
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.623);
+}
+h2{
+    background-color: rgb(255, 251, 195);
+    margin: -20px -20px 0 -21px;
+    padding: 20px;
+    border-radius: 20px 20px 0 0;
+}
+main h3, p{
+    padding: 10px;
+
+}
+img{
+    display: block;
+    margin: auto;
+    height: 500px;
+}
+
+/*formulario*/
+fieldset{
+    display: grid;
+    grid-template-columns: 300px 300px;
+    min-width: 200px;
+    max-width: 700px;
+    margin: auto;
+    margin-bottom: 5vh;
+    justify-content: center;
+}
+form, fieldset{
+    padding: 20px;
+}
+label{
+    display: block;
+    font-size: 1.2em;
+}
+input[type=text], input[type=number], input[type=date], button{
+    width: 90%;
+    font-size: 1.1em;
+    padding: 12px 20px;
+    margin: 8px 0;
+    margin-bottom: 5vh;
+    display: inline-block;
+    border: 2px solid transparent;
+    outline: 1px solid gray;
+    box-sizing: border-box;
+    border-radius: 10px;
+    transition: linear 100ms;
+}
+#iuf{
+    width: 100px;
+}
+input[type=number]{
+    width: 200px;
+    
+}
+button{
+    display: block;
+    margin: auto;
+    transition: linear 200ms;
+    width: 300px;
+}
+button:hover{
+    cursor: pointer;
+    background-color: #949494;
+    color: white;
+}
+@media screen and (max-width: 750px){
+    fieldset{
+        grid-template-columns: 1fr;
+        justify-content: center;
+    }
+}
