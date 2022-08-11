@@ -181,6 +181,30 @@ ul input[type=text]#cep, ul input[type=text]#data{
 .elementos_buscas form{
     padding: 0;
 }
+div.elementos_buscas{
+    min-height: 100px;
+}
+a.linkbtn{
+    display: block;
+    margin: auto;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    width: 250px;
+    font-size: 1.1em;
+    padding: 12px 20px;
+    margin-bottom: 5vh;
+    border: 2px solid transparent;
+    outline: 1px solid gray;
+    box-sizing: border-box;
+    border-radius: 10px;
+    transition: linear 200ms;
+}
+a.linkbtn:hover{
+    cursor: pointer;
+    background-color: #949494;
+    color: white;
+}
 @media screen and (max-width: 900px){
     ul{
         columns: 1;        

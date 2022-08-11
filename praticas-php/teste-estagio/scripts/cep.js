@@ -14,6 +14,7 @@ if (!("erro" in conteudo)) {
     document.getElementById('ibairro').value=(conteudo.bairro);
     document.getElementById('icidade').value=(conteudo.localidade);
     document.getElementById('iuf').value=(conteudo.uf);
+    
     //document.getElementById('ibge').value=(conteudo.ibge);
 } //end if.
 else {
@@ -43,6 +44,7 @@ if (cep != "") {
         document.getElementById('icidade').value="...";
         document.getElementById('iuf').value="...";
         //document.getElementById('ibge').value="...";
+        
 
         //Cria um elemento javascript.
         var script = document.createElement('script');
