@@ -18,7 +18,7 @@
         <a href="index.html">Início</a>
         <a href="cadastrar_venda.html">Finalizar compra</a>
         <a href="busca.html">Buscar produtos</a>
-        <a href="">Histórico de compras</a>
+        <a href="historico.html">Histórico de compras</a>
     </nav>
     <main>
         <?php

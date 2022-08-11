@@ -18,7 +18,7 @@
         <a href="index.html">Início</a>
         <a href="cadastrar_venda.html">Finalizar compra</a>
         <a href="busca.html">Buscar produtos</a>
-        <a href="">Histórico de compras</a>
+        <a href="historico.html">Histórico de compras</a>
     </nav>
     <main>
         <?php
@@ -49,8 +49,16 @@
                     $produto = ['', '', '', '', ''];
                     $i = 0;
                     $resultado = $stmt->get_result();
-                    while($linha = $resultado->fetch_object()){                        
-                        $produto[$i] = $linha->id_produto;
+                    while($linha = $resultado->fetch_object()){  
+                        
+                        $stmt2 = $conn->prepare("SELECT nome_p FROM produtos WHERE id_produto=?");
+                        $stmt2->bind_param("s", $linha->id_produto);
+                        $stmt2->execute();
+                        $resultado2 = $stmt2->get_result();
+                        while($linha2 = $resultado2->fetch_object()){
+                            $produto[$i] = $linha2->nome_p;
+                        }                        
+                        #$produto[$i] = $linha->id_produto;
                         $i++;
                     }
 
