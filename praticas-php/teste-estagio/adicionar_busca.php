@@ -22,8 +22,10 @@
     <main>
         <?php
             date_default_timezone_set('America/Sao_Paulo');
-            $codigo = substr(md5(date("YmdHis")), 1, 7);
+            //$codigo = substr(md5(date("YmdHis")), 1, 7);
             $id = $_GET['id'];
+
+            //adicionar o limite de 5 produtos no carrinho!!!
 
             $stmt = $conn->prepare("SELECT * FROM carrinho WHERE id_produto=?");
             $stmt->bind_param("s", $id);

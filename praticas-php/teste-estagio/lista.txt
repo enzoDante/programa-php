@@ -1,0 +1,7 @@
+itens para fazer:
+
+página remover.php - remover coisas do carrinho
+
+
+adicionar_busca.php - adicionar o limite de 5 produtos
+cadastrar.php - colocar p remover oq ta no carrinho!!
