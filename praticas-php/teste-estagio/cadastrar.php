@@ -22,8 +22,10 @@
     </nav>
     <main>
         <?php
+            #define horario padrão do servidor
             date_default_timezone_set('America/Sao_Paulo');
             $data = date("Y-m-d");
+            #atribuindo os valores de endereco nas variaveis
             $preco = $_POST['preco'];
             $cep = strip_tags(str_replace(";", "-", $_POST['cep']));
             $uf = strip_tags(str_replace(";", "-", $_POST['uf']));
@@ -36,6 +38,7 @@
                 echo "<h2>Complete os campos corretamente!!!<h2>";
                 echo "<a href='cadastrar_venda.html'>Voltar</a>";
             }else{
+                #verificando se existe algum produto no carrinho
                 $stmt = $conn->prepare("SELECT * FROM carrinho");
                 $verificar = '';
                 $stmt->execute();
@@ -43,30 +46,32 @@
                 while($linha = $resultado->fetch_object()){
                     $verificar = '2';
                 }
+                #se o carrinho não estiver vazio, é possível finalizar a compra
                 if($verificar != ''){
+                    #atribuindo os valores da tabela produto para inserir na tabela vendas
                     $stmt = $conn->prepare("SELECT * FROM carrinho");
                     $stmt->execute();
-                    $produto = ['', '', '', '', ''];
-                    $i = 0;
+                    $produtos = '';
+                    $precos = '';
                     $resultado = $stmt->get_result();
                     while($linha = $resultado->fetch_object()){  
 
-                        $stmt2 = $conn->prepare("SELECT nome_p FROM produtos WHERE id_produto=?");
+                        $stmt2 = $conn->prepare("SELECT nome_p, preco_p FROM produtos WHERE id_produto=?");
                         $stmt2->bind_param("s", $linha->id_produto);
                         $stmt2->execute();
                         $resultado2 = $stmt2->get_result();
                         while($linha2 = $resultado2->fetch_object()){
-                            $produto[$i] = $linha2->nome_p;
-                        }                        
-                        #$produto[$i] = $linha->id_produto;
-                        $i++;
+                            $produtos .= str_replace(" ","_",$linha2->nome_p)." ";
+                            $precos .= "$linha2->preco_p ";
+                        }
                     }
 
-                    $stmt = $conn->prepare("INSERT INTO vendas (preco_total, data_venda, produto1, produto2, produto3, produto4, produto5, cep, uf, cidade, bairro, rua, numero) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
-                    $stmt->bind_param("sssssssssssss", $preco,$data,$produto[0],$produto[1],$produto[2],$produto[3],$produto[4],$cep,$uf,$cidade,$bairro,$rua, $numero);
+                    $stmt = $conn->prepare("INSERT INTO vendas (preco_total, data_venda, produtos, precos, cep, uf, cidade, bairro, rua, numero) VALUES(?,?,?,?,?,?,?,?,?,?)");
+                    $stmt->bind_param("ssssssssss", $preco,$data,$produtos,$precos,$cep,$uf,$cidade,$bairro,$rua, $numero);
                     $stmt->execute();
                     echo "<h2>Venda cadastrado com sucesso!</h2>";
                     echo "<a href='historico.html'>Histórico de compra</a>";
+                    #ao efetuar a compra, o carrinho será limpo
                     $stmt = $conn->prepare("DELETE FROM carrinho");
                     $stmt->execute();
     

@@ -1,5 +1,6 @@
 <?php
     include "banco.php";
+    #atribuindo o valor da url para procurar na tabela produto algo semelhante ao que foi digitado pelo usuario
     $valor = $_GET['id'];
     if($valor != ''){
         $stmt = $conn->prepare("SELECT * FROM produtos WHERE nome_p LIKE '%$valor%' OR id_produto LIKE '%$valor%'");

@@ -1,4 +1,5 @@
 <?php
+    #conectando com o banco de dados
     $host = 'localhost';
     $user = 'root';
     $ps = '';

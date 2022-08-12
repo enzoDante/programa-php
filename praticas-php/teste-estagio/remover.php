@@ -22,6 +22,7 @@
     </nav>
     <main>
         <?php
+        #com o id do carrinho, ao clicar em remover, o produto será removido do carrinho 
             $stmt = $conn->prepare("DELETE FROM carrinho WHERE id_carrinho=?");
             $stmt->bind_param("i", $id);
             $stmt->execute();

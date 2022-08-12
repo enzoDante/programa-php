@@ -1,5 +1,6 @@
 <?php 
     include "banco.php";
+    #seleciona tudo do carrinho para mostrar ao usuario, os itens selecionados
     $stmt = $conn->prepare("SELECT * FROM carrinho");
     $stmt->execute();
     $resultado = $stmt->get_result();

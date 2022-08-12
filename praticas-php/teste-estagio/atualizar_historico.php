@@ -1,10 +1,12 @@
 <?php
     include "banco.php";
 
+    #selecionando em ordem decrescente as linhas da tabela venda
     $stmt = $conn->prepare("SELECT * FROM vendas ORDER BY id_venda DESC");
     $stmt->execute();
     $resultado = $stmt->get_result();
     while($linha = $resultado->fetch_object()){
+        #criando elementos html com os valores retornados da tabela
         $div = "
             <fieldset class='comprash'>
             <div>
@@ -21,40 +23,22 @@
             </div>
             <div>
             <hr>";
-            
-        $produto1 = '';
-        $produto2 = '';
-        $produto3 = '';
-        $produto4 = '';
-        $produto5 = '';
-        if($linha->produto1 != ''){
-            $produto1 = "<p>Produto: $linha->produto1</p>";
+        #separando os produtos e precos em array
+        $produtos = explode(" ", $linha->produtos);
+        $precos = explode(" ", $linha->precos);
+        #percorrendo o array e adicionando elementos html com os valores do array
+        for($i = 0; $i < count($produtos); $i++){
+            if($i < 3){
+                if($produtos[$i] != '')
+                    $div .= "<p>Produto: ".str_replace('_',' ',$produtos[$i])." <strong>R$ {$precos[$i]}</strong></p>";                
+            }else{
+                if($i == 3)
+                    $div .= "</div><div><hr>";
+                if($produtos[$i] != '')
+                    $div .= "<p>Produto: ".str_replace('_',' ',$produtos[$i])." <strong>R$ {$precos[$i]}</strong></p>";
+            }
         }
-        if($linha->produto2 != ''){
-            $produto2 = "<p>Produto: $linha->produto2</p>";
-        }
-        if($linha->produto3 != ''){
-            $produto3 = "<p>Produto: $linha->produto3</p>";
-        }
-        if($linha->produto4 != ''){
-            $produto4 = "<p>Produto: $linha->produto4</p>";
-        }
-        if($linha->produto5 != ''){
-            $produto5 = "<p>Produto: $linha->produto5</p>";
-        }
-        $div .= "
-                    $produto1
-                    $produto2
-                    $produto3
-                </div>
-                <div>
-                    <hr>
-                    $produto4
-                    $produto5
-                </div>
-
-            </fieldset>        
-        ";
+        $div .= "</div></fieldset>";        
         echo $div;
     }
 

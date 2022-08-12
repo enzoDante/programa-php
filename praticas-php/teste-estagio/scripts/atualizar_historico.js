@@ -1,3 +1,4 @@
+//função para atualizar a div "historico_venda"
 function ajax(){
     let req = new XMLHttpRequest()
     req.onreadystatechange = function(){

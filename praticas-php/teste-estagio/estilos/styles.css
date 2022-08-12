@@ -48,12 +48,6 @@ main h3, p{
     padding: 10px;
 
 }
-img{
-    display: block;
-    margin: auto;
-    max-height: 500px;
-}
-
 /*formulario*/
 fieldset{
     display: grid;

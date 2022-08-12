@@ -22,8 +22,9 @@
     </nav>
     <main>
         <?php
+            #definido um horário do servidor
             date_default_timezone_set('America/Sao_Paulo');
-            //$codigo = substr(md5(date("YmdHis")), 1, 7);
+            
             $id = $_GET['id'];
 
             //verifica o limite de 5 produtos no carrinho!!!
@@ -35,6 +36,7 @@
                 $totalcarrinho += 1;
             }
 
+            #caso não tenha chegado no limite do carrinho, irá adicionar o produto
             if($totalcarrinho < 5){
                 $stmt = $conn->prepare("SELECT * FROM carrinho WHERE id_produto=?");
                 $stmt->bind_param("s", $id);
