@@ -37,7 +37,7 @@ use registros_vendas;<br>
     insert into produtos (id_produto, nome_p, preco_p, fornecedor) values('b1','tenis', 200.25, 'julho, adriana');
 "<br>
 OBS: o id_produto é a referência!<br>
-OBS: ao inserir os fornecedores, pode-se colocar juntos exemp "'julho, adriana'"
+OBS: ao inserir os fornecedores, devem ser colocados juntos exemp "'julho, adriana, gustavo'"
 
 -=-=-=-==-=--==--=-=--=--=--=-=-<br>
 Testar tela de venda:<br>
