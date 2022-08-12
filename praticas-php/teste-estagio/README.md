@@ -19,20 +19,19 @@ use registros_vendas;<br>
     id_produto varchar(100) not null<br>
     );<br>
     ----------------<br>
-    <p>
-    create table vendas(
-    id_venda int not null primary key auto_increment,
-    preco_total float not null,
-    data_venda date not null,
-    produtos varchar(1000),
-    precos varchar(1000),
-    cep varchar(100) not null,
-    uf varchar(2) not null,
-    cidade varchar(200) not null,
-    bairro varchar(200) not null,
-    rua varchar(200) not null,
-    numero int
-    );</p><br>
+    create table vendas(<br>
+    id_venda int not null primary key auto_increment,<br>
+    preco_total float not null,<br>
+    data_venda date not null,<br>
+    produtos varchar(1000),<br>
+    precos varchar(1000),<br>
+    cep varchar(100) not null,<br>
+    uf varchar(2) not null,<br>
+    cidade varchar(200) not null,<br>
+    bairro varchar(200) not null,<br>
+    rua varchar(200) not null,<br>
+    numero int<br>
+    );<br>
 "
 -inserir na tabela produtos"<br>
     insert into produtos (id_produto, nome_p, preco_p, fornecedor) values('b1','tenis', 200.25, 'julho, adriana');
@@ -42,8 +41,9 @@ OBS: ao inserir os fornecedores, pode-se colocar juntos exemp "'julho, adriana'"
 
 -=-=-=-==-=--==--=-=--=--=--=-=-<br>
 Testar tela de venda:<br>
-a primeira página (index.html) está mostrando o passo a passo para testar o site
 ==========================================
+a primeira página (index.html) está mostrando o passo a passo para testar o site
+
 Acesse a página "buscar produtos", no input, digite o nome ou a referência do produto, então adicione ao carrinho clicando no botão abaixo do produto
 
 Acesse a págnia "finalizar compra" para preencher os campos do endereço, nessa mesma página, pode-se remover os produtos do carrinho! então clique no botão finalizar compra
