@@ -1,6 +1,6 @@
 =========tabela mysql===========
 Dentro do arquivo "tabela.sql" terá todo o código sql comentado (código de criação do banco de dados, insert's e criação de tabelas)<br>
-<img src="imagens/2022-08-12-14-23-56_arquivo1" alt="">
+<img src="imagens/2022-08-12-14-23-56_arquivo1" width='600px'>
 
 -Criar o banco de dados"<br>
 create database registros_vendas;<br>
