@@ -50,7 +50,7 @@
                     $i = 0;
                     $resultado = $stmt->get_result();
                     while($linha = $resultado->fetch_object()){  
-                        
+
                         $stmt2 = $conn->prepare("SELECT nome_p FROM produtos WHERE id_produto=?");
                         $stmt2->bind_param("s", $linha->id_produto);
                         $stmt2->execute();
@@ -66,7 +66,7 @@
                     $stmt->bind_param("sssssssssssss", $preco,$data,$produto[0],$produto[1],$produto[2],$produto[3],$produto[4],$cep,$uf,$cidade,$bairro,$rua, $numero);
                     $stmt->execute();
                     echo "<h2>Venda cadastrado com sucesso!</h2>";
-                    echo "<a href=''>Histórico de compra</a>";
+                    echo "<a href='historico.html'>Histórico de compra</a>";
                     $stmt = $conn->prepare("DELETE FROM carrinho");
                     $stmt->execute();
     

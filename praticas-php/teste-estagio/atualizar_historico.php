@@ -8,7 +8,7 @@
         $div = "
             <fieldset class='comprash'>
             <div>
-                <p>Número da venda: $linha->id_venda</p>
+                <p>Número do pedido: $linha->id_venda</p>
                 <p>Data da compra: <strong>$linha->data_venda</strong></p>
                 <h4>R$ $linha->preco_total</h4><h4>UF: $linha->uf</h4>
                 <p>CEP: $linha->cep</p>                
