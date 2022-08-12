@@ -26,7 +26,7 @@
             $stmt = $conn->prepare("DELETE FROM carrinho WHERE id_carrinho=?");
             $stmt->bind_param("i", $id);
             $stmt->execute();
-            header("Location: cadastrar_venda.php");
+            header("Location: cadastrar_venda.html");
         
         ?>
     </main>
