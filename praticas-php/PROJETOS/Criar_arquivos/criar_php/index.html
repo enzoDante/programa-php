@@ -12,6 +12,7 @@
         <h1>Preenche os campos para gerar o php com sql</h1>
     </header>
     <main>
+        <p>ATENÇÃO NOS PLACEHOLDERS, DIGITE AS TABELAS DE ACORDO!</p>
         <form action="gerar.php" method="post">
             <input type="text" name="nome_arquivo" id="nome_arquivo" placeholder="arquivo.php">
             <!--gerar arquivo-->
@@ -69,10 +70,11 @@
                     <div>
                         <h3>PHP selecionar tabela (JOIN)</h3>
                         <input type="text" name="colunas_selecionarj" id="colunas_selecionarj" placeholder="tabelaA.col1, col2, col3">
-                        <select name="" id="joins">
-                            <option value="1">INNER JOIN</option>
-                            <option value="2">LEFT JOIN</option>
-                            <option value="3">RIGHT JOIN</option>
+                        <select name="joins" id="joins">
+                            <option value="INNER JOIN">INNER JOIN</option>
+                            <option value="LEFT JOIN">LEFT JOIN</option>
+                            <option value="RIGHT JOIN">RIGHT JOIN</option>
+                            <option value="UNION">UNION</option>
                         </select>
                         <input type="text" name="tabela_selecionarj" id="tabela_selecionarj" placeholder="tabelaA tabelaB"><br>
                         <input type="text" name="where_selecionarj" id="where_selecionarj" placeholder="id_A = id_B">

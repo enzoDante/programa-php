@@ -25,7 +25,7 @@
                             }
                             $texto_arquivo .= "{$colarray[$x]}";
                         }*/
-                        $texto_arquivo .= " VALUES (?,);\n";
+                        $texto_arquivo .= ' VALUES (?,)");'."\n";
                         $texto_arquivo .= '$stmt->bind_param("s", );'."\n";
                         $texto_arquivo .= '$stmt->execute();'."\n\n";
                         #echo $texto_arquivo;
@@ -36,7 +36,7 @@
                             $table = $_POST['tabela_selecionar'];
                             $clausula_where = $_POST['where_selecionar'];
     
-                            $texto_arquivo .= '$stmt = $con->prepare("SELECT '.$cols.' FROM '.$table.' WHERE '.$clausula_where.');'."\n";
+                            $texto_arquivo .= '$stmt = $con->prepare("SELECT '.$cols.' FROM '.$table.' WHERE '.$clausula_where.'");'."\n";
     
                             $texto_arquivo .= '$stmt->bind_param("s", );'."\n";
                             $texto_arquivo .= '$stmt->execute();'."\n";
@@ -48,7 +48,7 @@
                         $table = $_POST['tabela_remover'];
                         $clausula_where = $_POST['where_remover'];
     
-                        $texto_arquivo .= '$stmt = $con->prepare("DELETE FROM '.$table.' WHERE '.$clausula_where.');'."\n";
+                        $texto_arquivo .= '$stmt = $con->prepare("DELETE FROM '.$table.' WHERE '.$clausula_where.'");'."\n";
     
                         $texto_arquivo .= '$stmt->bind_param("s", );'."\n";
                         $texto_arquivo .= '$stmt->execute();'."\n\n";
@@ -60,14 +60,26 @@
                         $table = $_POST['tabela_atualizar'];
                         $clausula_where = $_POST['where_atualizar'];
     
-                        $texto_arquivo .= '$stmt = $con->prepare("UPDATE '.$table.' SET '.$cols.' WHERE '.$clausula_where.');'."\n";
+                        $texto_arquivo .= '$stmt = $con->prepare("UPDATE '.$table.' SET '.$cols.' WHERE '.$clausula_where.'");'."\n";
     
                         $texto_arquivo .= '$stmt->bind_param("s", );'."\n";
                         $texto_arquivo .= '$stmt->execute();'."\n\n";
                         break;
     
                     case 'selectj':
-                        #selectj();
+                        $cols = $_POST['colunas_selecionarj'];
+                        $table = $_POST['tabela_selecionarj'];
+                        $table = explode(" ", $table);
+                        $escolha = $_POST['joins'];
+                        echo $escolha;
+                        $clausula_where = $_POST['where_selecionarj'];
+    
+                        $texto_arquivo .= '$stmt = $con->prepare("SELECT '.$cols.' FROM '.$table[0].' '.$escolha.' '.$table[1].' ON '.$clausula_where.'");'."\n";
+    
+                        $texto_arquivo .= '$stmt->bind_param("s", );'."\n";
+                        $texto_arquivo .= '$stmt->execute();'."\n";
+                        $texto_arquivo .= '$resultado = $stmt->get_result();'."\n";
+                        $texto_arquivo .= 'while($linha = $resultado->fetch_object()){'."\n\t\n}\n\n";
                         break;
                     default:
                         echo "nada selecionado";
