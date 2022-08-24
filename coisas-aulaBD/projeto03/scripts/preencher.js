@@ -47,9 +47,17 @@ function ccpf(){
     document.getElementById("card_cpf").innerHTML = cpf
 }
 //=======================fazerrr dataaaaa
+function digit2(num) {
+    return num.toString().padStart(2, '0'); //se numero for 8, irá retornar 08
+}
 function cdata(){
-    //let data = Date(document.getElementById("idata"))
-    let data = document.getElementById("idata").value 
-    console.log(data)
-    document.getElementsByClassName("requerido")[3].style.display = 'block'
+    let data = document.getElementById("idade").value 
+    data = new Date(data)
+    let nascimento = digit2(data.getDate()+1) + '/' +digit2(data.getMonth()+1)+ '/' + data.getFullYear()
+
+    if(document.getElementById("idade").value = ''){
+        document.getElementsByClassName("requerido")[3].style.display = 'block'
+        document.getElementsByClassName("requerido")[3].innerHTML = nascimento
+    }
+    document.getElementById("card_idade").innerHTML = nascimento
 }
