@@ -1,0 +1,184 @@
+@charset "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: rgb(75, 75, 75);
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+header{
+    min-width: 200px;
+    min-height: 50px;
+    padding: 10px;
+    background-color: rgb(98, 73, 156);
+    display: flex;
+    align-items: center;
+/* ctrl + ; = comentario */
+}
+img{
+    width: 200px;
+    display: inline-block;
+}
+header h1{
+    margin: auto;
+    display: inline-block;
+}
+nav{
+    min-width: 200px;
+    padding: 5px;
+    background-color: rgb(98, 73, 156);
+    box-shadow: 3px 2px 2px rgba(22, 22, 22, 0.425);
+}
+nav a{
+    text-decoration: none;
+    color: white;
+    margin: 20px;
+    font-size: 1.2em;
+}
+nav a:hover{
+    text-decoration: underline;
+}
+main{
+    min-width: 200px;
+    max-width: 1000px;
+    min-height: 500px;
+    padding: 20px;
+    margin: auto;
+    background-color: rgb(104, 104, 104);
+    border-radius: 0 0 20px 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.507);
+}
+main div#conteudo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+form{
+    max-width: 300px;
+    padding: 30px;
+    background-color: white;
+    color: black;
+    margin: 30px;
+    /* margin-top: 30px;
+    margin-bottom: 30px; */
+    border-radius: 20px;
+    display: block;
+    box-shadow: 2px 2px 5px black;
+}
+/* ============== */
+#foto{
+    margin: auto;
+    margin-top: 30px;
+    width: 100px;
+    height: 100px;
+    display: block;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: linear 100ms;
+}
+#foto img{
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);  
+}
+#foto:hover{
+    border-bottom: none;
+    cursor: pointer;
+    filter: brightness(80%)    
+}
+#btncriar{
+    display: block;
+    margin: auto;
+    padding: 10px;
+    margin-top: 20px;
+    font-size: 1.1em;
+    font-weight: bold;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    transition: linear 200ms;
+}
+#icontrato{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#btncriar:hover{
+    cursor: pointer;
+    filter: brightness(50%)
+}
+#contaexistente{
+    float: right;
+    font-weight: bold;
+    
+}
+input[type=file]{
+    display: none;
+}
+input[type=text], input[type=password], input[type=date], input[type=email], input[type=number], textarea {
+    width: 100%;
+    font-size: 1em;
+    font-weight: bold;
+    padding: 5px 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 2px solid transparent;
+    outline: 1px solid gray;
+    box-sizing: border-box;
+    border-radius: 5px;
+    transition: linear 100ms;
+}
+input:focus, textarea:focus{
+    border-style: solid;
+    border-color: #126ef8;
+    outline: #126ef8;
+
+}
+.requerido{
+    font-size: 0.8em;
+    color: red;
+    font-weight: bold;
+    display: none;
+}
+/* =========== */
+#card{
+    background-color: blueviolet;
+    width: 500px;
+    height: 270px;
+    margin: 30px;
+    display: block;    
+    border-radius: 20px;
+    box-shadow: 2px 3px 5px black;
+    font-size: 1.1em;
+}
+#card .card-content{
+    padding: 20px;
+}
+.card-content h2, .card-content p{
+    display: inline-block;
+    margin: 5px;
+}
+/* #card{
+    display: flex; 
+    align-items: center; 
+} */
+#chip{
+    margin: 10px;
+    margin-left: 20px;
+    width: 50px;
+    display: block;
+}
+/* margin-top: -500px;
+    margin-left: 50%;
+    position: fixed; 
+    
+    margin-top: 100px;
+    */

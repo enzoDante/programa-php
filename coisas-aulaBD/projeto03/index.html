@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <header>
+        <img src="imagens/card.png" alt="">
+        <h1>teste</h1>
+    </header>
+    <nav>
+        <a href="https://www.serasa.com.br/score/">Serasa score</a>
+    </nav>
+    <main>
+        <div id="conteudo">
+            <form action="criar_logarC.php" method="post" enctype="multipart/form-data" autocomplete="off">
+                
+                <label for="inome">Nome</label>
+                <input type="text" name="nome" id="inome" onkeyup="nomee()" required>
+                <p class="requerido">Digite um nome</p>
+            
+            
+                <label for="iemail">E-mail:</label>
+                <input type="email" name="email" id="iemail" onkeyup="emaill()" required>
+                <p class="requerido">Digite um email</p>
+            
+                <label for="cpf">CPF:</label>
+                <input type="text" name="cpf" id="cpf" onkeyup="ccpf()" required>
+                <p class="requerido">Digite o cpf</p>
+                
+                <label for="idade">Data de nascimento:</label>
+                <input type="date" name="idade" id="idade" onkeyup="cdata()" required>
+                <p class="requerido">Insira a data</p>
+
+                <label for="salario">Salário:</label>
+                <input type="number" name="salario" id="salario" required>
+                <p class="requerido">Insira seu salário</p>
+
+                <label for="serasa">Pontos do Serasa:</label>
+                <input type="number" name="serasa" id="serasa">
+                <p class="requerido">Informe seus pontos</p>
+            
+                <label for="isenha">Senha:</label>
+                <input type="password" name="senha" id="isenha" required>
+                <p class="requerido">Digite uma senha</p>
+            
+                <label for="is2">Confirmar senha:</label>
+                <input type="password" name="s2" id="is2" required>
+                <p class="requerido">A senha é diferente da anterior</p>
+            
+                <label for="img" id="foto"><img src="imagens/user.png" alt="" id="perfil"></label>
+                <input type="file" name="foto" id="img" onchange="carregar1(event)">
+            
+                <input type="checkbox" name="contrato" id="icontrato" required>
+                <label for="icontrato">Concordo com os <a href="#">termos</a> de contrato</label>
+                <p class="requerido">Aceite os termos</p>
+                
+                <button id="btncriar" type="submit">Criar conta</button>
+                <a href="" id="contaexistente">Entrar</a>
+            </form>
+            <div id="card">
+                <div class="card-content">
+                    <h2 id="card_nome">nommeeeeee</h2><br>
+                    <p id="card_email">emaillllllllllasdasdsa</p><br>
+                    <p id="card_cpf">cpffsdaf 34212143214</p>
+                </div>
+                <div><img id="chip" src="imagens/chip.png" alt=""></div>
+                <div class="card-content">
+                    <p>idade</p>                    
+                    <p>salarioooooo</p>
+                    <p>serasa points</p>
+                </div>
+            </div>
+        </div>
+        
+    </main>
+    <script src="scripts/preencher.js"></script>
+    <script src="scripts/img.js"></script>
+</body>
+</html>
