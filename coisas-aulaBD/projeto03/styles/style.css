@@ -163,6 +163,9 @@ input:focus, textarea:focus{
     
     margin-top: 100px;
     */
+#dados{
+    display: none;
+}
 @media screen and (max-width: 900px){
     main{
         min-height: 850px;

@@ -65,7 +65,7 @@ function cadastrar(e){
         // enviar para o php 
         if(verifica){
             idade = new Date(idade)
-            let nascimento = digit2(idade.getDate()+1) + '/' +digit2(idade.getMonth()+1)+ '/' + idade.getFullYear()
+            let nascimento = idade.getFullYear() + '-' +digit2(idade.getMonth()+1)+ '-' + digit2(idade.getDate()+1)
             console.log(nascimento)
 
             //ao enviar e todos os dados estiverem corretos, irá enviar ao php e retornara a um input hidden
@@ -83,8 +83,11 @@ function cadastrar(e){
                     document.getElementsByClassName("requerido")[2].style.display = 'block'
                     document.getElementsByClassName("requerido")[2].innerHTML = 'CPF existente'
                 }
+                if(existe == ''){
+                    window.location.href = 'suaConta.html'
+                }
             }
-            xhttp.open("POST", "cadastrar.php");
+            xhttp.open("POST", "server/cadastrar.php");
             // adiciona um header para a requisição HTTP
             xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             // especifica os dados que deseja enviar   

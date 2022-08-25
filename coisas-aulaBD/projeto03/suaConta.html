@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sua conta</title>
+    <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body onload="carregar()">
+    <header>
+        <img src="imagens/card.png" alt="">
+        <h1>Sua conta</h1>
+    </header>
+    <nav>
+        <a href="logar.html">Logar</a>
+        <a href="https://www.serasa.com.br/score/" target="_blank">Serasa score</a>
+    </nav>
+    <main>
+        <div id="conteudo">
+            <div id="card">
+                <div class="card-content">
+                    <h2 id="card_nome">Nome</h2><br>
+                    <p id="card_email">E-mail</p><br>
+                    <p id="card_cpf">CPF</p>
+                </div>
+                <div><img id="chip" src="imagens/chip.png" alt=""></div>
+                <div class="card-content">
+                    <p id="card_idade">Idade</p>|
+                    <p id="card_salario">Salario</p>|
+                    <p id="card_serasa">Serasa points</p>
+                </div>
+            </div>
+            <form action="criar_logarC.php" onsubmit="cadastrar()" method="post" enctype="multipart/form-data" autocomplete="off">
+                
+                <label for="inome">Nome</label>
+                <input type="text" name="nome" id="inome" onkeyup="nomee()" required>
+                <p class="requerido">Digite um nome</p>
+            
+            
+                <label for="iemail">E-mail:</label>
+                <input type="email" name="email" id="iemail" onkeyup="emaill()" required>
+                <p class="requerido">Digite um email</p>
+
+                <label for="salario">Salário:</label>
+                <input type="text" name="salario" id="salario" onkeyup="csalario2()" required>
+                <p class="requerido">Insira seu salário</p>
+
+                <label for="serasa">Pontos do Serasa:</label>
+                <input type="number" name="serasa" id="serasa" onkeyup="cserasa2()">
+                <p class="requerido">Informe seus pontos</p>
+                
+                <button id="btncriar" type="submit" onclick="alterar(event)">Alterar</button>
+            </form>
+        </div>
+        
+        <p id="dados"></p>
+    </main>
+    <script src="scripts/dados_pessoais.js"></script>
+    <script src="scripts/preencher_cadastro.js"></script>
+</body>
+</html>
