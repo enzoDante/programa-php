@@ -4,15 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Cadastrar</title>
+    <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
     <header>
         <img src="imagens/card.png" alt="">
-        <h1>teste</h1>
+        <h1>Crie sua conta</h1>
     </header>
     <nav>
+        <a href="">Sua conta</a>
         <a href="https://www.serasa.com.br/score/">Serasa score</a>
     </nav>
     <main>
@@ -37,11 +39,11 @@
                 <p class="requerido">Insira a data</p>
 
                 <label for="salario">Salário:</label>
-                <input type="number" name="salario" id="salario" required>
+                <input type="text" name="salario" id="salario" onkeyup="csalario()" required>
                 <p class="requerido">Insira seu salário</p>
 
                 <label for="serasa">Pontos do Serasa:</label>
-                <input type="number" name="serasa" id="serasa">
+                <input type="number" name="serasa" id="serasa" onkeyup="cserasa()">
                 <p class="requerido">Informe seus pontos</p>
             
                 <label for="isenha">Senha:</label>
@@ -64,15 +66,15 @@
             </form>
             <div id="card">
                 <div class="card-content">
-                    <h2 id="card_nome">nommeeeeee</h2><br>
-                    <p id="card_email">emaillllllllllasdasdsa</p><br>
-                    <p id="card_cpf">cpffsdaf 34212143214</p>
+                    <h2 id="card_nome">Nome</h2><br>
+                    <p id="card_email">E-mail</p><br>
+                    <p id="card_cpf">CPF</p>
                 </div>
                 <div><img id="chip" src="imagens/chip.png" alt=""></div>
                 <div class="card-content">
-                    <p id="card_idade">idade</p>                    
-                    <p>salarioooooo</p>
-                    <p>serasa points</p>
+                    <p id="card_idade">Idade</p>|
+                    <p id="card_salario">Salario</p>|
+                    <p id="card_serasa">Serasa points</p>
                 </div>
             </div>
         </div>

@@ -5,7 +5,7 @@ function nomee(){
         document.getElementsByClassName("requerido")[0].style.display = 'block';
         document.getElementsByClassName("requerido")[0].innerHTML = 'Digite um nome';
     }else{
-        if(nome.length < 4 || nome.indexOf(" ") < 0){
+        if(nome.length < 4 || nome.indexOf(" ") <= 0){
             document.getElementsByClassName("requerido")[0].style.display = 'block';
             document.getElementsByClassName("requerido")[0].innerHTML = 'Insira o nome completo';
         }else{
@@ -42,6 +42,7 @@ function ccpf(){
             document.getElementsByClassName("requerido")[2].innerHTML = 'Digite o cpf corretamente'
         }else{
             document.getElementsByClassName("requerido")[2].style.display = 'none'
+
         }
     }
     document.getElementById("card_cpf").innerHTML = cpf
@@ -65,3 +66,28 @@ function cdata(){
     }
 }
 //================================
+function csalario(){
+    let salario = document.getElementById("salario").value
+    if(isNaN(salario) || salario < 0){
+        document.getElementsByClassName("requerido")[4].style.display = 'block'
+        document.getElementsByClassName("requerido")[4].innerHTML = 'Informe corretamente o salário'
+    }else{
+        if(salario == ''){
+            document.getElementsByClassName("requerido")[4].style.display = 'block'
+            document.getElementsByClassName("requerido")[4].innerHTML = 'Informe o salário'
+        }else
+            document.getElementsByClassName("requerido")[4].style.display = 'none'
+    }
+    document.getElementById("card_salario").innerHTML = 'R$ '+salario
+}
+//========================
+function cserasa(){
+    let pserasa = document.getElementById("serasa").value
+    if(isNaN(pserasa) || pserasa == '' || pserasa < 0 || pserasa > 1000){
+        document.getElementsByClassName("requerido")[5].style.display = 'block'
+        document.getElementsByClassName("requerido")[5].innerHTML = 'Informe seus pontos corretamente'
+    }else{
+        document.getElementsByClassName("requerido")[5].style.display = 'none'
+    }
+    document.getElementById("card_serasa").innerHTML = pserasa
+}

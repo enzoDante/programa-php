@@ -4,7 +4,8 @@
     padding: 0;
 }
 body{
-    background-color: rgb(75, 75, 75);
+    background-image: linear-gradient(155deg, #28313B, #485461);
+    /* background-color: rgb(75, 75, 75); */
     color: white;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -46,7 +47,8 @@ main{
     min-height: 500px;
     padding: 20px;
     margin: auto;
-    background-color: rgb(104, 104, 104);
+    background-image: linear-gradient(135deg, #A5A4CB, #8989BB);
+    /* background-color: rgb(104, 104, 104); */
     border-radius: 0 0 20px 20px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.507);
 }
@@ -150,14 +152,20 @@ input:focus, textarea:focus{
 }
 /* =========== */
 #card{
-    background-color: blueviolet;
+    background:linear-gradient( to bottom, #c39738, #deb761, #c39738);
+    /* background-color: blueviolet; */
     width: 500px;
-    height: 270px;
+    min-height: 270px;
     margin: 30px;
     display: block;    
-    border-radius: 20px;
-    box-shadow: 2px 3px 5px black;
+    border-radius: 15px;
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.534);
     font-size: 1.1em;
+    transition: linear 200ms;
+}
+#card:hover{
+    transform: scale(1.05);
+    box-shadow: 13px 14px 10px rgba(0, 0, 0, 0.534);
 }
 #card .card-content{
     padding: 20px;
@@ -182,3 +190,8 @@ input:focus, textarea:focus{
     
     margin-top: 100px;
     */
+@media screen and (max-width: 900px){
+    form{
+        background-color: black;
+    }
+}
