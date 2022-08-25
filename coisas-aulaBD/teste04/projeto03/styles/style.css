@@ -71,6 +71,31 @@ form{
     box-shadow: 2px 2px 5px black;
 }
 /* ============== */
+#foto{
+    margin: auto;
+    margin-top: 30px;
+    width: 100px;
+    height: 100px;
+    display: block;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: linear 100ms;
+}
+#foto img{
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);  
+}
+#foto:hover{
+    border-bottom: none;
+    cursor: pointer;
+    filter: brightness(80%)    
+}
 #btncriar{
     display: block;
     margin: auto;
@@ -96,6 +121,9 @@ form{
     float: right;
     font-weight: bold;
     
+}
+input[type=file]{
+    display: none;
 }
 input[type=text], input[type=password], input[type=date], input[type=email], input[type=number], textarea {
     width: 100%;
@@ -164,25 +192,7 @@ input:focus, textarea:focus{
     margin-top: 100px;
     */
 @media screen and (max-width: 900px){
-    main{
-        min-height: 850px;
-        margin-bottom: 20vh;
-    }
     form{
-        margin: auto;
-    }
-    #card{
-        margin: auto;
-        margin-top: 35vh;
-        max-width: 400px;
-        position: fixed;
-        font-size: 1em;
-    }
-    #card .card-content{
-        padding: 5px;
-    }
-    #card:hover{
-        transform: scale(1.01);
-        box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.534);
+        background-color: black;
     }
 }

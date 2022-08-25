@@ -19,7 +19,7 @@
     </nav>
     <main>
         <div id="conteudo">
-            <form action="criar_logarC.php" method="post" enctype="multipart/form-data" autocomplete="off">
+            <form action="criar_logarC.php" onsubmit="cadastrar()" method="post" enctype="multipart/form-data" autocomplete="off">
                 
                 <label for="inome">Nome</label>
                 <input type="text" name="nome" id="inome" onkeyup="nomee()" required>
@@ -47,11 +47,11 @@
                 <p class="requerido">Informe seus pontos</p>
             
                 <label for="isenha">Senha:</label>
-                <input type="password" name="senha" id="isenha" required>
+                <input type="password" name="senha" id="isenha" onkeyup="csenha()" required>
                 <p class="requerido">Digite uma senha</p>
             
                 <label for="is2">Confirmar senha:</label>
-                <input type="password" name="s2" id="is2" required>
+                <input type="password" name="s2" id="is2" onkeyup="csenha2()" required>
                 <p class="requerido">A senha é diferente da anterior</p>
             
                 <label for="img" id="foto"><img src="imagens/user.png" alt="" id="perfil"></label>
@@ -61,7 +61,7 @@
                 <label for="icontrato">Concordo com os <a href="#">termos</a> de contrato</label>
                 <p class="requerido">Aceite os termos</p>
                 
-                <button id="btncriar" type="submit">Criar conta</button>
+                <button id="btncriar" type="submit" onclick="cadastrar(event)">Criar conta</button>
                 <a href="" id="contaexistente">Entrar</a>
             </form>
             <div id="card">

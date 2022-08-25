@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logar</title>
+    <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles/style.css">
+
+</head>
+<body>
+    <header>
+        <img src="imagens/card.png" alt="">
+        <h1>Entre na sua conta</h1>
+    </header>
+    <nav>
+        <a href="">Sua conta</a>
+        <a href="https://www.serasa.com.br/score/" target="_blank">Serasa score</a>
+    </nav>
+    <main>
+        <div id="conteudo">
+            <form action="criar_logarC.php" onsubmit="cadastrar()" method="post" enctype="multipart/form-data" autocomplete="off">
+            
+                <label for="cpf">CPF:</label>
+                <input type="text" name="cpf" id="cpf" onkeyup="ccpf()" required>
+                <p class="requerido">Digite o cpf</p>
+            
+                <label for="isenha">Senha:</label>
+                <input type="password" name="senha" id="isenha" onkeyup="csenha()" required>
+                <p class="requerido">Sua senha</p>
+                
+                <button id="btncriar" type="submit" onclick="cadastrar(event)">Logar</button>
+                <a href="cadastrar.html" id="contaexistente">Cadastrar conta</a>
+            </form>
+            
+        </div>
+        <input type="hidden" name="demo" id="demo">
+        
+    </main>
+    <script src="scripts/preencher_login.js"></script>
+
+</body>
+</html>

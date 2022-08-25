@@ -1,3 +1,47 @@
+function cadastrar(e){
+    e.preventDefault()
+    let nome = document.getElementById("inome").value
+    //=======
+    let email = document.getElementById("iemail").value
+    //=========
+    let cpf = document.getElementById("cpf").value 
+    //========
+    let data = document.getElementById("idade").value 
+    data = new Date(data)
+    data = digit2(data.getDate()+1) + '/' +digit2(data.getMonth()+1)+ '/' + data.getFullYear()
+    //==============
+    let salario = document.getElementById("salario").value
+    //===========
+    let serasa = document.getElementById("serasa").value
+    //==========
+    let senha = document.getElementById('isenha').value
+    let senha2 = document.getElementById("is2").value
+    //========
+    let img = document.getElementById("img").files[0]
+    let reader = new FileReader();
+    reader.readAsDataURL(img);
+    reader.onload = function () {
+        // Aqui temos a sua imagem convertida em string em base64.
+        console.log(reader.result);
+    };
+    let fotos = new Array()
+    fotos['type'] = img.type
+    fotos['size'] = img.size
+    fotos['tmp_name'] = img.tmp_name
+    console.log(fotos)
+
+    //========
+    let box = document.getElementById("icontrato")
+    //==========
+    if(!box.checked)
+        document.getElementsByClassName("requerido")[8].style.display = 'block'
+    else{
+        document.getElementsByClassName("requerido")[8].style.display = 'none'
+    }
+    console.log('teste')
+
+}
+//===================================
 function nomee(){
     let nome = document.getElementById("inome").value
     
@@ -91,3 +135,28 @@ function cserasa(){
     }
     document.getElementById("card_serasa").innerHTML = pserasa
 }
+//=======================
+function csenha(){
+    let senha = document.getElementById("isenha").value 
+    if(senha == ''){
+        document.getElementsByClassName('requerido')[6].style.display = 'block'
+        document.getElementsByClassName('requerido')[6].innerHTML = 'Digite uma senha'
+    }else{
+        if(senha.length < 5){
+            document.getElementsByClassName('requerido')[6].style.display = 'block'
+            document.getElementsByClassName('requerido')[6].innerHTML = 'A senha deve conter mais de 5 caractere'
+        }else{
+            document.getElementsByClassName('requerido')[6].style.display = 'none'
+        }
+    }
+}
+function csenha2(){
+    let senha = document.getElementById("isenha").value 
+    let csenha = document.getElementById("is2").value
+    if(senha != csenha){
+        document.getElementsByClassName('requerido')[7].style.display = 'block'
+        document.getElementsByClassName('requerido')[7].innerHTML = 'As senhas são diferentes'
+    }else
+    document.getElementsByClassName('requerido')[7].style.display = 'none'
+}
+//========================
