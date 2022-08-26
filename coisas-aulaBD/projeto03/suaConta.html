@@ -19,7 +19,7 @@
     </nav>
     <main>
         <div id="conteudo">
-            <div id="card">
+            <div id="card" class="card">
                 <div class="card-content">
                     <h2 id="card_nome">Nome</h2><br>
                     <p id="card_email">E-mail</p><br>
@@ -60,5 +60,16 @@
     <script src="scripts/dados_pessoais.js"></script>
     <script src="scripts/preencher_cadastro.js"></script>
     <script src="scripts/alterar.js"></script>
+
+    <!-- especial, permite efeito do cartão -->
+    <script type="text/javascript" src="scripts/vanilla-tilt.js"></script>
+    <script>
+        VanillaTilt.init(document.querySelector(".card"),{
+            max: 10,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.5,
+        })
+    </script>
 </body>
 </html>
