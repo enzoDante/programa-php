@@ -8,13 +8,14 @@
     <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles/style.css">
 </head>
-<body>
+<body onload="carregar()">
     <header>
         <img src="imagens/card.png" alt="">
         <h1>Crie sua conta</h1>
     </header>
     <nav>
-        <a href="suaConta.html">Sua conta</a>
+        <a href="suaConta.html" id="conta">Sua conta</a>
+        <a href="logar.html" id="sair">Logar</a>
         <a href="https://www.serasa.com.br/score/" target="_blank">Serasa score</a>
     </nav>
     <main>
@@ -76,6 +77,7 @@
             </div>
         </div>
         <input type="hidden" name="demo" id="demo">
+        <p id="dados"></p>
         
     </main>
     <script src="scripts/preencher_cadastro.js"></script>

@@ -1,4 +1,31 @@
 let nome, email, cpf, data, salario, pserasa, senha, senha2
+function carregar(){
+    const xhttp = new XMLHttpRequest();    
+    xhttp.onload = function() { 
+        document.getElementById("demo").value = this.responseText;
+    
+        let dados = document.getElementById("demo").value
+        if(dados != ''){
+            document.getElementById("conta").style.display = 'inline-block'
+            document.getElementById("conteudo").style.display = 'none'
+            //=====
+            document.getElementById("sair").innerHTML = 'Sair'
+            document.getElementById("sair").removeAttribute('href')
+            document.getElementById("sair").setAttribute('onclick', 'sairC()')
+    
+        }else{
+            document.getElementById("conta").style.display = 'none'
+            document.getElementById("conteudo").style.display = 'flex'
+            document.getElementById("sair").innerHTML = 'Logar'
+            document.getElementById("sair").removeAttribute('onclick')
+            document.getElementById("sair").setAttribute('href', 'logar.html')
+        }
+    }
+    xhttp.open("GET", "server/sessoes.php", true);
+    xhttp.send()
+    
+}
+//verifica os dados digitados
 function verificar(nome, email, cpf, idade, salario, pserasa, senha, senha2){
     if(nome.length < 4 || nome.indexOf(" ") <= 0){
         nomee()
