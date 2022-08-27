@@ -54,6 +54,7 @@
                 <button id="btncriar" type="submit" onclick="alterar(event)">Alterar</button>
             </form>
         </div>
+        <button onclick="testarrr()">Gerar qrCode</button>
         <div id="qrcode">
 
         </div>
@@ -77,15 +78,24 @@
     <!-- especial, gerador de qr code! -->
     <script src="scripts/qrcode.min.js"></script>
     <script>
-        let x = 10
-        new QRCode(document.getElementById('qrcode'),{
-            text: 'https://enzodante.github.io/programa-php/coisas-aulaBD/projeto03/cartao.html?a='+x,
-            width: 300,
-            height: 300,
-            colorDark: '#000000',
-            colorLight: '#ffffff',
-            correctLeve: QRCode.CorrectLevel.H
-        })
+        function testarrr(){
+            let nome = document.getElementById("card_nome").innerHTML
+            let email = document.getElementById("card_email").innerHTML
+            let cpf = document.getElementById("card_cpf").innerHTML
+            let idade = document.getElementById("card_idade").innerHTML
+            let salario = document.getElementById("card_salario").innerHTML
+            let serasa = document.getElementById("card_serasa").innerHTML
+
+            new QRCode(document.getElementById('qrcode'),{
+                text: 'https://enzodante.github.io/programa-php/coisas-aulaBD/projeto03/cartao.html?nome='+nome+'&email='+email+'&cpf='+cpf+'&idade='+idade+'&salario='+salario+'&serasa='+serasa,
+                width: 300,
+                height: 300,
+                colorDark: '#000000',
+                colorLight: '#ffffff',
+                correctLeve: QRCode.CorrectLevel.H
+            })
+        }
+        
     </script>
 </body>
 </html>
