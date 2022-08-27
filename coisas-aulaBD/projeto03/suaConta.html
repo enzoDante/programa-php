@@ -77,8 +77,14 @@
     <!-- especial, gerador de qr code! -->
     <script src="scripts/qrcode.min.js"></script>
     <script>
+        let x = 10
         new QRCode(document.getElementById('qrcode'),{
-            text: ''
+            text: 'https://enzodante.github.io/programa-php/coisas-aulaBD/projeto03/cartao.html?a='+x,
+            width: 300,
+            height: 300,
+            colorDark: '#000000',
+            colorLight: '#ffffff',
+            correctLeve: QRCode.CorrectLevel.H
         })
     </script>
 </body>

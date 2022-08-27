@@ -170,6 +170,33 @@ input:focus, textarea:focus{
 #dados{
     display: none;
 }
+/* para celular ao acessar qrCode */
+.cardcel{
+    background:linear-gradient( to bottom, #c39738, #deb761, #c39738);
+    /* background-color: blueviolet; */
+    width: 300px;
+    min-height: 400px;
+    margin: 30px;
+    display: block;
+    border: 2px solid rgba(255, 255, 255, 0.295);
+    border-radius: 15px;
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.534);
+    font-size: 1.1em;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    /* transition: linear 200ms; */
+}
+.cardcel .card-content{
+    padding: 20px;    
+    transform: translateZ(30px);
+}
+/* qr code */
+#qrcode{
+    display: block;
+    margin: auto;
+    width: 200px;
+}
+/* ========== */
 @media screen and (max-width: 900px){
     main{
         min-height: 850px;
@@ -191,5 +218,8 @@ input:focus, textarea:focus{
     #card:hover{
         transform: scale(1.01);
         box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.534);
+    }
+    .cardcel{
+        width: 100%;
     }
 }

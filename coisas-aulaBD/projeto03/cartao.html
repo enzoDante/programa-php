@@ -9,18 +9,9 @@
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body onload="carregar()">
-    <header>
-        <img src="imagens/card.png" alt="">
-        <h1>Crie sua conta</h1>
-    </header>
-    <nav>
-        <a href="suaConta.html" id="conta">Sua conta</a>
-        <a href="logar.html" id="sair">Logar</a>
-        <a href="https://www.serasa.com.br/score/" target="_blank">Serasa score</a>
-    </nav>
     <main>
         <div id="conteudo">
-            <div id="card" class="card">
+            <div class="card cardcel">
                 <div class="card-content">
                     <h2 id="card_nome">Nome</h2><br>
                     <p id="card_email">E-mail</p><br>
@@ -31,7 +22,7 @@
                     <p id="card_idade">Idade</p>|
                     <p id="card_salario">Salario</p>|
                     <p id="card_serasa">Serasa points</p>
-                </div>
+                </div>            
             </div>
         </div>
 
@@ -41,7 +32,7 @@
     <script src="scripts/vanilla-tilt.js"></script>
     <script>
         VanillaTilt.init(document.querySelector(".card"),{
-            max: 10,
+            max: 15,
             speed: 400,
             perspective: 1000,
             glare: true,
