@@ -11,6 +11,8 @@ for(var i=0; i<params.length; i++) {
     //Adicionar ao objeto criado antes
     paramArray[i] = param[1];
 }
+paramArray[0] = paramArray[0].replace("_", " ")
+paramArray[4] = paramArray[4].replace("_", " ")
 document.getElementById("card_nome").innerHTML = paramArray[0]
 document.getElementById("card_email").innerHTML = paramArray[1]
 document.getElementById("card_cpf").innerHTML = paramArray[2]

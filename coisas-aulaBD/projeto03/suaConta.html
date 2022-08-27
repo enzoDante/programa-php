@@ -80,10 +80,12 @@
     <script>
         function testarrr(){
             let nome = document.getElementById("card_nome").innerHTML
+            nome = nome.replace(" ", "_")
             let email = document.getElementById("card_email").innerHTML
             let cpf = document.getElementById("card_cpf").innerHTML
             let idade = document.getElementById("card_idade").innerHTML
             let salario = document.getElementById("card_salario").innerHTML
+            salario = salario.replace(" ", "_")
             let serasa = document.getElementById("card_serasa").innerHTML
 
             new QRCode(document.getElementById('qrcode'),{
