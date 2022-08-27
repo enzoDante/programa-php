@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sua conta</title>
     <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="style/style.css">
 </head>
 <body onload="carregar2()">
     <header>
@@ -54,7 +54,7 @@
                 <button id="btncriar" type="submit" onclick="alterar(event)">Alterar</button>
             </form>
         </div>
-        <button onclick="testarrr()">Gerar qrCode</button>
+        <button onclick="testarrr()" id="gerarqr">Gerar qrCode</button>
         <div id="qrcode">
 
         </div>
@@ -79,6 +79,7 @@
     <script src="scripts/qrcode.min.js"></script>
     <script>
         function testarrr(){
+            document.getElementById('qrcode').innerHTML = ''
             let nome = document.getElementById("card_nome").innerHTML
             nome = nome.replace(" ", "_")
             let email = document.getElementById("card_email").innerHTML
