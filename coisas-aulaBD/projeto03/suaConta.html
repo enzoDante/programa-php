@@ -54,6 +54,9 @@
                 <button id="btncriar" type="submit" onclick="alterar(event)">Alterar</button>
             </form>
         </div>
+        <div id="qrcode">
+
+        </div>
         
         <p id="dados"></p>
     </main>
@@ -69,6 +72,13 @@
             speed: 400,
             glare: true,
             "max-glare": 0.5,
+        })
+    </script>
+    <!-- especial, gerador de qr code! -->
+    <script src="scripts/qrcode.min.js"></script>
+    <script>
+        new QRCode(document.getElementById('qrcode'),{
+            text: ''
         })
     </script>
 </body>
