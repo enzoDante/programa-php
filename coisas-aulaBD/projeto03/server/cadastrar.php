@@ -38,14 +38,6 @@
         $_SESSION['idade'] = $idade;
         $_SESSION['salario'] = $salario;
         $_SESSION['serasa'] = $serasa;
-        
-        $stmt = $con->prepare("SELECT id_usuario WHERE cpf=?");
-        $stmt->bind_param("s", $cpf);
-        $stmt->execute();
-        $resultado = $stmt->get_result();
-        while($linha = $resultado->fetch_object()){
-            $_SESSION['id_usuario'] = $linha->id_usuario;
-        }
     }
     #inserir no banco o cadastro
     // echo "$nome<br>$email<br>$cpf<br>$idade<br>$salario<br>$serasa<br>$senha<br>";

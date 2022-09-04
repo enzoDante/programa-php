@@ -22,8 +22,8 @@
         }
     }
     if($msg == ''){
-        $stmt = $con->prepare("UPDATE usuario set nome=?,email=?,salario=?,serasa=? WHERE id_usuario=?");
-        $stmt->bind_param("ssssi", $nome, $email, $salario, $serasa, $_SESSION['id_usuario']);
+        $stmt = $con->prepare("UPDATE usuario set nome=?,email=?,salario=?,serasa=? WHERE email=?");
+        $stmt->bind_param("sssss", $nome, $email, $salario, $serasa, $_SESSION['email']);
         $stmt->execute();
         $_SESSION['nome'] = str_replace(" ", "-", $nome);
         $_SESSION['email'] = $email;

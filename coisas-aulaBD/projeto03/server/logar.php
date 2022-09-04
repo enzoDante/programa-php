@@ -12,7 +12,7 @@
     $resultado = $stmt->get_result();
     while($linha = $resultado->fetch_object()){        
         if(($linha->cpf == $cpf) && ($linha->senha == $senha)){
-            $_SESSION['id_usuario'] = $linha->id_usuario;
+            #$_SESSION['id_usuario'] = $linha->id_usuario;
             $_SESSION['nome'] = $linha->nome;
             $_SESSION['email'] = $linha->email;
             $_SESSION['cpf'] = $cpf;
