@@ -26,7 +26,7 @@ function carregar(){
     
 }
 //verifica os dados digitados
-function verificar(nome, email, cpf, idade, salario, pserasa, senha, senha2){
+function verificar(nome, email, cpf, idade, idadev, salario, pserasa, senha, senha2){
     if(nome.length < 4 || nome.indexOf(" ") <= 0){
         nomee()
         return false
@@ -39,7 +39,10 @@ function verificar(nome, email, cpf, idade, salario, pserasa, senha, senha2){
         ccpf()
         return false
     }
-    if(idade == ''){
+    let hoje = new Date()
+    let anosidade = hoje.getFullYear() - idadev.getFullYear()
+    console.log(anosidade)
+    if(idade == '' || anosidade < 18){
         console.log('entrou aq')
         document.getElementsByClassName("requerido")[3].style.display = 'block'
         document.getElementsByClassName("requerido")[3].innerHTML = 'Informe uma data corretamente'
@@ -72,7 +75,8 @@ function cadastrar(e){
     //=========
     cpf = document.getElementById("cpf").value 
     //========
-    let idade = document.getElementById("idade").value 
+    let idade = document.getElementById("idade").value
+    let idadev = new Date(idade)
     //==============
     salario = document.getElementById("salario").value
     //===========
@@ -86,7 +90,7 @@ function cadastrar(e){
     if(!box.checked)
         document.getElementsByClassName("requerido")[8].style.display = 'block'
     else{
-        let verifica = verificar(nome, email, cpf, idade, salario, pserasa, senha, senha2)
+        let verifica = verificar(nome, email, cpf, idade, idadev, salario, pserasa, senha, senha2)
         document.getElementsByClassName("requerido")[8].style.display = 'none'        
 
         // enviar para o php 
@@ -180,10 +184,11 @@ function digit2(num) {
     return num.toString().padStart(2, '0'); //se numero for 8, irá retornar 08
 }
 function cdata(){
-    let data = document.getElementById("idade").value 
+    let data = document.getElementById("idade").value
     data = new Date(data)
-
-    if(data.getDate() < 1 || data.getMonth() < 1 || data.getFullYear() < 1300){
+    let hoje = new Date()
+    let dia = hoje.getFullYear() - data.getFullYear()
+    if(data.getDate() < 1 || data.getMonth() < 1 || data.getFullYear() < 1300 || dia < 18 ){
         document.getElementsByClassName("requerido")[3].style.display = 'block'
         document.getElementsByClassName("requerido")[3].innerHTML = 'Informe uma data corretamente'
 

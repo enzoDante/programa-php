@@ -48,16 +48,22 @@ function carregar2(){
 function alterar(e){
     let nome = document.getElementById("inome").value 
     let email = document.getElementById("iemail").value
+    console.log(email)
     let salario = document.getElementById("salario").value
     let pserasa = document.getElementById("serasa").value
+    pserasa = parseInt(pserasa)
 
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() { 
         document.getElementById("dados").value = this.responseText;
 
         let existe = document.getElementById("dados").value
+        console.log(existe)
         if(existe == ''){
             window.location.href = 'suaConta.html'
+        }else{
+            document.getElementsByClassName('requerido')[1].style.display = 'block';
+            document.getElementsByClassName('requerido')[1].innerHTML = 'email existente'
         }
     }
     xhttp.open("POST", "server/alterar.php");

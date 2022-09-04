@@ -13,17 +13,17 @@
     if($email != $_SESSION['email']){
         $stmt = $con->prepare("SELECT * FROM usuario WHERE email=?");
         $stmt->bind_param("s", $email);
+        $stmt->execute();
         $resultado = $stmt->get_result();
         while($linha = $resultado->fetch_object()){
             if($linha->email == $email){
                 $msg = 'email';
-                break;
             }
         }
     }
     if($msg == ''){
-        $stmt = $con->prepare("UPDATE usuario set nome=?,email=?,salario=?,serasa=? WHERE email=?");
-        $stmt->bind_param("sssss", $nome, $email, $salario, $pserasa, $_SESSION['email']);
+        $stmt = $con->prepare("UPDATE usuario set nome=?,email=?,salario=?,serasa=? WHERE id_usuario=?");
+        $stmt->bind_param("ssssi", $nome, $email, $salario, $serasa, $_SESSION['id_usuario']);
         $stmt->execute();
         $_SESSION['nome'] = str_replace(" ", "-", $nome);
         $_SESSION['email'] = $email;
