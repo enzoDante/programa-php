@@ -1,0 +1,16 @@
+coisas q falta alterar!!!!!!!
+
+-criar a parte de alterar conta (mudar img de perfil, nome etc) (editar perfil)
+
+-página principal (pag_principal)
+
+-postver - ao clicar em comentários ou no título do postver (página daquele post em específico)
+
+-seguir/deixar de seguir (perfil, seguidores, seguindo)
+
+-buscar usuário (pag_busca)
+
+-comentários nos posts (poder remover eles tbm) (postver, comentar, deletarcomentario)
+
+======
+atenção nas tabelas e suas colunas!!!
