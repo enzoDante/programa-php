@@ -1,0 +1,127 @@
+@charset "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    background-color: rgb(252, 221, 221);
+}
+header{
+    min-width: 200px;
+    min-height: 50px;
+    padding: 20px;
+    background-color: #3e7bff;
+    color: white;
+    text-align: center;
+    font-weight: bolder;
+}
+nav{
+    min-width: 200px;
+    padding: 5px;
+    background-color: #3e7bff;
+    box-shadow: 3px 5px 6px #3161ca;
+    color: white;
+    overflow: hidden;
+}
+#navegador{
+    max-width: 1200px;
+    margin: auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    /*justify-content: center;
+    vertical-align: middle;
+    border: 1px solid black;
+    */
+}
+#nav{
+    display:  inline-block;
+    padding: 23px;
+    width: 95%;
+    text-align: center;
+    box-sizing: border-box;
+}
+#nav div{
+    display: inline-block;
+}
+#left{
+    float: left;
+}
+nav a{
+    text-decoration: none;
+    color: white;
+    font-size: 1.1em;
+    margin: 12px;
+    transition: linear 100ms;
+}
+nav a:hover{
+    border-bottom: 3px solid white;
+}
+
+#divimg{
+    width: 50px;
+}
+#perfila{
+    margin: auto;
+    width: 50px;
+    height: 50px;
+    display: block;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: linear 100ms;
+}
+#perfila img{
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);    
+}
+#perfila:hover{
+    border-bottom: none;
+    cursor: pointer;
+    filter: brightness(80%);
+}
+@media screen and (max-width: 700px){
+    #nav div, #nav div a{
+        display:  block;
+        margin: auto;      
+    }
+    #nav{
+        margin: auto;
+    }
+    #left{
+        float: none;
+        padding: 10px;
+    }
+    #nav div a{
+        padding: 15px;
+        background-color: #3161ca;
+        margin: 0 -39px 0 -39px;
+        font-size: 1.3em;
+        font-weight: bold;
+        border: 1px solid rgba(0, 0, 0, 0.192);
+        transition: linear 100ms;
+    }
+    #nav a:hover{
+        /*border-bottom: 3px solid white;*/
+        text-decoration: underline;
+        background-color: #2953ac;
+    }
+    #divimg{
+        display: none;
+    }
+}
+main{
+    min-width: 300px;
+    max-width: 1200px;
+    min-height: 500px;
+    margin: auto;
+    background-color: white;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 2px 2px 5px #0000005d;    
+}

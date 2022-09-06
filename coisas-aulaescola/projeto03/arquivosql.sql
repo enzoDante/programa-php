@@ -1,0 +1,169 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema uniPosts
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema uniPosts
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `uniPosts` DEFAULT CHARACTER SET utf8 ;
+USE `uniPosts` ;
+
+-- -----------------------------------------------------
+-- Table `uniPosts`.`tipoPost`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `uniPosts`.`tipoPost` (
+  `idtipoPost` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `tipo` VARCHAR(45) NULL,
+  PRIMARY KEY (`idtipoPost`),
+  UNIQUE INDEX `idtipoPost_UNIQUE` (`idtipoPost` ASC))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `uniPosts`.`post`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `uniPosts`.`post` (
+  `idpost` INT NOT NULL AUTO_INCREMENT,
+  `momento` DATETIME NULL,
+  `post` TEXT NULL,
+  `titulo` VARCHAR(45) NULL,
+  `subtitulo` VARCHAR(256) NULL,
+  `tipoPost_idtipoPost` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`idpost`),
+  INDEX `fk_post_tipoPost1_idx` (`tipoPost_idtipoPost` ASC),
+  CONSTRAINT `fk_post_tipoPost1`
+    FOREIGN KEY (`tipoPost_idtipoPost`)
+    REFERENCES `uniPosts`.`tipoPost` (`idtipoPost`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `uniPosts`.`turma`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `uniPosts`.`turma` (
+  `idturma` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `turma` VARCHAR(45) NULL,
+  `ano` MEDIUMINT NULL,
+  PRIMARY KEY (`idturma`),
+  UNIQUE INDEX `idturma_UNIQUE` (`idturma` ASC))
+ENGINE = InnoDB
+COMMENT = '	';
+
+
+-- -----------------------------------------------------
+-- Table `uniPosts`.`usuario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `uniPosts`.`usuario` (
+  `idusuario` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(45) NULL,
+  `email` VARCHAR(45) NULL,
+  `senha` VARCHAR(64) NULL,
+  `foto` VARCHAR(128) NULL,
+  `long` BIGINT NULL,
+  `dataNascimento` DATETIME NULL,
+  `turma_idturma` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`idusuario`),
+  INDEX `fk_usuario_turma1_idx` (`turma_idturma` ASC),
+  UNIQUE INDEX `idusuario_UNIQUE` (`idusuario` ASC),
+  CONSTRAINT `fk_usuario_turma1`
+    FOREIGN KEY (`turma_idturma`)
+    REFERENCES `uniPosts`.`turma` (`idturma`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `uniPosts`.`autoresPost`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `uniPosts`.`autoresPost` (
+  `usuario_idusuario` INT UNSIGNED NOT NULL,
+  `post_idpost` INT NOT NULL,
+  INDEX `fk_autoresPost_usuario1_idx` (`usuario_idusuario` ASC),
+  INDEX `fk_autoresPost_post1_idx` (`post_idpost` ASC),
+  CONSTRAINT `fk_autoresPost_usuario1`
+    FOREIGN KEY (`usuario_idusuario`)
+    REFERENCES `uniPosts`.`usuario` (`idusuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_autoresPost_post1`
+    FOREIGN KEY (`post_idpost`)
+    REFERENCES `uniPosts`.`post` (`idpost`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `uniPosts`.`comentario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `uniPosts`.`comentario` (
+  `idcomentario` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `comentario` VARCHAR(45) NULL,
+  `nota` TINYINT NULL,
+  `post_idpost` INT NOT NULL,
+  `usuario_idusuario` INT UNSIGNED NOT NULL,
+  PRIMARY KEY (`idcomentario`),
+  UNIQUE INDEX `idcomentario_UNIQUE` (`idcomentario` ASC),
+  INDEX `fk_comentario_post1_idx` (`post_idpost` ASC),
+  INDEX `fk_comentario_usuario1_idx` (`usuario_idusuario` ASC),
+  CONSTRAINT `fk_comentario_post1`
+    FOREIGN KEY (`post_idpost`)
+    REFERENCES `uniPosts`.`post` (`idpost`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_comentario_usuario1`
+    FOREIGN KEY (`usuario_idusuario`)
+    REFERENCES `uniPosts`.`usuario` (`idusuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `uniPosts`.`post_fotos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `uniPosts`.`post_fotos` (
+  `post_idpost` INT NOT NULL,
+  `foto` VARCHAR(45) NULL,
+  INDEX `fk_post_fotos_post1_idx` (`post_idpost` ASC),
+  CONSTRAINT `fk_post_fotos_post1`
+    FOREIGN KEY (`post_idpost`)
+    REFERENCES `uniPosts`.`post` (`idpost`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `uniPosts`.`seguidor`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `uniPosts`.`seguidor` (
+  `usuario_idusuario_Seguido` INT UNSIGNED NOT NULL,
+  `usuario_idusuario_Seguidor` INT UNSIGNED NOT NULL,
+  INDEX `fk_seguidor_usuario1_idx` (`usuario_idusuario_Seguido` ASC),
+  INDEX `fk_seguidor_usuario2_idx` (`usuario_idusuario_Seguidor` ASC),
+  CONSTRAINT `fk_seguidor_usuario1`
+    FOREIGN KEY (`usuario_idusuario_Seguido`)
+    REFERENCES `uniPosts`.`usuario` (`idusuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_seguidor_usuario2`
+    FOREIGN KEY (`usuario_idusuario_Seguidor`)
+    REFERENCES `uniPosts`.`usuario` (`idusuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

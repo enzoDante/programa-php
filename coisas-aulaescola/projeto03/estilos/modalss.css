@@ -1,0 +1,201 @@
+@charset "UTF-8";
+/*=============modal==================*/
+.fieldset{
+    max-width: 450px;
+    margin: auto;
+    padding: 15px;
+    margin-bottom: 25px;
+}
+input[type=text], input[type=password], input[type=number], input[type=date], select, option, input[type=email], textarea {
+    width: 100%;
+    font-size: 1.1em;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 2px solid transparent;
+    outline: 1px solid gray;
+    box-sizing: border-box;
+    border-radius: 10px;
+    transition: linear 100ms;
+}
+input:focus, textarea:focus{
+    border-style: solid;
+    border-color: #126ef8;
+    outline: #126ef8;
+
+}
+.imgcontainer {
+    text-align: center;
+    margin: 5px 0 0 0;
+    height: 50px;
+    position: relative;
+}
+.close {
+    position: absolute;
+    left: 25px;
+    top: 5px;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+#textoeditar{
+    position: absolute;
+    left: 85px;
+    top: 15px;
+}
+#btnsalvar{
+    position: absolute;
+    top: 5px;
+    right: 25px;
+    font-size: 1.1em;
+    padding: 7px;
+    font-weight: bold;
+    background-color: white;
+    border-radius: 20px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    transition: linear 200ms;
+}
+#btnsalvar:hover{
+    cursor: pointer;
+    filter: brightness(50%)
+}
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 0px;
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 2% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */    
+    border-radius: 20px;
+    width: 600px; /* Could be more or less, depending on screen size */
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+@media screen and (max-width: 700px){
+    .modal-content{
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        border-radius: 0px;
+    }
+}
+/* Change styles for span and cancel button on extra small screens 
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}*/
+
+.emcimaimg:hover{
+    cursor: pointer;
+    filter: brightness(50%)
+}
+
+textarea{
+    resize: none;
+}
+
+.fundoaltura{
+    max-height: 200px;
+    max-width: 100%;
+    padding: 1px;
+    margin: 0 -1px 0px -1px;
+}
+/*=========================================*/
+/*===========img post==================*/
+
+#postarimg{
+    width: 400px;
+    height: 300px;
+    display: block;
+    position: relative;
+    background-color: white;
+    margin: auto;
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+    transition: linear 200ms;
+    box-sizing: border-box;
+    border: 3px solid white;
+}
+#blockp{
+    width: 400px;
+    height: 50px;
+    display: block;
+    position: relative;
+    background-color: white;
+    margin: auto;
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+    transition: linear 200ms;
+    box-sizing: border-box;
+    border: 3px solid white;
+}
+#postarimg img{
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);  
+}
+#postarimg img:hover{
+    cursor: pointer;
+}
+/*==================*/
+#publicar{
+    padding: 20px;
+    margin-bottom: 30px;
+}
+#publicar button{
+    float: right;
+    text-decoration: none;
+    border: 1px solid black;
+    color: black;
+    background-color: white;
+    font-size: 1.1em;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 15px;
+    transition: linear 200ms;
+}
+#publicar button:hover{
+    cursor: pointer;
+    filter: brightness(50%)
+}
