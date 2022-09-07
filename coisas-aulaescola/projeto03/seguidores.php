@@ -38,8 +38,6 @@
                 <div>
                     <a href="pag_principal.php">Home</a>
                     <a href="pag_busca.php">Buscar</a>
-                    <a href="chat.php?id=">Chat</a>
-                    <a href="#">Chat em Grupo</a>
                 </div>
             </div>
             <?php if(isset($_SESSION['id_unico'])): ?>
@@ -60,14 +58,13 @@
             </div>
             <div id="comentarios">
                 <?php
-                    $b = 'n';
-                    $stmt = $conn->prepare("SELECT * FROM seguidores WHERE id_seguindo=? AND bloquear=?");
-                    $stmt->bind_param("ss", $id, $b);
+                    $stmt = $conn->prepare("SELECT * FROM seguidor WHERE usuario_idusuario_Seguido=?");
+                    $stmt->bind_param("i", $id);
                     $stmt->execute();
                     $resultado = $stmt->get_result();
                     while($linha = $resultado->fetch_object()){
-                        $stmt2 = $conn->prepare("SELECT id_unico,nome,imgperfil FROM usuario WHERE id_unico=?");
-                        $stmt2->bind_param("s", $linha->id_seguir);
+                        $valorr = $linha->usuario_idusuario_Seguidor;
+                        $stmt2 = $conn->prepare("SELECT idusuario,nome,foto,turma_idturma,idturma,turma,ano FROM usuario, turma WHERE turma_idturma=idturma AND idusuario=$valorr ORDER BY nome");
                         $stmt2->execute();
                         $resultado2 = $stmt2->get_result();
                         while($linha2 = $resultado2->fetch_object()){
@@ -75,9 +72,11 @@
                                 <div id='publicar' class='borda'>
                                     <div id='navegador'>
                                         <span id='perfila'>
-                                            <a href='perfil.php?id=$linha2->id_unico'><img src='$linha2->imgperfil'></a>
+                                            <a href='perfil.php?id=$linha2->idusuario'><img src='$linha2->foto'></a>
                                         </span>
-                                        <a href='perfil.php?id=$linha2->id_unico'>$linha2->nome</a>
+                                        <a href='perfil.php?id=$linha2->idusuario'>$linha2->nome</a>
+                                        <p>Turma: $linha2->ano $linha2->turma</p>
+                                        <a href='perfil.php?id=$linha2->idusuario'>Seguir</a>
                                     </div>
                                 </div>
                             ";

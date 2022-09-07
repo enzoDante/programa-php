@@ -180,6 +180,10 @@ input[type="file"]{
     cursor: pointer;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.753);
 }
+.item h1{
+    height: 42px;
+    overflow: hidden;
+}
 .contpubli{
     height: 5%;
     padding: 20px;
@@ -213,6 +217,55 @@ input[type="file"]{
     cursor: pointer;
     text-decoration: underline;
 }
+/* pag principal */
+#conteudo2{
+    display: grid;
+    grid-template-columns: 400px 400px 400px;
+    min-width: 200px;
+    max-width: 1200px;
+    margin: auto;
+    margin-bottom: 10vh;
+    min-height: 400px;  
+    justify-content: center;
+    padding: 20px;
+}
+.item2{
+    padding: 5px;
+    background-color: #a7a7a7b4;
+    margin: auto;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+    width: 350px;
+    height: 600px;
+    border-radius: 20px;
+    transition: 200ms;
+    box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.555);
+    overflow: hidden;
+    box-sizing: border-box;
+    transition: linear 200ms;
+}
+.item2:hover{
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.753);
+}
+.item2 h1{
+    height: 42px;
+    overflow: hidden;
+}
+#conteudo2{
+    grid-template-columns: 1fr;
+    justify-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 30px;
+}
+.item2{
+    width: 60%;
+    margin-bottom: 30px;
+}
+/* acaba aq */
+
 @media screen and (max-width: 1200px) {
     #conteudo{
         grid-template-columns: 1fr;

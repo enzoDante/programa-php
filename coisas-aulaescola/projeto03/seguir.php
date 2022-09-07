@@ -36,8 +36,6 @@
                 <div>
                     <a href="pag_principal.php">Home</a>
                     <a href="pag_busca.php">Buscar</a>
-                    <a href="chat.php?id=">Chat</a>
-                    <a href="#">Chat em Grupo</a>
                     <!--<a href="#">outros</a>-->
                 </div>
             </div>
@@ -60,24 +58,23 @@
             <?php
                 $id_pessoa = $_POST['id'];
                 $b = '';
-                $stmt = $conn->prepare("SELECT * FROM seguidores WHERE id_seguir=? AND id_seguindo=?");
+                $stmt = $conn->prepare("SELECT * FROM seguidor WHERE usuario_idusuario_Seguidor=? AND usuario_idusuario_Seguido=?");
                 $stmt->bind_param("ss", $_SESSION['id_unico'], $id_pessoa);
                 $stmt->execute();
 
                 $verificar = '';
                 $resultado = $stmt->get_result();
                 while($linha = $resultado->fetch_object()){
-                    $verificar = $linha->id_seguindo;
+                    $verificar = $linha->usuario_idusuario_Seguido;
                 }
                 if(($verificar == '') && ($verificar != $id_pessoa)){
-                    $b = 'n';
-                    $stmt = $conn->prepare("INSERT INTO seguidores (id_seguir,id_seguindo,bloquear) VALUES(?,?,?)");
-                    $stmt->bind_param("sss", $_SESSION['id_unico'], $id_pessoa, $b);
+                    $stmt = $conn->prepare("INSERT INTO seguidor (usuario_idusuario_Seguidor,usuario_idusuario_Seguido) VALUES(?,?)");
+                    $stmt->bind_param("ss", $_SESSION['id_unico'], $id_pessoa);
                     $stmt->execute();
                     header("Location: perfil.php?id=$id_pessoa");
                 }else{
                     #==========remover follow=============
-                    $stmt = $conn->prepare("DELETE FROM seguidores WHERE id_seguir=? AND id_seguindo=?");
+                    $stmt = $conn->prepare("DELETE FROM seguidor WHERE usuario_idusuario_seguidor=? AND usuario_idusuario_seguido=?");
                     $stmt->bind_param("ss", $_SESSION['id_unico'], $id_pessoa);
                     $stmt->execute();
                     header("Location: perfil.php?id=$id_pessoa");

@@ -36,8 +36,6 @@
                 <div>
                     <a href="pag_principal.php">Home</a>
                     <a href="#">Buscar</a>
-                    <a href="chat.php?id=">Chat</a>
-                    <a href="#">Chat em Grupo</a>
                 </div>
             </div>
             <?php if(isset($_SESSION['id_unico'])): ?>
@@ -61,16 +59,27 @@
             </div>
             <div id="comentarios">
                 <?php 
-                    $stmt = $conn->prepare("SELECT id_unico,nome,imgperfil FROM usuario ORDER BY nome");
+                    // $stmt = $conn->prepare("SELECT * FROM turma, usuario WHERE turma_idturma=idturma AND idusuario=$id");
+                    // $stmt->execute();
+                    // $resultado = $stmt->get_result();
+                    // while($linha = $resultado->fetch_object()){
+                    //     $idd = $linha->idturma;
+                    //     echo "<option value='$idd'>$linha->ano  $linha->turma</option>";
+                    // }
+
+
+                    $stmt = $conn->prepare("SELECT idusuario,nome,foto,turma_idturma,idturma,turma,ano FROM usuario, turma WHERE turma_idturma=idturma ORDER BY nome");
                     $stmt->execute();
                     $resultado = $stmt->get_result();
                     while($linha = $resultado->fetch_object()){
                         $div = "
                             <div id='publicar' class='borda'>
                                 <span id='perfila'>
-                                    <a href='perfil.php?id=$linha->id_unico'><img src='$linha->imgperfil' alt=''></a>
+                                    <a href='perfil.php?id=$linha->idusuario'><img src='$linha->foto' alt=''></a>
                                 </span>
-                                <a href='perfil.php?id=$linha->id_unico' class='nomelink'>$linha->nome</a>
+                                <a href='perfil.php?id=$linha->idusuario' class='nomelink'>$linha->nome</a>
+                                <p>Turma: $linha->ano $linha->turma</p>
+                                <a href='perfil.php?id=$linha->idusuario'>Seguir</a>
                             </div>
                         ";
                         echo $div;

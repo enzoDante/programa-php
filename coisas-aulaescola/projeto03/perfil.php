@@ -21,7 +21,7 @@
     <title>Perfil</title>
     <link rel="shortcut icon" href="../imagens/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="estilos/style.css">
-    <link rel="stylesheet" href="estilos/perfil1.css">
+    <link rel="stylesheet" href="estilos/perfill1.css">
     <link rel="stylesheet" href="estilos/modalss.css">
 </head>
 <body>
@@ -69,6 +69,7 @@
                     $resultado = $stmt->get_result();
                     while($linha = $resultado->fetch_object()){
                         $nome = $linha->nome;
+                        $email = $linha->email;
                         $imgp = $linha->foto;
                     }
                 ?>
@@ -112,7 +113,7 @@
                     $stmt->bind_param("ss", $_SESSION['id_unico'], $id);
                     $stmt->execute();
                     $seg = 'Seguir';
-                    #===================bloquear======================
+                    #===================mostrar botão de seguir/deixar de seguir======================
                     $resultado = $stmt->get_result();
                     $verificar = "";
                     while($linha = $resultado->fetch_object()){
@@ -152,10 +153,22 @@
                             <input type="text" name="nome" id="inome" value="<?php echo $nome; ?>">
                         </div>
                         <div class="fieldset">
+                            <label for="iemail"><strong>Nome</strong></label>
+                            <input type="text" name="email" id="iemail" value="<?php echo $email; ?>">
+                        </div>
+                        <div class="fieldset">
                             <label for="iturma"><strong>Turma</strong></label>
                             <select name="turma" id="iturma">
                                 <?php
-                                    $stmt = $conn->prepare("SELECT * FROM turma");
+                                    $stmt = $conn->prepare("SELECT * FROM turma, usuario WHERE turma_idturma=idturma AND idusuario=$id");
+                                    $stmt->execute();
+                                    $resultado = $stmt->get_result();
+                                    while($linha = $resultado->fetch_object()){
+                                        $idd = $linha->idturma;
+                                        echo "<option value='$idd'>$linha->ano  $linha->turma</option>";
+                                    }
+
+                                    $stmt = $conn->prepare("SELECT * FROM turma ORDER BY ano DESC, idturma ASC");
                                     $stmt->execute();
                                     $resultado = $stmt->get_result();
                                     while($linha = $resultado->fetch_object()){
@@ -263,20 +276,6 @@
                             ";
                             echo $div;
                         }
-
-
-                        // $div = "
-                        //     <div class='item'>
-                        //         <h1>$linha->titulo</h1>
-                        //         <div class='contpubli'><p>$linha->post</p>
-                        //         </div>
-                        //         <div class='imgpubli'>
-                        //             <img src=''>
-                        //         </div>
-                        //         <a href='postver.php?id=$linha->idpost' class='comment'>Comentários</a>
-                        //     </div>
-                        // ";
-                        // echo $div;
                     }
                 ?>                
             </div>

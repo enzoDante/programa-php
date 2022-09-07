@@ -39,8 +39,6 @@
                 <div>
                     <a href="pag_principal.php">Home</a>
                     <a href="pag_busca.php">Buscar</a>
-                    <a href="chat.php?id=">Chat</a>
-                    <a href="#">Chat em Grupo</a>
                 </div>
             </div>
             <?php if(isset($_SESSION['id_unico'])): ?>
@@ -60,54 +58,32 @@
                 date_default_timezone_set('America/Sao_Paulo');
                 if(isset($_POST['nome'])){
                     $nome = strip_tags(str_replace(";","_", $_POST['nome']));
-                    $bio = strip_tags(str_replace(";","_", $_POST['bio']));
+                    $email = strip_tags(str_replace(";","_", $_POST['email']));
+                    $turma = $_POST['turma'];
 
-                    if($_SESSION['nome'] != $nome){
-                        $stmt = $conn->prepare("SELECT * FROM usuario WHERE nome=?");
-                        $stmt->bind_param("s", $nome);
+                    if($_SESSION['email'] != $email){
+                        $stmt = $conn->prepare("SELECT * FROM usuario WHERE email=?");
+                        $stmt->bind_param("s", $email);
                         $stmt->execute();
     
                         $resultado = $stmt->get_result();
                         while($linha = $resultado->fetch_object()){
-                            $verificar = $linha->nome;
+                            $verificar = $linha->email;
                         }
-                        if($verificar == $nome){
-                            die("<p>Nome existente, digite outro nome!</p>");
+                        if($verificar == $email){
+                            die("<p>Email existente, digite outro email!</p>");
                         }
                     }
                     #===========
                     $idd = $_SESSION['id_unico'];
-                    $stmt = $conn->prepare("UPDATE usuario SET nome=?, bio=? WHERE id_unico=?");
-                    $stmt->bind_param("sss", $nome, $bio, $idd);
+                    $stmt = $conn->prepare("UPDATE usuario SET nome=?, email=?, turma_idturma=? WHERE idusuario=?");
+                    $stmt->bind_param("sssi", $nome, $email, $turma, $idd);
                     $stmt->execute();
                     $_SESSION['nome'] = $nome;
-                    $_SESSION['bio'] = $bio;
+                    $_SESSION['email'] = $email;
 
                     #=========================
                     $pasta = "imagens/";
-                    $imagem_nome = "";
-                    if($_FILES["imgf"]['error'] != 4){
-                        $extensao = pathinfo($_FILES['imgf']['name']);
-                        $extensao = ".".$extensao['extension'];
-
-                        if ( strstr ( '.jpg;.jpeg;.gif;.png', $extensao ) ){
-                            $imagem_nome = $pasta.date("Y-m-d-H-i-s")."_fundo".$extensao;
-
-                            if(move_uploaded_file($_FILES['imgf']['tmp_name'], $imagem_nome)){
-                                echo "deu certo";
-                                if(file_exists($_SESSION['imgfundo'])){
-                                    unlink($_SESSION['imgfundo']);
-                                }
-                            }else{
-                                echo "<p>não foi possível alterar a imagem de fundo!</p>";
-                            }
-
-                        }else{
-                            die("<h3>A imagem de fundo deve ser dos formatos png, jpg ou jpeg</h3>");
-                        }
-                    }else{
-                        $imagem_nome = $_SESSION['imgfundo'];
-                    }
                     #================
                     $imagem_nome2 = "";
                     if($_FILES["imgp"]['error'] != 4){
@@ -133,11 +109,10 @@
                         $imagem_nome2 = $_SESSION['imgperfil'];
                     }
                     #=====
-                    $stmt = $conn->prepare("UPDATE usuario SET imgfundo=?, imgperfil=? WHERE id_unico=?");
-                    $stmt->bind_param("sss", $imagem_nome, $imagem_nome2, $idd);
+                    $stmt = $conn->prepare("UPDATE usuario SET foto=? WHERE idusuario=?");
+                    $stmt->bind_param("ss", $imagem_nome2, $idd);
                     $stmt->execute();
                     $_SESSION['imgperfil'] = $imagem_nome2;
-                    $_SESSION['imgfundo'] = $imagem_nome;
                     header("Location: perfil.php?id=$idd");
                 }
             
