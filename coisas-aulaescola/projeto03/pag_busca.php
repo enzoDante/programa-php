@@ -36,6 +36,8 @@
                 <div>
                     <a href="pag_principal.php">Home</a>
                     <a href="#">Buscar</a>
+                    <a href="criar_turma.php">Criar turma</a>
+                    <a href="criar_tipoPost.php">Criar tipo post</a>
                 </div>
             </div>
             <?php if(isset($_SESSION['id_unico'])): ?>
@@ -59,15 +61,6 @@
             </div>
             <div id="comentarios">
                 <?php 
-                    // $stmt = $conn->prepare("SELECT * FROM turma, usuario WHERE turma_idturma=idturma AND idusuario=$id");
-                    // $stmt->execute();
-                    // $resultado = $stmt->get_result();
-                    // while($linha = $resultado->fetch_object()){
-                    //     $idd = $linha->idturma;
-                    //     echo "<option value='$idd'>$linha->ano  $linha->turma</option>";
-                    // }
-
-
                     $stmt = $conn->prepare("SELECT idusuario,nome,foto,turma_idturma,idturma,turma,ano FROM usuario, turma WHERE turma_idturma=idturma ORDER BY nome");
                     $stmt->execute();
                     $resultado = $stmt->get_result();

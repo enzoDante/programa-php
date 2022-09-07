@@ -36,6 +36,8 @@
                 <div>
                     <a href="pag_principal.php">Home</a>
                     <a href="pag_busca.php">Buscar</a>
+                    <a href="criar_turma.php">Criar turma</a>
+                    <a href="criar_tipoPost.php">Criar tipo post</a>
                 </div>
             </div>
             <?php if(isset($_SESSION['id_unico'])): ?>
@@ -108,112 +110,49 @@
         <?php
             if(isset($_SESSION['id_unico'])){
                 $div = "";
-                $stmt = $conn->prepare("SELECT * FROM seguidor WHERE usuario_idusuario_Seguidor=?");
+                $stmt = $conn->prepare("SELECT * FROM seguidor,autorespost,usuario,post WHERE usuario_idusuario_Seguidor=? AND idusuario=usuario_idusuario_Seguido AND usuario_idusuario=usuario_idusuario_Seguido AND idpost=post_idpost ORDER BY post_idpost DESC");
                 $stmt->bind_param("i", $_SESSION['id_unico']);
                 $stmt->execute();
                 $resultado = $stmt->get_result();
                 while($linha = $resultado->fetch_object()){
-                    #$stmt2 = $conn->prepare("SELECT * FROM autorespost,usuario WHERE usuario_idusuario=? AND idusuario=? ORDER BY post_idpost DESC");
-                    $stmt2 = $conn->prepare("SELECT * FROM autorespost,usuario,post WHERE usuario_idusuario=? AND idusuario=? AND idpost=post_idpost ORDER BY idpost DESC");
-                    $stmt2->bind_param("ii", $linha->usuario_idusuario_Seguido, $linha->usuario_idusuario_Seguido);
+                    
+                    $stmt2 = $conn->prepare("SELECT * FROM post WHERE idpost=?");
+                    $stmt2->bind_param("i", $linha->post_idpost);
                     $stmt2->execute();
                     $resultado2 = $stmt2->get_result();
                     while($linha2 = $resultado2->fetch_object()){
-
-                        $stmt3 = $conn->prepare("SELECT * FROM post WHERE idpost=?");
-                        $stmt3->bind_param("i", $linha2->post_idpost);
-                        $stmt3->execute();
-                        $resultado3 = $stmt3->get_result();
+                        $img1 = '';
+                        $stmt = $conn->prepare("SELECT * FROM post_fotos WHERE post_idpost=? ORDER BY foto ASC");
+                        $stmt->bind_param("i", $linha->post_idpost);
+                        $stmt->execute();
+                        $resultado3 = $stmt->get_result();
                         while($linha3 = $resultado3->fetch_object()){
-
-                            $img1 = '';
-                            $stmt = $conn->prepare("SELECT * FROM post_fotos WHERE post_idpost=? ORDER BY foto ASC");
-                            $stmt->bind_param("i", $linha2->post_idpost);
-                            $stmt->execute();
-                            $resultado4 = $stmt->get_result();
-                            while($linha4 = $resultado4->fetch_object()){
-                                $img1 = $linha4->foto;                               
-                            }
-
-                            //mostrando o post
-                            $div = "
-                                <div class='item2'>
-                                    <a href='perfil.php?id=$linha2->idusuario'><strong>$linha2->nome</strong></a>
-                                    <a href='postver.php?id=$linha3->idpost'><h1>$linha3->titulo</h1></a>
-                                    <div class='contpubli'><p>$linha3->post</p>
-                                    </div>
-                                    <div class='imgpubli'>
-                                        <img src='$img1'>
-                                    </div>
-                                    <a href='postver.php?id=$linha3->idpost' class='comment'>Comentários</a>
-                                </div>
-                                
-                            ";
-                            echo $div;
+                            if($img1 == '')
+                                $img1 = $linha3->foto;                               
                         }
+                        $dia = new DateTime($linha->momento);
+                        $dia = $dia->format('Y/m/d');
+                        $div = "
+                            <div class='item2'>
+                                <div id='divimg'>
+                                    <a href='perfil.php?id=$linha->idusuario' id='perfila'><img src='$linha->foto'></a>
+                                </div>
+                                <a href='perfil.php?id=$linha->idusuario'><h1><strong>$linha->nome</strong></h1></a>
+                                <a href='postver.php?id=$linha2->idpost'><h2>$linha2->titulo</h2></a>
+                                <div class='contpubli'><p>$linha2->post</p>
+                                </div>
+                                <div class='imgpubli'>
+                                    <img src='$img1'>
+                                </div>
+                                <a>$dia</a>
+                                <a href='postver.php?id=$linha2->idpost' class='comment'>Comentários</a>
+                            </div>
+                            
+                        ";
+                        echo $div;
                     }
                     
-                }
-
-
-
-
-                // $stmt = $conn->prepare("SELECT * FROM autorespost,usuario,seguidor WHERE usuario_idusuario=usuario_idusuario_Seguido AND usuario_idusuario_Seguidor={$_SESSION['id_unico']} ORDER BY post_idpost DESC");
-                // #$stmt->bind_param("i", $id);
-                // $stmt->execute();
-                
-                // $resultado = $stmt->get_result();
-                // while($linha = $resultado->fetch_object()){
-
-                //     $stmt = $conn->prepare("SELECT * FROM post WHERE idpost=?");
-                //     $stmt->bind_param("i", $linha->post_idpost);
-                //     $stmt->execute();
-                //     $resultado2 = $stmt->get_result();
-                //     while($linha2 = $resultado2->fetch_object()){
-
-                //         $img1 = '';
-                //         $stmt = $conn->prepare("SELECT * FROM post_fotos WHERE post_idpost=? ORDER BY foto ASC");
-                //         $stmt->bind_param("i", $linha->post_idpost);
-                //         $stmt->execute();
-                //         $resultado3 = $stmt->get_result();
-                //         while($linha3 = $resultado3->fetch_object()){
-                //             $img1 = $linha3->foto;                               
-                //         }
-
-                //         //mostrando o post
-                //         $div = "
-                //             <div class='item2'>
-                //                 <a href='perfil.php?id=$linha->idusuario'><strong>$linha->nome</strong></a>
-                //                 <a href='postver.php?id=$linha2->idpost'><h1>$linha2->titulo</h1></a>
-                //                 <div class='contpubli'><p>$linha2->post</p>
-                //                 </div>
-                //                 <div class='imgpubli'>
-                //                     <img src='$img1'>
-                //                 </div>
-                //                 <a href='postver.php?id=$linha2->idpost' class='comment'>Comentários</a>
-                //             </div>
-                            
-                //             ";
-                //         // $div = "
-                //         // <div id='postagem' class='paginaprincipal'>
-                //         //     <div class='imgusuario'>
-                //         //         <span>
-                //         //             <a href='perfil.php?id=$linha->idusuario'><img src='$linha->foto'></a>
-                //         //         </span>
-                //         //         <a href='perfil.php?id=$linha->idusuario'>$linha->nome</a>
-                //         //     </div>
-                //         //     <a href='postver.php?id=$linha2->idpost'><h1>$linha2->titulo</h1></a>
-                //         //     <p>$linha2->post</p>
-                //         //     <div class='imagempublicada'>
-                //         //         <img src='$img1'>
-                //         //     </div>
-                //         //     <a href='postver.php?id=$linha2->idpost' class='comment'>Comentários</a>
-                //         // </div>
-                        
-                //         // ";                        
-                //         echo $div;
-                //     }
-                // }
+                }                
             }
         ?>
         </div>

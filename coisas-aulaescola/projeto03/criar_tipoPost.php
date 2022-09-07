@@ -37,6 +37,8 @@
                 <div>
                     <a href="pag_principal.php">Home</a>
                     <a href="pag_busca.php">Buscar</a>
+                    <a href="criar_turma.php">Criar turma</a>
+                    <a href="criar_tipoPost.php">Criar tipo post</a>
                 </div>
             </div>
             <?php if(isset($_SESSION['id_unico'])): ?>

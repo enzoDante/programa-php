@@ -37,8 +37,8 @@
                 <div>
                     <a href="pag_principal.php">Home</a>
                     <a href="pag_busca.php">Buscar</a>
-                    <a href="chat.php?id=">Chat</a>
-                    <a href="#">Chat em Grupo</a>
+                    <a href="criar_turma.php">Criar turma</a>
+                    <a href="criar_tipoPost.php">Criar tipo post</a>
                     <!--<a href="#">outros</a>-->
                 </div>
             </div>

@@ -1,0 +1,61 @@
+codigos q usei mas usei outro melhor
+
+
+
+
+// $stmt = $conn->prepare("SELECT * FROM autorespost,usuario,seguidor WHERE usuario_idusuario=usuario_idusuario_Seguido AND usuario_idusuario_Seguidor={$_SESSION['id_unico']} ORDER BY post_idpost DESC");
+                // #$stmt->bind_param("i", $id);
+                // $stmt->execute();
+                
+                // $resultado = $stmt->get_result();
+                // while($linha = $resultado->fetch_object()){
+
+                //     $stmt = $conn->prepare("SELECT * FROM post WHERE idpost=?");
+                //     $stmt->bind_param("i", $linha->post_idpost);
+                //     $stmt->execute();
+                //     $resultado2 = $stmt->get_result();
+                //     while($linha2 = $resultado2->fetch_object()){
+
+                //         $img1 = '';
+                //         $stmt = $conn->prepare("SELECT * FROM post_fotos WHERE post_idpost=? ORDER BY foto ASC");
+                //         $stmt->bind_param("i", $linha->post_idpost);
+                //         $stmt->execute();
+                //         $resultado3 = $stmt->get_result();
+                //         while($linha3 = $resultado3->fetch_object()){
+                //             $img1 = $linha3->foto;                               
+                //         }
+
+                //         //mostrando o post
+                //         $div = "
+                //             <div class='item2'>
+                //                 <a href='perfil.php?id=$linha->idusuario'><strong>$linha->nome</strong></a>
+                //                 <a href='postver.php?id=$linha2->idpost'><h1>$linha2->titulo</h1></a>
+                //                 <div class='contpubli'><p>$linha2->post</p>
+                //                 </div>
+                //                 <div class='imgpubli'>
+                //                     <img src='$img1'>
+                //                 </div>
+                //                 <a href='postver.php?id=$linha2->idpost' class='comment'>Comentários</a>
+                //             </div>
+                            
+                //             ";
+                //         // $div = "
+                //         // <div id='postagem' class='paginaprincipal'>
+                //         //     <div class='imgusuario'>
+                //         //         <span>
+                //         //             <a href='perfil.php?id=$linha->idusuario'><img src='$linha->foto'></a>
+                //         //         </span>
+                //         //         <a href='perfil.php?id=$linha->idusuario'>$linha->nome</a>
+                //         //     </div>
+                //         //     <a href='postver.php?id=$linha2->idpost'><h1>$linha2->titulo</h1></a>
+                //         //     <p>$linha2->post</p>
+                //         //     <div class='imagempublicada'>
+                //         //         <img src='$img1'>
+                //         //     </div>
+                //         //     <a href='postver.php?id=$linha2->idpost' class='comment'>Comentários</a>
+                //         // </div>
+                        
+                //         // ";                        
+                //         echo $div;
+                //     }
+                // }

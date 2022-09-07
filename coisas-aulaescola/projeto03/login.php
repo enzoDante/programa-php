@@ -19,7 +19,7 @@
     <title>Logar</title>
     <link rel="shortcut icon" href="../imagens/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="estilos/style.css">
-    <link rel="stylesheet" href="estilos/modal.css">
+    <link rel="stylesheet" href="estilos/modalss.css">
     <link rel="stylesheet" href="estilos/criar_logar.css">
 </head>
 <body>
@@ -35,8 +35,8 @@
                 <div>
                     <a href="pag_principal.php">Home</a>
                     <a href="pag_busca.php">Buscar</a>
-                    <a href="chat.php?id=">Chat</a>
-                    <a href="#">Chat em Grupo</a>
+                    <a href="criar_turma.php">Criar turma</a>
+                    <a href="criar_tipoPost.php">Criar tipo post</a>
                 </div>
             </div>
             <?php if(isset($_SESSION['id_unico'])): ?>

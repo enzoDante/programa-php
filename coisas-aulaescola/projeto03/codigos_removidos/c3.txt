@@ -1,0 +1,40 @@
+codigos q usei mas usei outro melhor
+
+/*$stmt2 = $conn->prepare("SELECT * FROM autorespost,usuario,post WHERE usuario_idusuario=? AND idusuario=? AND idpost=post_idpost ORDER BY idpost DESC");
+                    $stmt2->bind_param("ii", $linha->usuario_idusuario_Seguido, $linha->usuario_idusuario_Seguido);
+                    $stmt2->execute();
+                    $resultado2 = $stmt2->get_result();
+                    while($linha2 = $resultado2->fetch_object()){
+
+                        $stmt3 = $conn->prepare("SELECT * FROM post WHERE idpost=?");
+                        $stmt3->bind_param("i", $linha2->post_idpost);
+                        $stmt3->execute();
+                        $resultado3 = $stmt3->get_result();
+                        while($linha3 = $resultado3->fetch_object()){
+
+                            $img1 = '';
+                            $stmt = $conn->prepare("SELECT * FROM post_fotos WHERE post_idpost=? ORDER BY foto ASC");
+                            $stmt->bind_param("i", $linha2->post_idpost);
+                            $stmt->execute();
+                            $resultado4 = $stmt->get_result();
+                            while($linha4 = $resultado4->fetch_object()){
+                                $img1 = $linha4->foto;                               
+                            }
+
+                            //mostrando o post
+                            $div = "
+                                <div class='item2'>
+                                    <a href='perfil.php?id=$linha2->idusuario'><strong>$linha2->nome</strong></a>
+                                    <a href='postver.php?id=$linha3->idpost'><h1>$linha3->titulo</h1></a>
+                                    <div class='contpubli'><p>$linha3->post</p>
+                                    </div>
+                                    <div class='imgpubli'>
+                                        <img src='$img1'>
+                                    </div>
+                                    <a href='postver.php?id=$linha3->idpost' class='comment'>Comentários</a>
+                                </div>
+                                
+                            ";
+                            echo $div;
+                        }
+                    }*/

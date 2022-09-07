@@ -20,8 +20,8 @@
     <title>Perfil</title>
     <link rel="shortcut icon" href="../imagens/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="estilos/style.css">
-    <link rel="stylesheet" href="estilos/perfil.css">
-    <link rel="stylesheet" href="estilos/modal.css">
+    <link rel="stylesheet" href="estilos/perfill1.css">
+    <link rel="stylesheet" href="estilos/modalss.css">
 </head>
 <body>
     <header>
@@ -36,6 +36,8 @@
                 <div>
                     <a href="pag_principal.php">Home</a>
                     <a href="pag_busca.php">Buscar</a>
+                    <a href="criar_turma.php">Criar turma</a>
+                    <a href="criar_tipoPost.php">Criar tipo post</a>
                     <!--<a href="#">outros</a>-->
                 </div>
             </div>

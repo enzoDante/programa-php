@@ -21,7 +21,7 @@
     <title>Post</title>
     <link rel="shortcut icon" href="../imagens/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="estilos/style.css">
-    <link rel="stylesheet" href="estilos/modal.css">
+    <link rel="stylesheet" href="estilos/modalss.css">
     <link rel="stylesheet" href="estilos/post.css">
 </head>
 <body>
@@ -37,8 +37,8 @@
                 <div>
                     <a href="pag_principal.php">Home</a>
                     <a href="pag_busca.php">Buscar</a>
-                    <a href="chat.php?id=">Chat</a>
-                    <a href="#">Chat em Grupo</a>
+                    <a href="criar_turma.php">Criar turma</a>
+                    <a href="criar_tipoPost.php">Criar tipo post</a>
                 </div>
             </div>
             <?php if(isset($_SESSION['id_unico'])): ?>
@@ -72,14 +72,35 @@
                     <div>                        
                         <div id="campos">
                             <div class="fieldset">
+                                <label for="titulo"><strong>Titulo:</strong></label>
+                                <input type="text" name="titulo" id="titulo" placeholder="TITULO">
+
+                                <label for="subtitulo"><strong>Sub-titulo:</strong></label>
+                                <input type="text" name="subtitulo" id="subtitulo" placeholder="sub-titulo">
+
                                 <label for="ibio"><strong>Comentário</strong></label>
                                 <textarea name="msg" id="ibio" cols="30" rows="10"></textarea>
+
+                                <label for="itp">tipo post:</label>
+                                <select name="itp" id="itp">
+                                    <?php
+                                        $stmt = $conn->prepare("SELECT * FROM tipoPost");
+                                        $stmt->execute();
+                                        $resultado = $stmt->get_result();
+                                        while($linha = $resultado->fetch_object()){
+                                            $tp = $linha->tipo;
+                                            $idd = $linha->idtipoPost;
+                                            echo "<option value='$idd'>$tp</option>";
+                                        }
+                                    
+                                    ?>
+                                </select>
                             </div>
                         </div>
-                        <div>
-                            <label for="iimgpost" id="postarimg"><img id="imgpostar" src="../imagens/pngwing.com.png" alt=""></label>
-                            <input type="file" onchange="carregar3(event)" name="imgpost" id="iimgpost">
-                        </div><br>
+                        <div><input type="file" name="imgp1" id="blockp"></div>
+                        <div><input type="file" name="imgp2" id="blockp"></div>
+                        <div><input type="file" name="imgp3" id="blockp"></div>
+                        <br>
                     </div>
                 </form>
             </div>
@@ -88,62 +109,72 @@
         <!--======================================================-->
         <div id="postagem">
             <?php
-                $stmt = $conn->prepare("SELECT * FROM post WHERE id_post=?");
-                $stmt->bind_param("s", $id);
+                $stmt = $conn->prepare("SELECT * FROM autorespost,post WHERE idpost=? AND post_idpost=idpost");
+                $stmt->bind_param("i", $id);
                 $stmt->execute();
                 #==============
                 $resultado = $stmt->get_result();
                 while($linha = $resultado->fetch_object()){
-                    $stmt2 = $conn->prepare("SELECT * FROM usuario WHERE id_unico=?");
-                    $stmt2->bind_param("s", $linha->id_criador);
+                    $stmt2 = $conn->prepare("SELECT * FROM usuario WHERE idusuario=?");
+                    $stmt2->bind_param("i", $linha->usuario_idusuario);
                     $stmt2->execute();
                     $resultado2 = $stmt2->get_result();
                     while($linha2 = $resultado2->fetch_object()){
                         $nome = $linha2->nome;
-                        $imgp = $linha2->imgperfil;
-                        $id_c = $linha2->id_unico;
+                        $imgp = $linha2->foto;
+                        $id_c = $linha2->idusuario;
                     }
-                    $msg = $linha->msg_post;
-                    $img = $linha->img_post;
-                }
-                #===========================================
-                $stmt3 = $conn->prepare("SELECT * FROM curtidas WHERE id_post_curtido=?");
-                $stmt3->bind_param("s", $id);
-                $stmt3->execute();
-                $curtidas = 0;
-                $resultado4 = $stmt3->get_result();
-                while($linha4 = $resultado4->fetch_object()){
-                    $curtidas++;
+                    $titulo = $linha->titulo;
+                    $stitulo = $linha->subtitulo;
+                    $msg = $linha->post;
+
+                    $img1 = '';
+                    $img2 = '';
+                    $img3 = '';
+                    $stmt = $conn->prepare("SELECT * FROM post_fotos WHERE post_idpost=? ORDER BY foto ASC");
+                    $stmt->bind_param("i", $linha->post_idpost);
+                    $stmt->execute();
+                    $resultado3 = $stmt->get_result();
+                    while($linha3 = $resultado3->fetch_object()){
+                        if($img1 == '')
+                            $img1 = $linha3->foto;
+                        else if($img2 == '')
+                            $img2 = $linha3->foto;
+                        else if($img3 == '')
+                            $img3 = $linha3->foto;
+                    }
+                    
                 }
                 #===========================
-                $stmt3 = $conn->prepare("SELECT * FROM curtidas WHERE id_curtiu=? AND id_post_curtido=?");
-                $stmt3->bind_param("ss", $_SESSION['id_unico'], $id);
-                $stmt3->execute();
-                $like = 'imagens/coracao.png';
-                $resultado4 = $stmt3->get_result();
-                while($linha4 = $resultado4->fetch_object()){
-                    $like = 'imagens/coracao_vermelho.png';
-                }
             ?>
             <div id="navegador">
                 <span id="perfila">
                     <a href="perfil.php?id=<?php echo $id_c; ?>"><img src="<?php echo $imgp; ?>" alt=""></a>
                 </span>
-                <a href="perfil.php?id=<?php echo $id_c; ?>"><?php echo $nome; ?></a>
+                <a href="perfil.php?id=<?php echo $id_c; ?>"><h2><?php echo $nome; ?></h2></a>
             </div>
+            <h3>Título:  -<?php echo $titulo; ?></h3>
+            <h4>Sub-título:  -<?php echo $stitulo; ?></h4><br>
             <p>
                 <?php echo $msg; ?>
             </p>
+            <?php if($img1 != ''): ?>
             <div id="imagempublicada">
-                <img src="<?php echo $img; ?>" alt="">
+                <img src="<?php echo $img1; ?>" alt="">
             </div>
-            <a href="curtir.php?id=<?php echo $id; ?>"><img style="width: 35px;" src="<?php echo $like; ?>" alt=""></a>
-            <span style="font-size: 1.3em; font-weight: bold;"><?php echo $curtidas; ?></span>
-            <a href=""><img style="width: 35px;" src="imagens/link.png" alt=""></a>
-            <input type='text' disabled id='copiar' value='postver.php?id=<?php echo $id; ?>'>
+            <?php endif; if($img2 != ''): ?>
+            <div id="imagempublicada">
+                <img src="<?php echo $img2; ?>" alt="">
+            </div>
+            <?php endif; if($img3 != ''): ?>
+            <div id="imagempublicada">
+                <img src="<?php echo $img3; ?>" alt="">
+            </div>
+            <?php endif; ?>
 
         </div><br>
         <hr>
+        <!-- comentarios do post -->
         <div id="comentarios">
         <?php if(isset($_SESSION['id_unico'])): ?>
             <div id="publicar" class="borda">
@@ -156,41 +187,37 @@
                     <form action="comentar.php" method="post">
                         <input type="hidden" name="valorid" value="<?php echo $id; ?>">
                         <textarea name="coment" id="icomento" cols="30" rows="10" placeholder="Comentário"></textarea>
+                        <input type="number" name="nota" id="" min="0" max="10" placeholder="Nota do post">
                         <button type="submit">Comentar</button>
                     </form>
             </div>
         <?php endif; ?>
             <!--===============================================-->
             <?php
-                $stmt = $conn->prepare("SELECT * FROM comentarios WHERE post_id=? ORDER BY id DESC");
-                $stmt->bind_param("s", $id);
+                $stmt = $conn->prepare("SELECT * FROM comentario,usuario WHERE post_idpost=? AND idusuario=usuario_idusuario ORDER BY idcomentario DESC");
+                $stmt->bind_param("i", $id);
                 $stmt->execute();
                 $resultado = $stmt->get_result();
                 while($linha = $resultado->fetch_object()){
 
                     $div = "";
-                    $stmt2 = $conn->prepare("SELECT * FROM usuario WHERE id_unico=?");
-                    $stmt2->bind_param("s", $linha->id_usu);
-                    $stmt2->execute();
-                    $resultado2 = $stmt2->get_result();
-                    while($linha2 = $resultado2->fetch_object()){
-                        $div = "
-                            <div class='borda'>
-                                <div id='navegador'>
-                                    <span id='perfila'>
-                                        <a href='perfil.php?$linha2->id_unico'><img src='$linha2->imgperfil'></a>
-                                    </span>
-                                    <a href=''>$linha2->nome</a>
-                                </div>
-                                <p>$linha->msg</p>
-                                
-                        
-                        ";
-                        echo $div;
-                        if($linha2->id_unico == $_SESSION['id_unico']){
+                    $div= "
+                        <div class='borda'>
+                        <div id='navegador'>
+                            <span id='perfila'>
+                                <a href='perfil.php?id=$linha->idusuario'><img src='$linha->foto'></a>
+                            </span>
+                            <a href='perfil.php?id=$linha->idusuario'>$linha->nome</a>
+                        </div>
+                        <p>$linha->comentario</p>
+                        <p>Nota: $linha->nota</p>
+                    ";
+                    echo $div;
+                    if(isset($_SESSION['id_unico'])){
+                        if($linha->idusuario == $_SESSION['id_unico']){
                             $div = "
                                 <form method='post' action='deletarcomentario.php?id=$id'>
-                                    <input type='hidden' name='idmsg' value='$linha->id'>
+                                    <input type='hidden' name='idmsg' value='$linha->idcomentario'>
                                     <button type='submit' style='background-color: white; border: none; cursor: pointer;'><img src='imagens/lixo.png'></button>
                                 </form>
                                                             
@@ -199,8 +226,11 @@
                         }else
                             $div = "</div>";
 
-                        echo $div;
+                    }else{
+                        $div = "</div>";
                     }
+
+                    echo $div;                    
                 }            
             ?>            
         </div><br>

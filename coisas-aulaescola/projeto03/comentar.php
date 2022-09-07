@@ -19,7 +19,7 @@
     <title>Post</title>
     <link rel="shortcut icon" href="../imagens/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="estilos/style.css">
-    <link rel="stylesheet" href="estilos/modal.css">
+    <link rel="stylesheet" href="estilos/modalss.css">
     <link rel="stylesheet" href="estilos/post.css">
 </head>
 <body>
@@ -35,8 +35,8 @@
                 <div>
                     <a href="pag_principal.php">Home</a>
                     <a href="pag_busca.php">Buscar</a>
-                    <a href="chat.php?id=">Chat</a>
-                    <a href="#">Chat em Grupo</a>
+                    <a href="criar_turma.php">Criar turma</a>
+                    <a href="criar_tipoPost.php">Criar tipo post</a>
                 </div>
             </div>
             <?php if(isset($_SESSION['id_unico'])): ?>
@@ -58,9 +58,10 @@
                     $id = $_POST['valorid'];
                     #echo $id;
                     $msg = strip_tags(str_replace(";", " ", $_POST['coment']));
+                    $nota = $_POST['nota'];
 
-                    $stmt = $conn->prepare("INSERT INTO comentarios (post_id,id_usu,msg) VALUES(?,?,?)");
-                    $stmt->bind_param("sss", $id, $_SESSION['id_unico'], $msg);
+                    $stmt = $conn->prepare("INSERT INTO comentario (comentario,nota,post_idpost,usuario_idusuario) VALUES(?,?,?,?)");
+                    $stmt->bind_param("siii", $msg, $nota, $id, $_SESSION['id_unico']);
                     $stmt->execute();
                     header("Location: postver.php?id=$id");
                 }
