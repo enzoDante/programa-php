@@ -153,7 +153,7 @@
                             <input type="text" name="nome" id="inome" value="<?php echo $nome; ?>">
                         </div>
                         <div class="fieldset">
-                            <label for="iemail"><strong>Nome</strong></label>
+                            <label for="iemail"><strong>E-mail</strong></label>
                             <input type="text" name="email" id="iemail" value="<?php echo $email; ?>">
                         </div>
                         <div class="fieldset">

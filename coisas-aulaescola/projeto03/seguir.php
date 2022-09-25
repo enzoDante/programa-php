@@ -59,7 +59,6 @@
         <div>
             <?php
                 $id_pessoa = $_POST['id'];
-                $b = '';
                 $stmt = $conn->prepare("SELECT * FROM seguidor WHERE usuario_idusuario_Seguidor=? AND usuario_idusuario_Seguido=?");
                 $stmt->bind_param("ss", $_SESSION['id_unico'], $id_pessoa);
                 $stmt->execute();
