@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div id="header">
+            <div id="divimg1">
+                <img src="img/univap.png" id="img1" alt="">
+            </div>
+
+            <h1>Avaliação de Projetos!!</h1>	
+
+            <div id="divimg2">
+                <img src="img/info.jpg" id="img2" alt="">
+            </div>
+        </div>
+    </header>        
+
+    <div>
+        <main>
+        
+        <form method="POST" action="processar.php" enctype="multipart/form-data">
+                <div class="field">
+                    <input type="hidden" name="idTrabalho">
+                    <input type="text" name="codigoProfessor">
+                    <label for="nota1">Nota Apresentação:</label>
+                    <select type="number" id="apresentacao" name="nota1" placeholder="Sua Nota do Projeto*">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+        
+                    <label for="nota2"> Nota Relevância:</label>
+                    <select type="number" id="relevancia" name="nota2" placeholder="Relevância do Projeto*">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    <label for="nota3"> Nota Utilidade:</label>
+                    <select type="number" id="utilidade" name="nota3" placeholder="Utilidade do Projeto*">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                    </select>
+                </div>
+                    <h2>Quer deixar alguma observação? </h2>
+                    <textarea name="coment" id="" cols="50" rows="8"></textarea>
+                    <button type="submit">Enviar</button>
+        
+            </form>
+        
+        </main>
+        <footer>
+            
+        </footer>
+    </div>
+</body>
+</html>
