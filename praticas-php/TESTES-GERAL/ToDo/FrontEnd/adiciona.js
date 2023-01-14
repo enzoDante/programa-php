@@ -53,6 +53,7 @@ function mostrar(ab){
 
     valor.appendChild(texto)
     valor.appendChild(marc)
+    div.appendChild(valor)
 }
 
 
