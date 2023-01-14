@@ -59,12 +59,59 @@ function mostrar(ab){
 
 //=====================
 function fazGet(url){
-    const xhttp = new XMLHttpRequest()
-    xhttp.open("GET", url, false)
-    xhttp.send()
-    return this.responseText
+    let request = new XMLHttpRequest()
+    request.open("GET", url, false)
+    request.send()
+    return request.responseText
 }
 function carregar(){
-    let valor = fazGet("../BackEnd/getToDo.php")
-    console.log(valor)
+
+    let x = fazGet('../BackEnd/getToDo.php')
+    console.log(x)
+    let data = JSON.parse(x)
+    console.log(data)
+
+    let div = document.getElementById("todo")
+    data.forEach(element => {
+        let objeto = JSON.parse(element)
+        let val = criardadostodo(objeto)
+        div.appendChild(val)
+    });
+
+    // const xhttp = new XMLHttpRequest()
+    // xhttp.open("GET", "../BackEnd/getToDo.php", false)
+
+    // xhttp.onreadystatechange = function(){
+    //     console.log("tesss")
+    //     let x = this.responseText
+    //     let data = JSON.parse(x)
+        
+    //     console.log(data)
+    //     // console.log(data[0].texto)
+    //     let div = document.getElementById("todo")
+    //     data.forEach(element => {
+    //         let val = criardadostodo(element)
+    //         div.appendChild(val)
+    //     });
+    // }
+    // xhttp.send()
+}
+
+function criardadostodo(e){
+    let d = document.createElement("div")
+    d.setAttribute("class", 'todos')
+
+    let p = document.createElement("p")
+    p.innerHTML = e.texto
+
+    let c = document.createElement("input")
+    c.setAttribute("type", 'checkbox')
+    
+    if(e.feito != 0){
+        c.checked = true
+    }
+
+    d.appendChild(p)
+    d.appendChild(c)
+    return d
 }

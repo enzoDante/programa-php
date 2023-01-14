@@ -38,3 +38,13 @@ button#criar{
     margin-top: 2vh;
     padding: 5px;
 }
+.todos{
+    min-width: 150px;
+    max-width: 250px;
+    min-height: 20px;
+    box-shadow: 2px 2px 3px black;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 20px;
+    padding: 10px;
+}
