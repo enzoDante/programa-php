@@ -51,8 +51,13 @@ function mostrar(ab){
     let marc = document.createElement("input")
     marc.setAttribute("type", 'checkbox')
 
+    let delet = document.createElement("button")
+    delet.innerHTML = "X"
+    delet.setAttribute("class", "deletar")
+
     valor.appendChild(texto)
     valor.appendChild(marc)
+    valor.appendChild(delet)
     div.appendChild(valor)
 }
 
@@ -101,12 +106,27 @@ function carregar(){
 function criardadostodo(e){
     let d = document.createElement("div")
     d.setAttribute("class", 'todos')
+    d.setAttribute("id", e.id)
 
     let p = document.createElement("p")
     p.innerHTML = e.texto
 
     let c = document.createElement("input")
     c.setAttribute("type", 'checkbox')
+
+    let delet = document.createElement("button")
+    delet.innerHTML = "X"
+    delet.setAttribute("class", "deletar")
+    delet.setAttribute("id", e.id)
+    // delet.addEventListener("click", deletar)
+
+    delet.addEventListener("click", () => {
+        // console.log("teaaaa")
+        // console.log(e.id)
+        let remover = document.getElementById(e.id)
+        remover.parentNode.removeChild(remover)
+        // function p deletar com ajax
+    })
     
     if(e.feito != 0){
         c.checked = true
@@ -114,5 +134,11 @@ function criardadostodo(e){
 
     d.appendChild(p)
     d.appendChild(c)
+    d.appendChild(delet)
     return d
 }
+
+// function deletar(e){
+//     console.log('teste abaixo')
+//     console.log(e)
+// }

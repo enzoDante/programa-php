@@ -11,6 +11,7 @@
         while($linha = $resultado->fetch_object()){
             
             // $val = [$linha->texto, $linha->feito];
+            $objeto->id = $linha->id;
             $objeto->texto = $linha->texto;
             $objeto->feito = $linha->feito;
 
