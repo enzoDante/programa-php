@@ -38,15 +38,16 @@ function enviardado(texto){
 }
 
 function mostrar(ab){
-    console.log(ab)
-    console.log('teste')
+    let dado = JSON.parse(ab)
+    
     let div = document.getElementById("todo")
 
     let valor = document.createElement("div")
     valor.setAttribute("class", 'todos')
+    valor.setAttribute("id", dado[0])
 
     let texto = document.createElement("p")
-    texto.innerHTML = ab
+    texto.innerHTML = dado[1]
 
     let marc = document.createElement("input")
     marc.setAttribute("type", 'checkbox')
@@ -54,6 +55,18 @@ function mostrar(ab){
     let delet = document.createElement("button")
     delet.innerHTML = "X"
     delet.setAttribute("class", "deletar")
+
+    delet.addEventListener("click", () => {
+        let remover = document.getElementById(dado[0])
+        remover.parentNode.removeChild(remover)
+        
+        let text = fazGet("../BackEnd/delete.php?id="+dado[0])
+        console.log(text)
+        if(text){
+            alert("deletado com sucesso!")
+        }else
+            alert("Erro ao deletar!")
+    })
 
     valor.appendChild(texto)
     valor.appendChild(marc)
@@ -126,6 +139,12 @@ function criardadostodo(e){
         let remover = document.getElementById(e.id)
         remover.parentNode.removeChild(remover)
         // function p deletar com ajax
+        let text = fazGet("../BackEnd/delete.php?id="+e.id)
+        console.log(text)
+        if(text){
+            alert("deletado com sucesso!")
+        }else
+            alert("Erro ao deletar!")
     })
     
     if(e.feito != 0){
